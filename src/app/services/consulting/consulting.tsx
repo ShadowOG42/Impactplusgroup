@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Briefcase, Users, ChartPie } from 'lucide-react';
 import { gsap } from 'gsap';
 

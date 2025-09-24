@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Cpu, Cloud, Globe } from 'lucide-react';
 import { gsap } from 'gsap';
 
-const tech = () => {
+const Tech = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -105,4 +105,4 @@ const tech = () => {
   );
 };
 
-export default tech;
+export default Tech;

@@ -3,11 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { MapPin, Phone, Mail, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  country: string;
+  message: string;
+}
+
 const Contacts = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formStatus, setFormStatus] = useState<string>("");
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -63,8 +71,11 @@ const Contacts = () => {
       } else {
         setFormStatus("❌ Failed to send message. Please try again.");
       }
-    } catch (err) {
-      setFormStatus("❌ Error sending message. Please try again.");
+    } catch (err: unknown) {
+      let errorMessage = "❌ Error sending message. Please try again.";
+      if (err instanceof Error) errorMessage = `❌ Error sending message: ${err.message}`;
+      setFormStatus(errorMessage);
+      console.error("Contact form error:", err);
     } finally {
       setLoading(false);
     }
@@ -73,9 +84,7 @@ const Contacts = () => {
   return (
     <section
       id="contacts"
-      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
+      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
       {/* Header */}
       <div className="text-center mb-16">
@@ -97,7 +106,7 @@ const Contacts = () => {
               <input
                 type={field==="email"?"email":"text"}
                 name={field}
-                value={(formData as any)[field]}
+                value={formData[field as keyof FormData]}
                 onChange={handleChange}
                 className="w-full border-b-2 border-gray-400 focus:border-blue-500 outline-none py-2"
                 disabled={loading}
@@ -120,7 +129,7 @@ const Contacts = () => {
           <div className="md:col-span-2 relative">
             <button
               type="submit"
-              className={`w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-full transition-all flex justify-center items-center`}
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-full transition-all flex justify-center items-center"
               disabled={loading}
             >
               {loading ? (
@@ -159,9 +168,7 @@ const Contacts = () => {
         {branches.map((b, i) => (
           <div
             key={i}
-            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}
+            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
             style={{ transitionDelay: `${i * 200}ms` }}
           >
             <h2 className="text-2xl font-semibold text-blue-800 mb-4">

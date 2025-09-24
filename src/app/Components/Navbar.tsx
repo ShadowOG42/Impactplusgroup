@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { List, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -28,15 +28,15 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
-  const controlNavbar = () => {
+  const controlNavbar = useCallback(() => {
     if (typeof window !== "undefined") {
       if (window.scrollY > lastScrollY && window.scrollY > 50) setShowNavbar(false);
       else setShowNavbar(true);
       setLastScrollY(window.scrollY);
     }
-  };
+  }, [lastScrollY]);
 
-  const handleMouseMove = () => setShowNavbar(true);
+  const handleMouseMove = useCallback(() => setShowNavbar(true), []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -49,7 +49,7 @@ const Header = () => {
         window.removeEventListener("mousemove", handleMouseMove);
       }
     };
-  }, [lastScrollY]);
+  }, [controlNavbar, handleMouseMove]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -69,7 +69,6 @@ const Header = () => {
     <>
       {navItems.map((link) => (
         <li key={link.title} className="relative">
-          {/* Render submenu button or link */}
           {link.sub ? (
             <button
               onClick={() => handleMenuClick(link.title)}
@@ -82,7 +81,7 @@ const Header = () => {
           ) : (
             <Link
               href={link.href}
-              onClick={modal ? closeModal : undefined} // close mobile menu after click
+              onClick={modal ? closeModal : undefined}
               className={`${
                 modal ? "text-white" : "text-gray-800"
               } ${pathname === link.href ? "font-semibold text-blue-600" : "hover:text-blue-600"} transform hover:scale-105 transition-transform duration-300`}
@@ -91,7 +90,6 @@ const Header = () => {
             </Link>
           )}
 
-          {/* Desktop submenu */}
           {!modal && link.sub && openMenu === link.title && (
             <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white shadow-lg rounded-lg py-3 w-72 flex flex-col items-center z-50">
               {link.sub.map((sublink) => (
@@ -119,22 +117,14 @@ const Header = () => {
       }`}
     >
       <nav className="w-full flex justify-between items-center px-4 md:px-6 bg-white bg-opacity-80 backdrop-blur-md">
-        {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image
-            src="/Certificates/Logo.jpg"
-            width={130}
-            height={35}
-            alt="Impact Plus Logo"
-          />
+          <Image src="/Certificates/Logo.jpg" width={130} height={35} alt="Impact Plus Logo" />
         </Link>
 
-        {/* Desktop Links */}
         <ul className="hidden md:flex space-x-6">
           <NavLinks modal={false} />
         </ul>
 
-        {/* Mobile Menu */}
         <div className="md:hidden">
           <button onClick={openModal} aria-label="Open mobile menu">
             <List size={26} className="text-blue-600" />
@@ -142,17 +132,13 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Modal */}
       {isModalOpen && (
         <div
           className={`fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center transition-opacity duration-500 ${
             isModalVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <button
-            onClick={closeModal}
-            className="absolute top-5 right-5 text-white"
-          >
+          <button onClick={closeModal} className="absolute top-5 right-5 text-white">
             <X size={28} />
           </button>
           <ul className="space-y-6 text-center text-2xl text-white">

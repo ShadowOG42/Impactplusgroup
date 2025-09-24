@@ -1,9 +1,24 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+interface ContactForm {
+  name: string;
+  email: string;
+  phone: string;
+  country: string;
+  message: string;
+}
+
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, country, message } = await req.json();
+    const { name, email, phone, country, message } = (await req.json()) as ContactForm;
+
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { success: false, error: "Name, email, and message are required" },
+        { status: 400 }
+      );
+    }
 
     const transporter = nodemailer.createTransport({
       host: "smtp.office365.com",
@@ -11,7 +26,7 @@ export async function POST(req: Request) {
       secure: false,
       auth: {
         user: "info@impactplusgroup.com",
-        pass: process.env.OUTLOOK_APP_PASSWORD!, // Store securely in .env
+        pass: process.env.OUTLOOK_APP_PASSWORD!,
       },
     });
 
@@ -30,8 +45,14 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error("Error sending email:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    let errorMessage = "Unknown error";
+
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+
+    console.error("Error sending email:", errorMessage);
+    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }
 }

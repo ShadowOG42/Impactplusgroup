@@ -1,11 +1,11 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const Footer = () => {
   const [showFooter, setShowFooter] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const controlFooter = () => {
+  const controlFooter = useCallback(() => {
     if (typeof window !== "undefined") {
       if (window.scrollY > lastScrollY && window.scrollY > 50) {
         setShowFooter(false);
@@ -14,7 +14,7 @@ const Footer = () => {
       }
       setLastScrollY(window.scrollY);
     }
-  };
+  }, [lastScrollY]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -25,7 +25,7 @@ const Footer = () => {
         window.removeEventListener("scroll", controlFooter);
       }
     };
-  }, [lastScrollY]);
+  }, [controlFooter]);
 
   return (
     <footer
