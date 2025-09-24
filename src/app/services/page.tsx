@@ -58,7 +58,7 @@ const Services = () => {
           loop
           muted
         >
-          <source src="/videos/Workculture.mp4" type="video/mp4" />
+          <source src="/videos/WOrkculture.mp4" type="video/mp4" />
         </video>
 
         {/* Dark overlay */}
