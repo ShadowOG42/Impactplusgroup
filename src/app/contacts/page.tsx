@@ -1,7 +1,7 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { MapPin, Phone, Mail, ShieldCheck } from 'lucide-react';
-import Image from 'next/image';
+"use client";
+import React, { useEffect, useState } from "react";
+import { MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 interface FormData {
   name: string;
@@ -31,12 +31,10 @@ const Contacts = () => {
     { country: "Zimbabwe", address: "Bristol Road, Gweru", email: "info@impactplusgroup.com", phone: "+263 772 264 3055" },
   ];
 
-  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Validate form fields
   const validateForm = () => {
     if (!formData.name || !formData.email || !formData.phone || !formData.country || !formData.message) {
       setFormStatus("⚠️ Please fill in all required fields.");
@@ -50,7 +48,6 @@ const Contacts = () => {
     return true;
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -61,6 +58,9 @@ const Contacts = () => {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json", // ✅ Important fix
+        },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -69,7 +69,7 @@ const Contacts = () => {
         setFormStatus("✅ Thank you! We will get back to you soon.");
         setFormData({ name: "", email: "", phone: "", country: "", message: "" });
       } else {
-        setFormStatus("❌ Failed to send message. Please try again.");
+        setFormStatus(`❌ Failed to send message: ${data.error || "Unknown error"}`);
       }
     } catch (err: unknown) {
       let errorMessage = "❌ Error sending message. Please try again.";
@@ -84,7 +84,7 @@ const Contacts = () => {
   return (
     <section
       id="contacts"
-      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`}
     >
       {/* Header */}
       <div className="text-center mb-16">
@@ -98,13 +98,13 @@ const Contacts = () => {
       {/* Contact Form */}
       <div className="bg-gray-50 p-8 rounded-xl shadow-lg mb-20">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
-          {["name","email","phone","country"].map((field, idx) => (
+          {["name", "email", "phone", "country"].map((field, idx) => (
             <div key={idx}>
               <label className="block text-gray-700 mb-2">
                 {field.charAt(0).toUpperCase() + field.slice(1)}:*
               </label>
               <input
-                type={field==="email"?"email":"text"}
+                type={field === "email" ? "email" : "text"}
                 name={field}
                 value={formData[field as keyof FormData]}
                 onChange={handleChange}
@@ -156,9 +156,7 @@ const Contacts = () => {
               ) : null}
               {loading ? "Sending..." : "SUBMIT"}
             </button>
-            {formStatus && (
-              <p className="mt-4 text-center text-green-600">{formStatus}</p>
-            )}
+            {formStatus && <p className="mt-4 text-center text-green-600">{formStatus}</p>}
           </div>
         </form>
       </div>
@@ -168,12 +166,10 @@ const Contacts = () => {
         {branches.map((b, i) => (
           <div
             key={i}
-            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
             style={{ transitionDelay: `${i * 200}ms` }}
           >
-            <h2 className="text-2xl font-semibold text-blue-800 mb-4">
-              {b.country}
-            </h2>
+            <h2 className="text-2xl font-semibold text-blue-800 mb-4">{b.country}</h2>
             <p className="flex items-center text-gray-700 mb-2">
               <MapPin className="w-5 h-5 text-blue-600 mr-2" /> {b.address}
             </p>
@@ -198,70 +194,6 @@ const Contacts = () => {
               fill
               className="object-contain"
             />
-          </div>
-        </div>
-      </div>
-
-      {/* Partners Section */}
-      <div className="text-center mb-20">
-        <h2 className="text-3xl font-bold text-blue-700 mb-12">Our Partners</h2>
-
-        {/* Global Partners */}
-        <h3 className="text-2xl font-semibold text-blue-600 mb-6">
-          Global Partners
-        </h3>
-        <div className="flex flex-wrap justify-center items-center gap-10 mb-12">
-          <div className="relative w-40 h-20 hover:scale-110 transition-transform">
-            <Image
-              src="/partners/global1.png"
-              alt="Global Partner 1"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div className="relative w-40 h-20 hover:scale-110 transition-transform">
-            <Image
-              src="/partners/global2.png"
-              alt="Global Partner 2"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Potential Partners */}
-        <h3 className="text-2xl font-semibold text-blue-600 mb-6">
-          Potential Partners
-        </h3>
-        <div className="flex flex-wrap justify-center items-center gap-10">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div
-              key={i}
-              className="relative w-32 h-16 hover:scale-110 transition-transform"
-            >
-              <Image
-                src={`/partners/potential${i}.png`}
-                alt={`Potential Partner ${i}`}
-                fill
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Closing Quote */}
-      <div className="text-center">
-        <div className="relative max-w-3xl mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-blue-400 rounded-lg blur opacity-30" />
-          <div className="relative bg-white rounded-lg p-8 border border-blue-100 shadow-md">
-            <p className="text-xl md:text-2xl font-medium text-blue-700 italic">
-              “Transformative Consulting. Real Results.”
-            </p>
-            <p className="mt-4 text-gray-600">
-              Globally benchmarked, locally grounded solutions • Cross-sector
-              expertise • Trusted delivery
-            </p>
           </div>
         </div>
       </div>

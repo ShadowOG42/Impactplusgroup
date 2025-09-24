@@ -4,14 +4,12 @@ import nodemailer from "nodemailer";
 interface ContactForm {
   name: string;
   email: string;
-  phone: string;
-  country: string;
   message: string;
 }
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, country, message } = (await req.json()) as ContactForm;
+    const { name, email, message } = (await req.json()) as ContactForm;
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -20,26 +18,24 @@ export async function POST(req: Request) {
       );
     }
 
+    // ✅ Gmail SMTP configuration
     const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
-        user: "info@impactplusgroup.com",
-        pass: process.env.OUTLOOK_APP_PASSWORD!,
+        user: process.env.GMAIL_USER, // your Gmail address
+        pass: process.env.GMAIL_APP_PASSWORD, // your Gmail app password
       },
     });
 
+    // ✅ Send email
     await transporter.sendMail({
-      from: `"Impact Plus Website" <info@impactplusgroup.com>`,
-      to: "info@impactplusgroup.com",
+      from: `"Impact Plus Website" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER, // sends to yourself for testing
       subject: `New Contact Form Submission from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nMessage: ${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       html: `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Country:</strong> ${country}</p>
         <p><strong>Message:</strong> ${message}</p>
       `,
     });
@@ -52,7 +48,10 @@ export async function POST(req: Request) {
       errorMessage = error.message;
     }
 
-    console.error("Error sending email:", errorMessage);
-    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
+    console.error("❌ Error sending email:", error);
+    return NextResponse.json(
+      { success: false, error: errorMessage },
+      { status: 500 }
+    );
   }
 }
