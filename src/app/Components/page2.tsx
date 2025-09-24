@@ -100,7 +100,7 @@ const Page2 = () => {
         {/* RIGHT: Logo */}
         <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center items-center">
           <Image
-            src="/Certificates/Logo_transparent.png"
+            src="/Certificates/logo_transparent.png"
             alt="Impact Plus Logo"
             width={600}
             height={600}
