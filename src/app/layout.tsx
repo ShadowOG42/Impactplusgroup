@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MatrixRain from "./Components/Matrix";
+ 
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
@@ -36,10 +36,7 @@ export default function RootLayout({
         {/* ✅ Navbar stays fixed at top */}
         <Navbar />
 
-        {/* ✅ Background effect (optional) */}
-        <div className="fixed inset-0 -z-10">
-          <MatrixRain />
-        </div>
+ 
 
         {/* ✅ Main content, no forced padding */}
         <main className="w-full">
