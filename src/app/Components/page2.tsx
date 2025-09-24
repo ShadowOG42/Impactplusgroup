@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect, useRef } from "react";
 import { LinkedinIcon, MailIcon, PhoneIcon, GlobeIcon } from "lucide-react";
 import Link from "next/link";
@@ -7,6 +8,7 @@ import Image from "next/image";
 const Page2 = () => {
   const welcomeRef = useRef<HTMLParagraphElement>(null);
 
+  // Typewriter effect
   useEffect(() => {
     if (welcomeRef.current) {
       const text = "WELCOME TO IMPACT PLUS";
@@ -23,6 +25,7 @@ const Page2 = () => {
     }
   }, []);
 
+  // Social links component
   const SocialLinks = () => (
     <div className="flex flex-wrap gap-4 items-center pt-6">
       <a
@@ -77,16 +80,20 @@ const Page2 = () => {
         
         {/* LEFT: Text */}
         <div className="space-y-6 max-w-2xl md:w-1/2">
+          {/* Typewriter Welcome */}
           <p
             ref={welcomeRef}
-            className="text-3xl md:text-6xl font-light tracking-wide"
-            style={{ color: "#FFFFFF" }}
+            className="text-4xl md:text-7xl font-bold tracking-wide"
+            style={{ color: "#0D47A1" }} // Dark Blue
           />
+
+          {/* Description */}
           <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed">
             An international WHSEQ consultancy optimising organisational and people performance 
             across oil & gas, mining, renewable energy, infrastructure, health, government, and education.
           </p>
 
+          {/* Read More button */}
           <Link
             href="/about"
             className="inline-block mt-6 px-6 py-3 text-sm font-semibold bg-blue-600 hover:bg-blue-700 rounded-full transition"
@@ -94,13 +101,14 @@ const Page2 = () => {
             Read More
           </Link>
 
+          {/* Social Links */}
           <SocialLinks />
         </div>
 
         {/* RIGHT: Logo */}
         <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center items-center">
           <Image
-            src="/Certificates/logo_transparent.png"
+            src="/Certificates/logo_transparent.png" // fixed lowercase
             alt="Impact Plus Logo"
             width={600}
             height={600}
