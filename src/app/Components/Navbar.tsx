@@ -1,15 +1,31 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { List, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+type NavItem = {
+  title: string;
+  href: string;
+  sub?: { title: string; href: string }[];
+};
+
+const navItems: NavItem[] = [
+  { title: "Home", href: "/" },
+  { title: "About Us", href: "/about" },
+  { title: "Services", href: "/services" },
+  { title: "Industries", href: "/industries" },
+  { title: "Insights", href: "/insights" },
+  { title: "Contact Us", href: "/contacts" },
+];
+
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   const controlNavbar = () => {
@@ -45,25 +61,52 @@ const Header = () => {
     setTimeout(() => setIsModalOpen(false), 500);
   };
 
+  const handleMenuClick = (title: string) => {
+    setOpenMenu(openMenu === title ? null : title);
+  };
+
   const NavLinks = ({ modal }: { modal: boolean }) => (
     <>
-      {[
-        { name: "Home", href: "/Home" },
-        { name: "About", href: "/about" },
-        { name: "Mission", href: "/mission" },
-        { name: "Testimonials", href: "/testimonials" },
-        { name: "Contacts", href: "/contacts" },
-      ].map((link) => (
-        <li key={link.name}>
-          <Link
-            href={link.href}
-            onClick={() => modal && closeModal()}
-            className={`${
-              modal ? "text-white" : "text-gray-800"
-            } ${pathname === link.href ? "font-semibold text-blue-600" : "hover:text-blue-600"} transform hover:scale-105 transition-transform duration-300`}
-          >
-            {link.name}
-          </Link>
+      {navItems.map((link) => (
+        <li key={link.title} className="relative">
+          {/* Render submenu button or link */}
+          {link.sub ? (
+            <button
+              onClick={() => handleMenuClick(link.title)}
+              className={`${
+                modal ? "text-white" : "text-gray-800"
+              } ${pathname === link.href ? "font-semibold text-blue-600" : "hover:text-blue-600"} transform hover:scale-105 transition-transform duration-300`}
+            >
+              {link.title}
+            </button>
+          ) : (
+            <Link
+              href={link.href}
+              onClick={modal ? closeModal : undefined} // close mobile menu after click
+              className={`${
+                modal ? "text-white" : "text-gray-800"
+              } ${pathname === link.href ? "font-semibold text-blue-600" : "hover:text-blue-600"} transform hover:scale-105 transition-transform duration-300`}
+            >
+              {link.title}
+            </Link>
+          )}
+
+          {/* Desktop submenu */}
+          {!modal && link.sub && openMenu === link.title && (
+            <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white shadow-lg rounded-lg py-3 w-72 flex flex-col items-center z-50">
+              {link.sub.map((sublink) => (
+                <li key={sublink.title} className="w-full text-center">
+                  <Link
+                    href={sublink.href}
+                    onClick={() => setOpenMenu(null)}
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                  >
+                    {sublink.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </>
@@ -75,9 +118,9 @@ const Header = () => {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="w-full max-w-full mx-auto flex justify-between items-center h-16 px-4 md:px-6 bg-gradient-to-b from-white to-blue-50 shadow-md">
+      <nav className="w-full flex justify-between items-center px-4 md:px-6 bg-white bg-opacity-80 backdrop-blur-md">
         {/* Logo */}
-        <Link href="/Home" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/Certificates/Logo.jpg"
             width={130}

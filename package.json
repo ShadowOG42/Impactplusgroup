@@ -16,6 +16,7 @@
     "gsap": "^3.12.7",
     "lucide-react": "^0.471.1",
     "next": "15.5.3",
+    "nodemailer": "^7.0.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-globe.gl": "^2.36.0",
@@ -27,8 +28,10 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.180.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8",

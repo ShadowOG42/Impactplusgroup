@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MatrixRain from "./Components/Matrix";
-import Navbar from "./Components/Navbar"; // ✅ Updated header
+import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 const geistSans = Geist({
@@ -33,18 +33,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
-        {/* ✅ Global Header */}
+        {/* ✅ Navbar stays fixed at top */}
         <Navbar />
 
-        {/* ✅ Optional Matrix animation */}
-        <MatrixRain />
+        {/* ✅ Background effect (optional) */}
+        <div className="fixed inset-0 -z-10">
+          <MatrixRain />
+        </div>
 
-        {/* ✅ Main content with padding to avoid overlap */}
-        <main className="pt-20">
+        {/* ✅ Main content, no forced padding */}
+        <main className="w-full">
           {children}
         </main>
 
-        {/* ✅ Global Footer */}
+        {/* ✅ Footer */}
         <Footer />
       </body>
     </html>

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Quote, Award, X } from 'lucide-react';
+import { Quote, Award, X, Link2 } from 'lucide-react';
 import Image from 'next/image';
 
 const Testimonials = () => {
@@ -50,9 +50,27 @@ Combining exceptional technical skill with a
     },
   ];
 
+  const blogs = [
+    {
+      title: "The Future of Digital Transformation",
+      link: "#",
+      highlight: "Why businesses that embrace AI early will lead their industries."
+    },
+    {
+      title: "Top 5 Challenges in Manufacturing 2025",
+      link: "#",
+      highlight: "Overcoming supply chain disruptions and automation hurdles."
+    },
+    {
+      title: "Healthcare Innovation Case Study",
+      link: "#",
+      highlight: "How data-driven insights improved patient care and operational efficiency."
+    },
+  ];
+
   return (
     <section
-      id="testimonials"
+      id="insights"
       className={`min-h-screen bg-gradient-to-r from-white via-blue-50 to-blue-100 py-20 px-6 md:px-16 lg:px-32
         transform transition-all duration-1000 ease-out
         ${isVisible ? 'opacity-100' : 'opacity-0'}`}
@@ -123,6 +141,40 @@ Combining exceptional technical skill with a
         </div>
       </div>
 
+      {/* Blogs & Resources Section */}
+      <div className="mt-24">
+        <h2 className="text-3xl font-bold text-blue-700 text-center mb-12">Latest Blogs & Resources</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {blogs.map((b, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 p-6"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <Link2 className="w-5 h-5 text-blue-600" />
+                <a href={b.link} className="text-lg font-semibold text-blue-700 hover:underline">
+                  {b.title}
+                </a>
+              </div>
+              <p className="text-gray-600 text-sm">{b.highlight}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Quotes Highlight */}
+      <div className="mt-20 text-center max-w-4xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-700 mb-6">
+          Our clients’ trust is built on results, collaboration, and long-term impact — we believe shared experiences inspire shared success.
+        </p>
+        <div className="flex flex-col items-center">
+          <Quote className="w-10 h-10 text-blue-600 mb-4" />
+          <p className="text-md text-gray-500 italic">
+            “Knowledge shared is power multiplied.”
+          </p>
+        </div>
+      </div>
+
       {/* Full-Screen Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-95 flex items-center justify-center p-4">
@@ -147,6 +199,3 @@ Combining exceptional technical skill with a
 };
 
 export default Testimonials;
-
-
-
