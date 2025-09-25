@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
- 
+
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
@@ -17,9 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Impact Plus",
-  description: "Website",
+  description:
+    "WELCOME TO IMPACT PLUS: An international WHSEQ consultancy optimising organisational and people performance across oil & gas, mining, renewable energy…",
   icons: {
-    icon: "/Logo.svg",
+    icon: "/Logo.ico",      // ✅ Favicon for browsers
+    apple: "/Logo.ico",     // ✅ Optional for iOS devices
   },
 };
 
@@ -36,12 +38,8 @@ export default function RootLayout({
         {/* ✅ Navbar stays fixed at top */}
         <Navbar />
 
- 
-
-        {/* ✅ Main content, no forced padding */}
-        <main className="w-full">
-          {children}
-        </main>
+        {/* ✅ Main content */}
+        <main className="w-full">{children}</main>
 
         {/* ✅ Footer */}
         <Footer />
