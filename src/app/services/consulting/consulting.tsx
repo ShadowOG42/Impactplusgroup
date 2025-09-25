@@ -66,8 +66,8 @@ const Consulting = () => {
           Impact Plus helps organizations transform ideas into results. Our consulting solutions are designed to drive innovation, operational excellence, and sustainable growth.
         </p>
       </div>
-
-      {/* Services Cards */}
+ 
+      {/* Services Card */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         {services.map((s, i) => (
           <div
