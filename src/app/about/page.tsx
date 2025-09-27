@@ -94,12 +94,26 @@ const About = () => {
           </h1>
           <p
             ref={subtitleRef}
-            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0"
+            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0 leading-relaxed"
           >
-            At Impact Plus Business Improvement Solutions, we help organizations
-            achieve sustainable transformation by combining strategy, leadership,
-            technology, and culture. Our integrated approach drives measurable
-            impact—empowering people, shaping systems, and creating lasting value.
+            At Impact Plus, we help organisations achieve sustainable
+            transformation by aligning strategy, leadership, technology, and
+            culture. Our integrated approach empowers people, strengthens
+            systems, and delivers lasting value.
+            <br />
+            <br />
+            We drive organisational and people performance by embedding safety,
+            risk management, environmental stewardship, quality excellence,
+            leadership development, and innovation into the way work gets done.
+            <br />
+            <br />
+            From feasibility through to decommissioning, we support every stage
+            of the project lifecycle—bringing clarity, confidence, and
+            sustainable outcomes at each step.
+            <br />
+            <br />
+            At Impact Plus, we turn complexity into clarity and organisational
+            desire into measurable impact.
           </p>
 
           {/* Scroll Buttons */}

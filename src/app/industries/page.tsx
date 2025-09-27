@@ -1,17 +1,25 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import Finance from "./finance/finance";
-import Manufacturing from "./manufacturing/manufacturing";
-import Healthcare from "./healthcare/healthcare";
-import Retail from "./retail/Energy";
+
+// Industry Components
+import Energy from "./renewable_energy/Energy";
+import Mining from "./Mining/Mining";
+import Oil from "./Oil&Gas/Oil&gas";
+import Power_gen from "./Power_generation/Power_gen";
+import Public_infra from "./Public_infrastructure/Public_infra";
+import Gov from "./Government/Gov";
+import Health from "./health/Health";
 
 const Industries = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const financeRef = useRef<HTMLDivElement | null>(null);
-  const manufacturingRef = useRef<HTMLDivElement | null>(null);
-  const healthcareRef = useRef<HTMLDivElement | null>(null);
-  const retailRef = useRef<HTMLDivElement | null>(null);
+  const energyRef = useRef<HTMLDivElement | null>(null);
+  const miningRef = useRef<HTMLDivElement | null>(null);
+  const oilRef = useRef<HTMLDivElement | null>(null);
+  const powerGenRef = useRef<HTMLDivElement | null>(null);
+  const publicInfraRef = useRef<HTMLDivElement | null>(null);
+  const govRef = useRef<HTMLDivElement | null>(null);
+  const healthRef = useRef<HTMLDivElement | null>(null);
 
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -24,7 +32,7 @@ const Industries = () => {
   useEffect(() => {
     if (titleRef.current) {
       const text = titleRef.current.textContent || "";
-      titleRef.current.textContent = ""; // Clear initial
+      titleRef.current.textContent = "";
       const letters = text.split("").map((char) => {
         const span = document.createElement("span");
         span.textContent = char;
@@ -34,7 +42,6 @@ const Industries = () => {
 
       letters.forEach((span) => titleRef.current?.appendChild(span));
 
-      // Animate letters
       gsap.to(letters, {
         opacity: 1,
         duration: 0.05,
@@ -66,7 +73,6 @@ const Industries = () => {
           <video className="w-full h-full object-cover" autoPlay loop muted>
             <source src="/videos/Building.mp4" type="video/mp4" />
           </video>
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
@@ -83,53 +89,84 @@ const Industries = () => {
             className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0"
           >
             At Impact Plus, we deliver tailored solutions for key industries —
-            helping organizations in finance, manufacturing, healthcare, and
-            retail thrive in a rapidly changing world.
+            helping organizations in renewable energy, oil & gas, mining, power
+            generation, public infrastructure, health, government, and higher
+            education thrive in a rapidly changing world.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button
-              onClick={() => scrollToSection(financeRef)}
+              onClick={() => scrollToSection(energyRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Finance
+              Renewable Energy
             </button>
             <button
-              onClick={() => scrollToSection(manufacturingRef)}
+              onClick={() => scrollToSection(oilRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Manufacturing
+              Oil & Gas
             </button>
             <button
-              onClick={() => scrollToSection(healthcareRef)}
+              onClick={() => scrollToSection(miningRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Healthcare
+              Mining
             </button>
             <button
-              onClick={() => scrollToSection(retailRef)}
+              onClick={() => scrollToSection(powerGenRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Retail
+              Power Generation
+            </button>
+            <button
+              onClick={() => scrollToSection(publicInfraRef)}
+              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+            >
+              Public Infrastructure
+            </button>
+            <button
+              onClick={() => scrollToSection(healthRef)}
+              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+            >
+              Health
+            </button>
+            <button
+              onClick={() => scrollToSection(govRef)}
+              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+            >
+              Government
             </button>
           </div>
         </div>
       </section>
 
       {/* Industry Sections */}
-      <div ref={financeRef}>
-        <Finance />
+      <div ref={energyRef}>
+        <Energy />
       </div>
 
-      <div ref={manufacturingRef}>
-        <Manufacturing />
+      <div ref={oilRef}>
+        <Oil />
       </div>
 
-      <div ref={healthcareRef}>
-        <Healthcare />
+      <div ref={miningRef}>
+        <Mining />
       </div>
 
-      <div ref={retailRef}>
-        <Retail />
+      <div ref={powerGenRef}>
+        <Power_gen />
+      </div>
+
+      <div ref={publicInfraRef}>
+        <Public_infra />
+      </div>
+
+      <div ref={healthRef}>
+        <Health />
+      </div>
+
+      <div ref={govRef}>
+        <Gov />
       </div>
 
       {/* Back to Top */}

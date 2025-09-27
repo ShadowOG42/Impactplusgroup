@@ -84,13 +84,22 @@ const Page2 = () => {
           <p
             ref={welcomeRef}
             className="text-4xl md:text-7xl font-bold tracking-wide"
-            style={{ color: "#0D47A1" }} // Dark Blue
-          />
+          >
+            {/* Gradient for "Impact Plus" */}
+            <span style={{ color: "#0D47A1" }}>WELCOME TO </span>
+            <span className="bg-gradient-to-r from-sky-400 to-blue-800 bg-clip-text text-transparent">
+              IMPACT PLUS
+            </span>
+          </p>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed">
-            An international WHSEQ consultancy optimising organisational and people performance 
-            across oil & gas, mining, renewable energy, infrastructure, health, government, and education.
+            A trusted international consultancy specialising in Workplace Health, 
+            Safety, Environment, Quality (WHSEQ) and Continuous Improvement (CI). 
+            Partnering with clients across renewable energy, oil &amp; gas, mining, 
+            power generation, public infrastructure, health, government, and higher education, 
+            we deliver practical solutions that build safer workplaces, ensure compliance, 
+            and unlock measurable performance improvement.
           </p>
 
           {/* Read More button */}
@@ -108,7 +117,7 @@ const Page2 = () => {
         {/* RIGHT: Logo */}
         <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center items-center">
           <Image
-            src="/Certificates/logo_transparent.png" // fixed lowercase
+            src="/Certificates/logo_transparent.png"
             alt="Impact Plus Logo"
             width={600}
             height={600}

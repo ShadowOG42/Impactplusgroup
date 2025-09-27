@@ -41,7 +41,7 @@ const Footer = () => {
 
         {/* Middle Section */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-center">
-          <span>🌍 Australia: +61 41 977 5400</span>
+        <span>🇦🇺 Australia: +61 41 977 5400</span>
           <span>🇿🇦 South Africa: +27 719092687</span>
           <span>🇿🇼 Zimbabwe: +263 772 264 3055</span>
         </div>
