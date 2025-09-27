@@ -8,15 +8,43 @@ import Image from "next/image";
 const Page2 = () => {
   const welcomeRef = useRef<HTMLParagraphElement>(null);
 
-  // Typewriter effect
+  // Typewriter effect with colored spans
   useEffect(() => {
     if (welcomeRef.current) {
-      const text = "WELCOME TO IMPACT PLUS";
-      welcomeRef.current.textContent = "";
+      const text = [
+        { char: "W", color: "text-white" },
+        { char: "E", color: "text-white" },
+        { char: "L", color: "text-white" },
+        { char: "C", color: "text-white" },
+        { char: "O", color: "text-white" },
+        { char: "M", color: "text-white" },
+        { char: "E", color: "text-white" },
+        { char: " ", color: "text-white" },
+        { char: "T", color: "text-white" },
+        { char: "O", color: "text-white" },
+        { char: " ", color: "text-white" },
+        { char: "I", color: "text-sky-400" },
+        { char: "M", color: "text-sky-400" },
+        { char: "P", color: "text-sky-400" },
+        { char: "A", color: "text-sky-400" },
+        { char: "C", color: "text-sky-400" },
+        { char: "T", color: "text-sky-400" },
+        { char: " ", color: "text-white" },
+        { char: "P", color: "text-blue-800" },
+        { char: "L", color: "text-blue-800" },
+        { char: "U", color: "text-blue-800" },
+        { char: "S", color: "text-blue-800" },
+      ];
+
+      welcomeRef.current.innerHTML = ""; // clear previous
       let i = 0;
+
       const interval = setInterval(() => {
         if (i < text.length) {
-          welcomeRef.current!.textContent += text.charAt(i);
+          const span = document.createElement("span");
+          span.textContent = text[i].char;
+          span.className = text[i].color;
+          welcomeRef.current!.appendChild(span);
           i++;
         } else {
           clearInterval(interval);
@@ -84,13 +112,7 @@ const Page2 = () => {
           <p
             ref={welcomeRef}
             className="text-4xl md:text-7xl font-bold tracking-wide"
-          >
-            {/* Gradient for "Impact Plus" */}
-            <span style={{ color: "#0D47A1" }}>WELCOME TO </span>
-            <span className="bg-gradient-to-r from-sky-400 to-blue-800 bg-clip-text text-transparent">
-              IMPACT PLUS
-            </span>
-          </p>
+          ></p>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed">
