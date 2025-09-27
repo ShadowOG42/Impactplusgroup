@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Zap, ShieldCheck, Cpu, Factory } from "lucide-react";
 import { gsap } from "gsap";
 
-const PowerGen = () => {
+const Power_Gen = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -119,4 +119,4 @@ const PowerGen = () => {
   );
 };
 
-export default PowerGen;
+export default Power_Gen;

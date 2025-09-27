@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   description:
     "WELCOME TO IMPACT PLUS: An international WHSEQ consultancy optimising organisational and people performance across oil & gas, mining, renewable energy…",
   icons: {
-    icon: "/Logo.ico",      // ✅ Favicon for browsers
-    apple: "/Logo.ico",     // ✅ Optional for iOS devices
+    icon: "/favicon.ico",      // ✅ Favicon for browsers
+    apple: "/favicon.ico",     // ✅ Optional for iOS devices
   },
 };
 

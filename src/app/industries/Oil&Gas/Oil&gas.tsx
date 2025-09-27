@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { gsap } from "gsap";
 
-const OilGas = () => {
+const Oil = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -124,4 +124,4 @@ const OilGas = () => {
   );
 };
 
-export default OilGas;
+export default Oil;

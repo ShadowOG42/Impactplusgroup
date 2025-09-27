@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Building2, MapPin, Users, ShieldCheck } from "lucide-react";
 import { gsap } from "gsap";
 
-const PublicInfrastructure = () => {
+const Public_Infra = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,4 +112,4 @@ const PublicInfrastructure = () => {
   );
 };
 
-export default PublicInfrastructure;
+export default Public_Infra;
