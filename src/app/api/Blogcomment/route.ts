@@ -1,29 +1,27 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
-interface ContactForm {
+interface BlogCommentForm {
+  blog_id: string;
   name: string;
   email: string;
-  phone: string;
-  country: string;
-  message: string;
+  comment: string;
 }
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, country, message } = (await req.json()) as ContactForm;
+    const { blog_id, name, email, comment } = (await req.json()) as BlogCommentForm;
 
-    if (!name || !email || !message) {
+    if (!blog_id || !name || !email || !comment) {
       return NextResponse.json(
-        { success: false, error: "Name, email, and message are required" },
+        { success: false, error: "All fields are required" },
         { status: 400 }
       );
     }
 
-    // Store in Supabase
     const { error: insertError } = await supabase
-      .from("contact_messages")
-      .insert({ name, email, phone, country, message });
+      .from("blog_comments")
+      .insert([{ blog_id, name, email, comment }]);
 
     if (insertError) {
       return NextResponse.json({ success: false, error: insertError.message }, { status: 500 });

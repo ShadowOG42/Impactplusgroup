@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef } from "react";
 import Testimonials from "../Components/Testimonials";
-import InsightsSection from "../Components/InsightsSection";
 
 const Insights = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -12,6 +11,15 @@ const Insights = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // ✅ Placeholder section data (for blogs/resources — links can be added later)
+  const blogResources = [
+    {
+      title: "Resource Title Here",
+      description: "Add a short summary or topic description here.",
+      file_url: "", // ← Add file link later
+    },
+  ];
+
   return (
     <main className="bg-white">
       {/* Hero Section */}
@@ -20,12 +28,7 @@ const Insights = () => {
         className="relative w-full h-screen flex flex-col items-center justify-center"
       >
         <div className="absolute inset-0">
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-          >
+          <video className="w-full h-full object-cover" autoPlay loop muted>
             <source src="/videos/coffee.mp4" type="video/mp4" />
           </video>
         </div>
@@ -55,9 +58,37 @@ const Insights = () => {
         </div>
       </section>
 
-      {/* Insights Section */}
-      <div ref={insightsRef}>
-        <InsightsSection />
+      {/* ✅ Placeholder: Latest Blogs & Resources (for future links) */}
+      <div ref={insightsRef} className="py-16 px-6 md:px-16 lg:px-32">
+        <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
+          Latest Blogs & Resources
+        </h2>
+
+        <div className="text-center text-gray-600">
+          <p>
+            This section will feature links to the latest blogs, PDFs, and
+            resources.
+          </p>
+          {/* Placeholder for future file/resource links */}
+          {blogResources.map((resource, index) => (
+            <div key={index} className="mt-6">
+              {resource.file_url ? (
+                <a
+                  href={resource.file_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-medium"
+                >
+                  📄 {resource.title}
+                </a>
+              ) : (
+                <span className="text-gray-400 italic">
+                  (No resource link added yet)
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Testimonials Section */}
