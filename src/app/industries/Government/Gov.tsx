@@ -2,11 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-/**
- * Horizontal chevron pipeline with subpoints underneath.
- * Colors are ImpactPlus-like — tweak the hex values if you need exact brand colors.
- */
-
+ 
 const stages = [
   {
     title: "PROJECT DEVELOPMENT",
