@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabaseClient";
+import { supabaseClient as supabase } from "../../lib/supabaseClient";
 import Link from "next/link";
 export default function AdminNavbar() {
   const router = useRouter();
