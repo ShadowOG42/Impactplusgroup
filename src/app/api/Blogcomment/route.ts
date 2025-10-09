@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
+import { createClient } from "@supabase/supabase-js";
 
 interface BlogCommentForm {
   blog_id: string;
@@ -8,13 +8,33 @@ interface BlogCommentForm {
   comment: string;
 }
 
+// ✅ Safe Supabase client initialization
+const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_KEY;
+
+let supabase: ReturnType<typeof createClient> | null = null;
+
+if (!supabaseUrl || !supabaseKey) {
+  console.warn("⚠️ Warning: Supabase env vars are missing during build or runtime.");
+} else {
+  supabase = createClient(supabaseUrl, supabaseKey);
+}
+
 export async function POST(req: Request) {
   try {
+    // 🔒 Double-check runtime env availability
+    if (!supabase) {
+      return NextResponse.json(
+        { success: false, error: "Server misconfiguration: Supabase not initialized." },
+        { status: 500 }
+      );
+    }
+
     const { blog_id, name, email, comment } = (await req.json()) as BlogCommentForm;
 
     if (!blog_id || !name || !email || !comment) {
       return NextResponse.json(
-        { success: false, error: "All fields are required" },
+        { success: false, error: "All fields are required." },
         { status: 400 }
       );
     }
@@ -24,7 +44,10 @@ export async function POST(req: Request) {
       .insert([{ blog_id, name, email, comment }]);
 
     if (insertError) {
-      return NextResponse.json({ success: false, error: insertError.message }, { status: 500 });
+      return NextResponse.json(
+        { success: false, error: insertError.message },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
