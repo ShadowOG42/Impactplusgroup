@@ -8,24 +8,26 @@ interface BlogCommentForm {
   comment: string;
 }
 
-// ✅ Safe Supabase client initialization
-const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_KEY;
+// Initialize Supabase client at runtime
+function getSupabaseClient() {
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_KEY;
 
-let supabase: ReturnType<typeof createClient> | null = null;
+  if (!supabaseUrl || !supabaseKey) {
+    console.error("⚠️ Supabase URL or Key is missing.");
+    return null;
+  }
 
-if (!supabaseUrl || !supabaseKey) {
-  console.warn("⚠️ Warning: Supabase env vars are missing during build or runtime.");
-} else {
-  supabase = createClient(supabaseUrl, supabaseKey);
+  // Using <any> to fix TypeScript "never" issue
+  return createClient<any>(supabaseUrl, supabaseKey);
 }
 
 export async function POST(req: Request) {
   try {
-    // 🔒 Double-check runtime env availability
+    const supabase = getSupabaseClient();
     if (!supabase) {
       return NextResponse.json(
-        { success: false, error: "Server misconfiguration: Supabase not initialized." },
+        { success: false, error: "Supabase not initialized. Check server environment variables." },
         { status: 500 }
       );
     }
