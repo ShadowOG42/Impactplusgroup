@@ -1,6 +1,8 @@
-"use client";
+'use client';
+
 import { useState, useEffect, FormEvent } from "react";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import { supabase } from "../../../lib/supabaseClient";
 
 interface Blog {
@@ -23,20 +25,26 @@ interface Comment {
 }
 
 export default function BlogPage() {
-  const { slug } = useParams(); // get slug from URL
+  // 🔹 Hooks at the top
+  const { slug } = useParams() as { slug: string };
   const [blog, setBlog] = useState<Blog | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
-
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  // Fetch blog by slug
+  // 🔹 Fetch blog
   useEffect(() => {
     const fetchBlog = async () => {
       setLoading(true);
-      const { data: blogsData, error } = await supabase
+      if (!slug) {
+        setBlog(null);
+        setLoading(false);
+        return;
+      }
+
+      const { data, error } = await supabase
         .from("blogs")
         .select("*")
         .eq("slug", slug)
@@ -46,15 +54,16 @@ export default function BlogPage() {
         console.error("Error fetching blog:", error.message);
         setBlog(null);
       } else {
-        setBlog(blogsData as Blog);
+        setBlog(data as Blog);
       }
+
       setLoading(false);
     };
 
     fetchBlog();
   }, [slug]);
 
-  // Fetch comments
+  // 🔹 Fetch comments
   useEffect(() => {
     if (!blog) return;
 
@@ -65,35 +74,32 @@ export default function BlogPage() {
         .eq("blog_id", blog.id)
         .order("created_at", { ascending: true });
 
-      if (error) console.error("Error fetching comments:", error.message);
-      else if (data) setComments(data as Comment[]);
+      if (error) {
+        console.error("Error fetching comments:", error.message);
+      } else if (data) {
+        setComments(data as Comment[]);
+      }
     };
 
     fetchComments();
   }, [blog]);
 
-  // Submit comment
+  // 🔹 Submit comment
   const handleCommentSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !message.trim() || !blog) return;
 
     setSubmitting(true);
 
-    const { error } = await supabase.from("comments").insert([
-      {
-        blog_id: blog.id,
-        name,
-        message,
-      },
-    ]);
+    const { data, error } = await supabase
+      .from("comments")
+      .insert([{ blog_id: blog.id, name, message }])
+      .select();
 
     if (error) {
       alert("Failed to submit comment: " + error.message);
-    } else {
-      setComments((prev) => [
-        ...prev,
-        { id: crypto.randomUUID(), blog_id: blog.id, name, message, created_at: new Date().toISOString() },
-      ]);
+    } else if (data?.length) {
+      setComments((prev) => [...prev, data[0]]);
       setName("");
       setMessage("");
     }
@@ -101,8 +107,9 @@ export default function BlogPage() {
     setSubmitting(false);
   };
 
+  // 🔹 Conditional rendering after hooks
   if (loading) return <p className="text-center py-16">Loading blog...</p>;
-  if (!blog) return <p className="text-center py-16">Blog not found.</p>;
+  if (!slug || !blog) return <p className="text-center py-16">Blog not found.</p>;
 
   return (
     <div className="max-w-4xl mx-auto py-16 px-6 md:px-16">
@@ -124,10 +131,12 @@ export default function BlogPage() {
               className="w-full h-[400px] border rounded"
             />
           ) : (
-            <img
+            <Image
               src={blog.file_url}
               alt={blog.title}
-              className="w-full h-auto rounded mb-4"
+              width={800}
+              height={450}
+              className="rounded mb-4"
             />
           )}
         </div>

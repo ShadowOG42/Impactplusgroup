@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+ 
 
 const InsightsSection = () => {
   // Static Insight Cards (now includes optional file links)

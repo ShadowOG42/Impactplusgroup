@@ -3,7 +3,7 @@
 import { useEffect, useState, FormEvent } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import { Mail, User, Phone, Globe, MessageSquare } from "lucide-react";
+import { Mail, User, Phone, Globe, MessageSquare, Loader2 } from "lucide-react";
 
 interface ContactMessage {
   id: number;
@@ -24,6 +24,7 @@ export default function AdminMessagesPage() {
   const [sentMessage, setSentMessage] = useState<boolean>(false);
   const [deleteMessageId, setDeleteMessageId] = useState<number | null>(null);
   const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
+  const [sendingReply, setSendingReply] = useState<boolean>(false); // ✅ New: show spinner while sending
 
   // 🔐 Protect page: redirect to login if not authenticated
   useEffect(() => {
@@ -58,22 +59,32 @@ export default function AdminMessagesPage() {
     e.preventDefault();
     if (!replyTo) return;
 
-    const res = await fetch("/api/reply", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        to: replyTo.email,
-        subject: `Reply from Impact Plus Group`,
-        message: replyMessage,
-      }),
-    });
+    setSendingReply(true); // ✅ Show spinner
+    setSentMessage(false);
 
-    const result = await res.json();
-    if (result.success) {
-      setSentMessage(true);
-      setReplyMessage("");
-    } else {
-      alert("Failed to send email: " + result.error);
+    try {
+      const res = await fetch("/api/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: replyTo.email,
+          subject: `Reply from Impact Plus Group`,
+          message: replyMessage,
+        }),
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        setSentMessage(true);
+        setReplyMessage("");
+      } else {
+        alert("Failed to send email: " + result.error);
+      }
+    } catch (err) {
+      console.error("Error sending reply:", err);
+      alert("Something went wrong while sending your reply.");
+    } finally {
+      setSendingReply(false); // ✅ Hide spinner
     }
   };
 
@@ -94,15 +105,15 @@ export default function AdminMessagesPage() {
   };
 
   return (
-    <section className="min-h-screen bg-gray-50 py-16 px-6 md:px-16 lg:px-32">
+    <section className="min-h-screen bg-gray-50 py-16 px-6 md:px-16 lg:px-32 text-gray-900">
       <h1 className="text-4xl font-bold text-blue-700 mb-8">
         Impact Plus Group Messages
       </h1>
 
       {loading ? (
-        <p>Loading messages...</p>
+        <p className="text-gray-700">Loading messages...</p>
       ) : messages.length === 0 ? (
-        <p>No contact messages yet.</p>
+        <p className="text-gray-700">No contact messages yet.</p>
       ) : (
         <div className="grid gap-6">
           {messages.map((msg) => (
@@ -111,7 +122,7 @@ export default function AdminMessagesPage() {
               className="bg-white rounded-xl shadow-md p-6 border border-blue-100 hover:shadow-xl transition-all"
             >
               {/* Message info */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-900">
                 <p className="flex items-center">
                   <User className="w-5 h-5 text-blue-600 mr-2" /> {msg.name}
                 </p>
@@ -127,7 +138,7 @@ export default function AdminMessagesPage() {
               </div>
 
               {/* Message content */}
-              <div className="mt-4 flex items-start">
+              <div className="mt-4 flex items-start text-gray-800">
                 <MessageSquare className="w-5 h-5 text-blue-600 mr-2 mt-1" />
                 <p>{msg.message}</p>
               </div>
@@ -139,16 +150,17 @@ export default function AdminMessagesPage() {
               {/* Action buttons */}
               <div className="mt-4 flex gap-2">
                 <button
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
                   onClick={() => {
                     setReplyTo(msg);
                     setSentMessage(false);
+                    setReplyMessage("");
                   }}
                 >
                   Reply
                 </button>
                 <button
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
                   onClick={() => handleDelete(msg.id)}
                 >
                   Delete
@@ -164,25 +176,36 @@ export default function AdminMessagesPage() {
 
               {/* Reply form */}
               {replyTo?.id === msg.id && (
-                <form className="mt-4 border-t pt-4" onSubmit={sendReply}>
+                <form
+                  className="mt-4 border-t pt-4"
+                  onSubmit={sendReply}
+                >
                   <textarea
-                    className="w-full p-2 border rounded mb-2"
+                    className="w-full p-3 border-2 border-gray-300 rounded-md mb-3 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none text-gray-900 placeholder-gray-500 transition-all"
                     rows={4}
                     value={replyMessage}
                     onChange={(e) => setReplyMessage(e.target.value)}
                     placeholder="Type your reply here..."
                     required
+                    disabled={sendingReply}
                   />
-                  <div className="flex gap-2 mb-2">
+
+                  <div className="flex gap-2 items-center">
                     <button
                       type="submit"
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      className={`flex items-center justify-center gap-2 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition font-medium ${
+                        sendingReply ? "opacity-75 cursor-not-allowed" : ""
+                      }`}
+                      disabled={sendingReply}
                     >
-                      Send Reply
+                      {sendingReply && (
+                        <Loader2 className="h-5 w-5 animate-spin text-white" />
+                      )}
+                      {sendingReply ? "Sending..." : "Send Reply"}
                     </button>
                     <button
                       type="button"
-                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 transition"
                       onClick={() => {
                         setReplyTo(null);
                         setReplyMessage("");
@@ -192,9 +215,10 @@ export default function AdminMessagesPage() {
                       Cancel
                     </button>
                   </div>
+
                   {sentMessage && (
-                    <p className="text-green-600 font-semibold">
-                      Email sent successfully!
+                    <p className="text-green-600 font-semibold mt-3">
+                      ✅ Email sent successfully!
                     </p>
                   )}
                 </form>

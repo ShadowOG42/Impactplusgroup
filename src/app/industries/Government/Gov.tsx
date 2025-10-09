@@ -1,120 +1,135 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { Landmark, ShieldCheck, Users, Scale } from "lucide-react";
-import { gsap } from "gsap";
+import React from "react";
+import { motion } from "framer-motion";
 
-const Gov = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+/**
+ * Horizontal chevron pipeline with subpoints underneath.
+ * Colors are ImpactPlus-like — tweak the hex values if you need exact brand colors.
+ */
 
-  useEffect(() => {
-    if (sectionRef.current) {
-      gsap.from(sectionRef.current.children, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-    }
-  }, []);
+const stages = [
+  {
+    title: "PROJECT DEVELOPMENT",
+    colorStart: "#08306b",
+    colorEnd: "#2b6cb0",
+    points: [
+      "Governance",
+      "Leadership coaching",
+      "Risk assessment",
+      "Feasibility studies",
+      "Stakeholder engagement",
+    ],
+  },
+  {
+    title: "TENDER",
+    colorStart: "#1e40af",
+    colorEnd: "#3b82f6",
+    points: ["Bid strategy", "Tender submission documents", "Compliance & quality checks"],
+  },
+  {
+    title: "DESIGN",
+    colorStart: "#155e75",
+    colorEnd: "#38bdf8",
+    points: [
+      "Design review facilitation",
+      "Constructability review facilitation",
+      "WHSEQ integration",
+      "Systems alignment",
+    ],
+  },
+  {
+    title: "PROCUREMENT",
+    colorStart: "#0f766e",
+    colorEnd: "#34d399",
+    points: ["Supplier evaluation", "Contract management", "Ethical sourcing"],
+  },
+  {
+    title: "CONSTRUCTION",
+    colorStart: "#0ea5a4",
+    colorEnd: "#60a5fa",
+    points: ["On-site WHSEQ leadership", "ISO systems compliance", "Execution support"],
+  },
+  {
+    title: "COMMISSIONING & HANDOVER",
+    colorStart: "#047857",
+    colorEnd: "#10b981",
+    points: [
+      "MDRs",
+      "Punch listing & walkdowns",
+      "Quality assurance",
+      "Training & handover management",
+    ],
+  },
+  {
+    title: "MAINTENANCE INC. SHUTDOWNS",
+    colorStart: "#065f46",
+    colorEnd: "#047857",
+    points: ["Asset optimisation", "Shutdown planning & execution", "Continuous improvement"],
+  },
+  {
+    title: "REPURPOSING & DECOMMISSIONING",
+    colorStart: "#0f172a",
+    colorEnd: "#334155",
+    points: ["Transition planning", "Safe decommissioning", "ESG compliance"],
+  },
+];
 
-  const govSolutions = [
-    {
-      icon: <Landmark className="w-10 h-10 text-lightBlue" />,
-      title: "Policy & Governance",
-      description:
-        "Supporting governments in designing policies and governance frameworks that align strategy, leadership, and technology for sustainable transformation.",
-    },
-    {
-      icon: <ShieldCheck className="w-10 h-10 text-darkBlue" />,
-      title: "Risk & Compliance",
-      description:
-        "Embedding safety, risk management, and regulatory compliance to strengthen systems and ensure accountability across public institutions.",
-    },
-    {
-      icon: <Users className="w-10 h-10 text-silverGrey" />,
-      title: "Leadership & Workforce Development",
-      description:
-        "Empowering public sector leaders and teams through training, leadership development, and cultural transformation to deliver lasting value.",
-    },
-    {
-      icon: <Scale className="w-10 h-10 text-lightBlue" />,
-      title: "Public Sector Innovation",
-      description:
-        "Driving innovation and efficiency in government services through integrated technology, quality excellence, and sustainable practices.",
-    },
-  ];
-
+export default function Gov() {
   return (
-    <section
-      id="government-industry"
-      ref={sectionRef}
-      className="relative py-24 px-6 md:px-16 lg:px-32 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50"
-    >
-      {/* Header */}
-      <div className="text-center mb-20">
-        <h1
-          className="text-4xl md:text-5xl font-bold"
-          style={{ fontFamily: "'Voltaire', sans-serif", color: "#0A2540" }}
-        >
-          Government Solutions
-        </h1>
-        <p
-          className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"
-          style={{ fontFamily: "Georgia, serif" }}
-        >
-          Impact Plus partners with governments to create clarity, build resilience, and
-          deliver sustainable outcomes. From policy design to project decommissioning, we
-          help public institutions strengthen leadership, systems, and culture for a
-          thriving society.
-        </p>
-      </div>
-
-      {/* Government Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {govSolutions.map((g, i) => (
-          <div
-            key={i}
-            className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-all duration-700 hover:-translate-y-3 hover:shadow-2xl"
-          >
-            <div className="mb-4">{g.icon}</div>
-            <h3
-              className="text-2xl font-bold mb-4"
-              style={{
-                fontFamily: "Montserrat, sans-serif",
-                color: "#0A2540",
-              }}
-            >
-              {g.title}
-            </h3>
-            <p className="text-gray-700">{g.description}</p>
+    <section className="w-full bg-white py-10 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* heading */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">MAKING IMPACT</h2>
+            <p className="text-sm md:text-base text-slate-600">AT EVERY STAGE OF THE PROJECT LIFECYCLE</p>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Additional Info Section */}
-      <div className="mt-20 text-center max-w-4xl mx-auto">
-        <p
-          className="text-lg md:text-xl text-gray-700 mb-6"
-          style={{ fontFamily: "Georgia, serif" }}
-        >
-          Our government solutions integrate strategy, leadership, technology, and
-          culture — turning complexity into clarity and delivering confidence at every
-          stage of the public sector project lifecycle.
-        </p>
-        <p
-          className="text-md text-gray-500 italic"
-          style={{ fontFamily: "'Frangela', sans-serif" }}
-        >
-          “Building trust, resilience, and innovation for a stronger public sector.”
-        </p>
+        {/* horizontal pipeline */}
+        <div className="overflow-x-auto">
+          <div className="relative py-8">
+            <div className="flex items-start" role="list">
+              {stages.map((s, i) => (
+                <div
+                  key={s.title}
+                  className="chev-wrap flex-shrink-0 relative"
+                  style={{ zIndex: 200 + i }}
+                >
+                  <motion.div
+                    className="chev chevron-shape flex items-center justify-center px-6"
+                    style={{
+                      background: `linear-gradient(90deg, ${s.colorStart} 0%, ${s.colorEnd} 100%)`,
+                    }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: i * 0.06 }}
+                  >
+                    <div className="text-xs md:text-sm lg:text-base font-semibold text-white text-center px-2">
+                      {s.title}
+                    </div>
+                  </motion.div>
+
+                  {/* short dashed connector from arrow bottom to bullets */}
+                  <div className="connector" />
+
+                  {/* bullets under each chevron */}
+                  <motion.ul
+                    className="mt-6 w-[200px] list-disc pl-5 text-sm text-slate-700 space-y-1"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.04 }}
+                  >
+                    {s.points.map((p, j) => (
+                      <li key={j}>{p}</li>
+                    ))}
+                  </motion.ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Gov;
+}

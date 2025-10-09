@@ -30,7 +30,7 @@ export default function Leadership() {
             Dr. Posani Maveza is the founder and strategic force behind Impact
             Plus, a consulting firm known for delivering integrated,
             future-focused transformation across sectors. A highly accomplished
-            organisational performance aspecialist and systems thinker, Dr.
+            organisational performance specialist and systems thinker, Dr.
             Maveza combines 20+ years of experience across energy,
             infrastructure, mining, health, government, and higher education.
           </p>

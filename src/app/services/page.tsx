@@ -81,7 +81,7 @@ const Services = () => {
               onClick={() => scrollToSection(consultingRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Consulting
+              what we do
             </button>
             <button
               onClick={() => scrollToSection(technologyRef)}

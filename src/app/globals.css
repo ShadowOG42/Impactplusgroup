@@ -22,3 +22,86 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Put after Tailwind utilities in globals.css */
+
+/* adjust these to tune exact look */
+:root {
+  --chev-tip: 36px;
+  --chev-width: 220px;
+  --chev-height: 72px;
+  --chev-radius: 8px;
+}
+
+/* wrapper for each chevron item */
+.chev-wrap {
+  width: var(--chev-width);
+  /* overlap each chevron with previous so tips connect perfectly */
+  margin-left: calc(var(--chev-tip) * -1);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* first child should not be shifted left */
+.chev-wrap:first-child {
+  margin-left: 0;
+}
+
+/* the chevron shape uses a precise clip-path so tips match the screenshot */
+.chevron-shape {
+  min-width: var(--chev-width);
+  height: var(--chev-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: var(--chev-radius);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chev-tip)) 0,
+    100% 50%,
+    calc(100% - var(--chev-tip)) 100%,
+    0 100%,
+    var(--chev-tip) 50%
+  );
+  box-shadow: 0 8px 30px rgba(2,6,23,0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  cursor: default;
+}
+
+/* slight lift on hover for polish */
+.chevron-shape:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(2,6,23,0.12);
+}
+
+/* small dashed vertical connector between arrow bottom and bullets */
+.chev-wrap .connector {
+  position: absolute;
+  top: calc(var(--chev-height) - 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 14px;
+  border-left: 2px dashed rgba(15,23,42,0.12);
+  z-index: 10;
+}
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  :root {
+    --chev-width: 180px;
+    --chev-tip: 30px;
+    --chev-height: 64px;
+  }
+
+  .chev-wrap .connector {
+    height: 12px;
+  }
+
+  .chev-wrap {
+    width: var(--chev-width);
+  }
+}
+ 
+ 
+

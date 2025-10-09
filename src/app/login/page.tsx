@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
   const [error, setError] = useState("");
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!captchaValue) {
@@ -36,8 +36,10 @@ export default function AdminLoginPage() {
         // Redirect to Admin Dashboard after login
         router.replace("/admin");
       }
-    } catch (err: any) {
-      setError(err.message || "Login failed");
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "An unknown error occurred.";
+      setError(message);
     }
 
     setLoading(false);

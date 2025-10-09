@@ -9,7 +9,7 @@ import Oil from "./Oil&Gas/Oil&gas";
 import Power_gen from "./Power_generation/Power_gen";
 import Public_infra from "./Public_infrastructure/Public_infra";
 import Gov from "./Government/Gov";
-import Health from "./health/Health";
+ 
 
 const Industries = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -19,7 +19,7 @@ const Industries = () => {
   const powerGenRef = useRef<HTMLDivElement | null>(null);
   const publicInfraRef = useRef<HTMLDivElement | null>(null);
   const govRef = useRef<HTMLDivElement | null>(null);
-  const healthRef = useRef<HTMLDivElement | null>(null);
+  
 
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -95,6 +95,12 @@ const Industries = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button
+              onClick={() => scrollToSection(govRef)}
+              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+            >
+              Government
+            </button>
+            <button
               onClick={() => scrollToSection(energyRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
@@ -124,23 +130,17 @@ const Industries = () => {
             >
               Public Infrastructure
             </button>
-            <button
-              onClick={() => scrollToSection(healthRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Health
-            </button>
-            <button
-              onClick={() => scrollToSection(govRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Government
-            </button>
+             
+            
           </div>
         </div>
       </section>
 
       {/* Industry Sections */}
+      <div ref={govRef}>
+        <Gov />
+      </div>
+      
       <div ref={energyRef}>
         <Energy />
       </div>
@@ -161,13 +161,9 @@ const Industries = () => {
         <Public_infra />
       </div>
 
-      <div ref={healthRef}>
-        <Health />
-      </div>
+       
 
-      <div ref={govRef}>
-        <Gov />
-      </div>
+      
 
       {/* Back to Top */}
       <div className="flex justify-center my-12">

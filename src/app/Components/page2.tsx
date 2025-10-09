@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from "react";
-import { LinkedinIcon, MailIcon, PhoneIcon, GlobeIcon } from "lucide-react";
+import { LinkedinIcon, MailIcon, FacebookIcon, GlobeIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -57,7 +57,7 @@ const Page2 = () => {
   const SocialLinks = () => (
     <div className="flex flex-wrap gap-4 items-center pt-6">
       <a
-        href="https://www.linkedin.com/company/impactplusgroup"
+        href="https://www.linkedin.com/company/impact-plus-pty-ltd/"
         target="_blank"
         rel="noopener noreferrer"
         className="p-3 border border-blue-800 rounded-full bg-white/10 hover:bg-blue-800/20 transition"
@@ -74,7 +74,7 @@ const Page2 = () => {
         href="tel:+61419775400"
         className="p-3 border border-blue-800 rounded-full bg-white/10 hover:bg-blue-800/20 transition"
       >
-        <PhoneIcon className="w-6 h-6 text-green-300" />
+        <FacebookIcon className="w-6 h-6 text-green-300" />
       </a>
       <a
         href="https://impactplusgroup.com"

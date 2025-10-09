@@ -25,8 +25,12 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    console.error(err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err: unknown) {
+    const errorMessage =
+      err instanceof Error ? err.message : "An unknown error occurred";
+
+    console.error("Email sending error:", errorMessage);
+
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

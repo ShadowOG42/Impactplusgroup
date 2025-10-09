@@ -58,9 +58,7 @@ const Contacts = () => {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json", // ✅ Important fix
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -84,7 +82,9 @@ const Contacts = () => {
   return (
     <section
       id="contacts"
-      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`}
+      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
     >
       {/* Header */}
       <div className="text-center mb-16">
@@ -100,7 +100,7 @@ const Contacts = () => {
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
           {["name", "email", "phone", "country"].map((field, idx) => (
             <div key={idx}>
-              <label className="block text-gray-700 mb-2">
+              <label className="block text-gray-800 mb-2 font-semibold">
                 {field.charAt(0).toUpperCase() + field.slice(1)}:*
               </label>
               <input
@@ -108,20 +108,22 @@ const Contacts = () => {
                 name={field}
                 value={formData[field as keyof FormData]}
                 onChange={handleChange}
-                className="w-full border-b-2 border-gray-400 focus:border-blue-500 outline-none py-2"
+                className="w-full border-2 border-gray-300 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none py-2 px-3 rounded-md text-gray-900 placeholder-gray-500 transition-all"
+                placeholder={`Enter your ${field}`}
                 disabled={loading}
               />
             </div>
           ))}
 
           <div className="md:col-span-2">
-            <label className="block text-gray-700 mb-2">Message:*</label>
+            <label className="block text-gray-800 mb-2 font-semibold">Message:*</label>
             <textarea
               name="message"
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className="w-full border border-gray-400 focus:border-blue-500 outline-none p-3 rounded-lg"
+              className="w-full border-2 border-gray-300 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none p-3 rounded-md text-gray-900 placeholder-gray-500 transition-all"
+              placeholder="Type your message here..."
               disabled={loading}
             ></textarea>
           </div>
@@ -129,7 +131,7 @@ const Contacts = () => {
           <div className="md:col-span-2 relative">
             <button
               type="submit"
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-full transition-all flex justify-center items-center"
+              className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 rounded-full transition-all flex justify-center items-center shadow-md"
               disabled={loading}
             >
               {loading ? (
@@ -156,7 +158,9 @@ const Contacts = () => {
               ) : null}
               {loading ? "Sending..." : "SUBMIT"}
             </button>
-            {formStatus && <p className="mt-4 text-center text-green-600">{formStatus}</p>}
+            {formStatus && (
+              <p className="mt-4 text-center text-blue-700 font-medium">{formStatus}</p>
+            )}
           </div>
         </form>
       </div>
@@ -166,7 +170,9 @@ const Contacts = () => {
         {branches.map((b, i) => (
           <div
             key={i}
-            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
             style={{ transitionDelay: `${i * 200}ms` }}
           >
             <h2 className="text-2xl font-semibold text-blue-800 mb-4">{b.country}</h2>

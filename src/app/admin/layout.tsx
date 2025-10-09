@@ -1,4 +1,3 @@
-// /app/admin/layout.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,6 +7,10 @@ import AdminNavbar from "./AdminNavbar";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
+}
+
+interface AdminUserMetadata {
+  is_admin?: boolean;
 }
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
@@ -21,11 +24,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           data: { session },
         } = await supabase.auth.getSession();
 
-        // Only allow access if user is admin
-        if (!session || !(session.user.user_metadata as any)?.is_admin) {
-          router.replace("/login"); // Redirect if not admin
+        const metadata = session?.user?.user_metadata as AdminUserMetadata;
+
+        if (!session || !metadata?.is_admin) {
+          router.replace("/login");
         } else {
-          setLoading(false); // Admin is logged in
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error checking admin session:", error);
