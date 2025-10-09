@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseClient } from "@/lib/supabaseClient";
 
 interface ContactForm {
   name: string;
   email: string;
-  phone: string;
-  country: string;
+  phone?: string;
+  country?: string;
   message: string;
 }
 
@@ -20,10 +20,11 @@ export async function POST(req: Request) {
       );
     }
 
-    // Store in Supabase
+    const supabase = getSupabaseClient(); // <-- create at runtime
+
     const { error: insertError } = await supabase
       .from("contact_messages")
-      .insert({ name, email, phone, country, message });
+      .insert([{ name, email, phone, country, message }]);
 
     if (insertError) {
       return NextResponse.json({ success: false, error: insertError.message }, { status: 500 });
