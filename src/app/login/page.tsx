@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getSupabaseClient } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient"; // ✅ Use the exported supabase
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 
@@ -25,16 +25,15 @@ export default function AdminLoginPage() {
     setError("");
 
     try {
-      const { data, error } = await getSupabaseClient().auth.signInWithPassword({
+      const { data, error: loginError } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (error) {
-        setError(error.message);
+      if (loginError) {
+        setError(loginError.message);
       } else if (data?.user) {
-        // Redirect to Admin Dashboard after login
-        router.replace("/admin");
+        router.replace("/admin"); // Redirect to Admin Dashboard
       }
     } catch (err: unknown) {
       const message =

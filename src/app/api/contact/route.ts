@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSupabaseClient } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 
 interface ContactForm {
   name: string;
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const supabase = getSupabaseClient(); // <-- create at runtime
+     
 
     const { error: insertError } = await supabase
       .from("contact_messages")
