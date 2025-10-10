@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Quote, Award, X, Link2 } from 'lucide-react';
+import { Quote, Award, X } from 'lucide-react';
 import Image from 'next/image';
 
 const Testimonials = () => {
