@@ -78,7 +78,7 @@ const About = () => {
           loop
           muted
         >
-          <source src="/videos/Office.mp4" type="video/mp4" />
+          <source src="/videos/About_us.mp4" type="video/mp4" />
         </video>
 
         {/* Dark Overlay */}
