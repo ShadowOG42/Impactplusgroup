@@ -50,24 +50,7 @@ Combining exceptional technical skill with a
     },
   ];
 
-  const blogs = [
-    {
-      title: "The Future of Digital Transformation",
-      link: "#",
-      highlight: "Why businesses that embrace AI early will lead their industries."
-    },
-    {
-      title: "Top 5 Challenges in Manufacturing 2025",
-      link: "#",
-      highlight: "Overcoming supply chain disruptions and automation hurdles."
-    },
-    {
-      title: "Healthcare Innovation Case Study",
-      link: "#",
-      highlight: "How data-driven insights improved patient care and operational efficiency."
-    },
-  ];
-
+   
   return (
     <section
       id="insights"
@@ -140,27 +123,7 @@ Combining exceptional technical skill with a
           </div>
         </div>
       </div>
-
-      {/* Blogs & Resources Section */}
-      <div className="mt-24">
-        <h2 className="text-3xl font-bold text-blue-700 text-center mb-12">Latest Blogs & Resources</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {blogs.map((b, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 p-6"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <Link2 className="w-5 h-5 text-blue-600" />
-                <a href={b.link} className="text-lg font-semibold text-blue-700 hover:underline">
-                  {b.title}
-                </a>
-              </div>
-              <p className="text-gray-600 text-sm">{b.highlight}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+ 
 
       {/* Quotes Highlight */}
       <div className="mt-20 text-center max-w-4xl mx-auto">
