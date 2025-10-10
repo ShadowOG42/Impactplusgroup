@@ -74,7 +74,7 @@ const Oil = () => {
         >
           Impact Plus empowers oil and gas companies to achieve safer,
           more efficient, and sustainable operations. By combining sector
-          expertise with digital innovation, we help organizations meet
+          expertise with digital innovation, we help organisations meet
           energy demands while addressing environmental and social
           responsibilities.
         </p>

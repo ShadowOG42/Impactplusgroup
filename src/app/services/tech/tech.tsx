@@ -63,7 +63,7 @@ const Tech = () => {
           className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          We empower clients with globally recognized expertise and a grounded understanding of local challenges—turning strategy into sustainable success.
+          We empower clients with globally recognised expertise and a grounded understanding of local challenges—turning strategy into sustainable success.
         </p>
       </div>
 
@@ -92,7 +92,7 @@ const Tech = () => {
           className="text-lg md:text-xl text-gray-700 mb-6"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          Impact Plus partners with organizations to create measurable value through collaboration, innovation, and execution excellence.
+          Impact Plus partners with organisations to create measurable value through collaboration, innovation, and execution excellence.
         </p>
         <p
           className="text-md text-gray-500 italic"

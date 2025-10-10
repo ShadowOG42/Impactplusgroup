@@ -67,7 +67,7 @@ const Energy = () => {
           className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          At Impact Plus, we enable organizations to embrace clean energy
+          At Impact Plus, we enable organisations to embrace clean energy
           solutions that drive sustainable growth, reduce environmental impact,
           and foster long-term energy security.
         </p>
@@ -99,7 +99,7 @@ const Energy = () => {
           style={{ fontFamily: "Georgia, serif" }}
         >
           From project conception to implementation and monitoring, Impact Plus
-          supports organizations in adopting renewable energy solutions that are
+          supports organisations in adopting renewable energy solutions that are
           efficient, sustainable, and socially responsible.
         </p>
         <p

@@ -117,18 +117,18 @@ const Header = () => {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="w-full flex justify-between items-center px-4 md:px-6 bg-white bg-opacity-80 backdrop-blur-md">
+      <nav className="w-full flex justify-between items-center px-6 md:px-10 py-4 md:py-5 bg-white bg-opacity-90 backdrop-blur-md">
         <Link href="/" className="flex items-center">
-          <Image src="/Certificates/Logo.jpg" width={130} height={35} alt="Impact Plus Logo" />
+          <Image src="/Certificates/Logo.jpg" width={150} height={40} alt="Impact Plus Logo" />
         </Link>
 
-        <ul className="hidden md:flex space-x-6">
+        <ul className="hidden md:flex space-x-8">
           <NavLinks modal={false} />
         </ul>
 
         <div className="md:hidden">
           <button onClick={openModal} aria-label="Open mobile menu">
-            <List size={26} className="text-blue-600" />
+            <List size={28} className="text-blue-600" />
           </button>
         </div>
       </nav>
@@ -142,7 +142,7 @@ const Header = () => {
           <button onClick={closeModal} className="absolute top-5 right-5 text-white">
             <X size={28} />
           </button>
-          <ul className="space-y-6 text-center text-2xl text-white">
+          <ul className="space-y-8 text-center text-2xl text-white">
             <NavLinks modal={true} />
           </ul>
         </div>

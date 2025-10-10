@@ -77,7 +77,7 @@ const Vision = () => {
             Our Vision
           </h2>
           <p className="text-gray-700">
-            To be the global leader in transformative consulting, empowering organizations and individuals to achieve excellence and sustainable growth through innovation and resilience.
+            To be the global leader in transformative consulting, empowering organisations and individuals to achieve excellence and sustainable growth through innovation and resilience.
           </p>
         </div>
       </div>

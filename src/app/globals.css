@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 /*eslint-enable */
+@import url('https://fonts.googleapis.com/css2?family=Voltaire&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&display=swap');
+
+/* Add this if Frangela is available via webfont or local import */
+
+ 
 
 html, body {
   margin: 0;       /* remove default margin */

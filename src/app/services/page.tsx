@@ -73,7 +73,7 @@ const Services = () => {
             Services at Impact Plus
           </h1>
           <p className="text-lg md:text-xl mb-8 text-white drop-shadow-md">
-            We empower organizations with tailored consulting, innovative technology, 
+            We empower organisations with tailored consulting, innovative technology, 
             and world-class training — driving measurable growth and lasting impact.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -81,20 +81,15 @@ const Services = () => {
               onClick={() => scrollToSection(consultingRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              what we do
+              WHAT WE DO
             </button>
             <button
               onClick={() => scrollToSection(technologyRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Why us
+              WHY US
             </button>
-            <button
-              onClick={() => scrollToSection(trainingRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Training
-            </button>
+            
           </div>
         </div>
       </section>

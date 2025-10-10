@@ -72,7 +72,7 @@ const Mining = () => {
           className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          Impact Plus partners with mining organizations to enhance
+          Impact Plus partners with mining organisations to enhance
           productivity, strengthen governance, and embed sustainability into
           operations. From digital transformation to ESG alignment, we help
           mining companies thrive in a resource-conscious world.

@@ -19,9 +19,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        lightBlue: "#3B82F6",     // for Cpu icon
-        darkBlue: "#1E40AF",      // for Cloud icon
-        silverGrey: "#9CA3AF",    // for Globe icon
+        impactBlue: "#1e7dba",
+        plusBlue: "#293c83",
+        lightBlue: "#3B82F6",
+        darkBlue: "#1E40AF",
+        silverGrey: "#9CA3AF",
       },
     },
   },

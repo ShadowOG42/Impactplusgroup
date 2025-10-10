@@ -26,14 +26,17 @@ export default function Consulting() {
   }, []);
 
   const points = [
-    'Governance, Leadership & People Performance',
-    'ESG & Sustainability Alignment',
+    'Governance, Leadership & People Performance Optimisation',
+    
     'Stakeholder Management',
     'Systems, Processes & ISO Standards',
-    'Continuous Improvement & Innovation',
-    'AI-Enabled Transformation',
     'Surveying & Spatial Services',
+    'ESG & Sustainability Alignment',
     'Engagement Tools & Product Solutions',
+    'AI-Enabled Transformation',
+    'Continuous Improvement & Innovation',
+    
+    
   ];
 
   return (

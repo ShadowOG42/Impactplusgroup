@@ -89,7 +89,7 @@ const Industries = () => {
             className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0"
           >
             At Impact Plus, we deliver tailored solutions for key industries —
-            helping organizations in renewable energy, oil & gas, mining, power
+            helping organisations in renewable energy, oil & gas, mining, power
             generation, public infrastructure, health, government, and higher
             education thrive in a rapidly changing world.
           </p>

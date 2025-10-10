@@ -104,17 +104,28 @@ export default function Leadership() {
         </div>
       </section>
 
-      {/* Quote Box */}
-      <section className="mb-20">
-        <div className="bg-blue-100 border-l-8 border-blue-700 shadow-lg rounded-2xl p-8">
-          <blockquote className="italic text-gray-900 text-lg">
-            “At Impact Plus, we co-design practical transformation that
-            sticks—aligning governance, leadership, systems, and purpose. Guided
-            by our IMPACT values, we help organisations drive progress that is
-            measurable, ethical, and enduring.”
-          </blockquote>
-        </div>
-      </section>
+      {/* Director's Quote */}
+<section className="mb-20">
+  <div className="text-center mb-8">
+    <h2 className="text-3xl md:text-4xl font-bold text-blue-900 tracking-tight">
+      Director's Quote
+    </h2>
+    <div className="w-24 h-1 mx-auto mt-2 bg-blue-700 rounded-full"></div>
+  </div>
+
+  <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg rounded-2xl p-8 border-l-8 border-blue-700">
+    <blockquote className="italic text-blue-900 text-lg md:text-xl leading-relaxed">
+      “At Impact Plus, we co-design practical, human-centred transformation 
+      that delivers measurable outcomes. Guided by our IMPACT values, we align 
+      governance, leadership, and systems to create lasting change that is ethical, 
+      sustainable, and effective across organisations.”
+    </blockquote>
+    <p className="mt-6 text-right font-semibold text-blue-800">
+      — Dr. Posani Maveza, Managing Director & Principal Consultant
+    </p>
+  </div>
+</section>
+
     </main>
   );
 }
