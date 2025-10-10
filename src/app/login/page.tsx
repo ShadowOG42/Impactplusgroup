@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
@@ -11,15 +10,9 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!captchaValue) {
-      setError("Please verify that you are not a robot.");
-      return;
-    }
 
     setLoading(true);
     setError("");
@@ -44,9 +37,6 @@ export default function AdminLoginPage() {
     setLoading(false);
   };
 
-  // Use a constant for the ReCAPTCHA key
-  const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-md w-full bg-white shadow-lg rounded-xl p-8 border border-blue-100">
@@ -70,12 +60,6 @@ export default function AdminLoginPage() {
             className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-          <div className="flex justify-center">
-            <ReCAPTCHA
-              sitekey={recaptchaKey}
-              onChange={(value: string | null) => setCaptchaValue(value)}
-            />
-          </div>
           {error && <p className="text-red-600 font-semibold">{error}</p>}
           <button
             type="submit"

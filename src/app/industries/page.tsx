@@ -98,7 +98,7 @@ const Industries = () => {
               onClick={() => scrollToSection(govRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
             >
-              Government
+              Our solutions
             </button>
             <button
               onClick={() => scrollToSection(energyRef)}
