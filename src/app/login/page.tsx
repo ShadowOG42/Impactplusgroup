@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient"; // ✅ Use the exported supabase
+import { supabase } from "@/lib/supabaseClient";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 
@@ -44,6 +44,9 @@ export default function AdminLoginPage() {
     setLoading(false);
   };
 
+  // Use a constant for the ReCAPTCHA key
+  const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-md w-full bg-white shadow-lg rounded-xl p-8 border border-blue-100">
@@ -69,7 +72,7 @@ export default function AdminLoginPage() {
           />
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+              sitekey={recaptchaKey}
               onChange={(value: string | null) => setCaptchaValue(value)}
             />
           </div>
