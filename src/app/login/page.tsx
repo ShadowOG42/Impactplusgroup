@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "../../lib/supabaseClient";
+import { getSupabaseClient } from "@/lib/supabaseClient";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 
@@ -25,7 +25,7 @@ export default function AdminLoginPage() {
     setError("");
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await getSupabaseClient().auth.signInWithPassword({
         email,
         password,
       });

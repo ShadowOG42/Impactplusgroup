@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, FormEvent } from "react";
-import { supabase } from "../../../lib/supabaseClient";
+import { getSupabaseClient } from "@/lib/supabaseClient";
+
 
 interface Blog {
   id: string;
@@ -40,7 +41,7 @@ export default function AdminBlogsPage() {
 
   const fetchBlogs = async () => {
     setLoading(true);
-    const { data, error } = await supabase
+    const { data, error } = await getSupabaseClient()
       .from("blogs")
       .select("*")
       .order("created_at", { ascending: false });
@@ -57,7 +58,7 @@ export default function AdminBlogsPage() {
     let fileUrl: string | null = null;
     if (file) {
       const fileName = `${Date.now()}-${file.name}`;
-      const { error: uploadError } = await supabase.storage
+      const { error: uploadError } = await getSupabaseClient().storage
         .from("blog-files")
         .upload(fileName, file);
 
@@ -67,7 +68,7 @@ export default function AdminBlogsPage() {
         return;
       }
 
-      const { data: urlData } = supabase.storage
+      const { data: urlData } = getSupabaseClient().storage
         .from("blog-files")
         .getPublicUrl(fileName);
       fileUrl = urlData.publicUrl;
@@ -75,7 +76,7 @@ export default function AdminBlogsPage() {
 
     const slug = title.toLowerCase().replace(/\s+/g, "-");
 
-    const { error } = await supabase.from("blogs").insert([
+    const { error } = await getSupabaseClient().from("blogs").insert([
       { title, subject, slug, file_url: fileUrl, tags: tags.split(",").map(t => t.trim()) }
     ]);
 
@@ -105,12 +106,12 @@ export default function AdminBlogsPage() {
     let updatedFileUrl = editingBlog?.file_url;
     if (editFile) {
       const fileName = `${Date.now()}-${editFile.name}`;
-      await supabase.storage.from("blog-files").upload(fileName, editFile);
-      const { data: urlData } = supabase.storage.from("blog-files").getPublicUrl(fileName);
+      await getSupabaseClient().storage.from("blog-files").upload(fileName, editFile);
+      const { data: urlData } = getSupabaseClient().storage.from("blog-files").getPublicUrl(fileName);
       updatedFileUrl = urlData.publicUrl;
     }
 
-    await supabase.from("blogs").update({
+    await getSupabaseClient().from("blogs").update({
       title: editTitle,
       subject: editSubject,
       file_url: updatedFileUrl,
@@ -123,7 +124,7 @@ export default function AdminBlogsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    await supabase.from("blogs").delete().eq("id", id);
+    await getSupabaseClient().from("blogs").delete().eq("id", id);
     fetchBlogs();
   };
 
