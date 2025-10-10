@@ -68,9 +68,12 @@ export default function Leadership() {
       {/* Differentiators Section */}
       <section className="mb-16">
         <div className="bg-gradient-to-r from-blue-100 to-blue-50 shadow-lg rounded-2xl p-8 border border-blue-200">
-          <h4 className="text-xl font-semibold text-blue-900 mb-4">
-            Dr. Maveza’s leadership exemplifies the Impact Plus differentiators:
-          </h4>
+         <h4 className="text-xl font-semibold text-blue-900 mb-4">
+            Dr. Maveza&apos;s leadership exemplifies the Impact Plus differentiators:
+         </h4>
+
+
+
           <ul className="list-disc pl-6 text-gray-700 space-y-2">
             <li>Strategy embedded in operations</li>
             <li>Measurable transformation</li>
@@ -108,7 +111,7 @@ export default function Leadership() {
 <section className="mb-20">
   <div className="text-center mb-8">
     <h2 className="text-3xl md:text-4xl font-bold text-blue-900 tracking-tight">
-      Director's Quote
+      Director&apos;s Quote
     </h2>
     <div className="w-24 h-1 mx-auto mt-2 bg-blue-700 rounded-full"></div>
   </div>
