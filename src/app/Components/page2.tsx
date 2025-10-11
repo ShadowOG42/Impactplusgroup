@@ -15,16 +15,16 @@ const Page2 = () => {
         {
           // First line: WELCOME TO — Poppins white
           text: [
-            { char: "W", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "L", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "C", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "O", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "M", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "T", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-            { char: "O", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+            { char: "W", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "L", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "C", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "O", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "M", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "T", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
+            { char: "O", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
           ]
         },
         {
@@ -37,12 +37,12 @@ const Page2 = () => {
             { char: "A", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
             { char: "C", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
             { char: "T", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+            { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
             // PLUS — Georgia, #293c83
-            { char: "P", color: "#293c83", font: "Georgia, serif", weight: "500" },
-            { char: "L", color: "#293c83", font: "Georgia, serif", weight: "500" },
-            { char: "U", color: "#293c83", font: "Georgia, serif", weight: "500" },
-            { char: "S", color: "#293c83", font: "Georgia, serif", weight: "500" },
+            { char: "P", color: "#293c83", font: "Georgia, serif", weight: "700" },
+            { char: "L", color: "#293c83", font: "Georgia, serif", weight: "700" },
+            { char: "U", color: "#293c83", font: "Georgia, serif", weight: "700" },
+            { char: "S", color: "#293c83", font: "Georgia, serif", weight: "700" },
           ]
         }
       ];

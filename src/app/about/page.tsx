@@ -110,7 +110,7 @@ const About = () => {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg font-[Georgia,serif]"
+            className="text-4xl md:text-6xl font-bold mb-4 text-darkBlue drop-shadow-lg font-[Georgia,serif]"
           >
             About Impact Plus
           </h1>
