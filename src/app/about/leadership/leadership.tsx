@@ -4,10 +4,10 @@ import React from "react";
 
 export default function Leadership() {
   return (
-    <main className="px-6 md:px-12 lg:px-24 py-16 bg-gradient-to-b from-white via-blue-50 to-white">
+    <main className="px-6 md:px-12 lg:px-24 py-16 bg-gradient-to-b from-white via-blue-50 to-white font-[Montserrat]">
       {/* Page Header */}
       <section className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 tracking-tight font-[Georgia]">
           Impact Plus | Our Leadership
         </h1>
       </section>
@@ -16,10 +16,10 @@ export default function Leadership() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
         {/* Left: Content */}
         <div>
-          <h2 className="text-2xl font-semibold text-blue-800 mb-2">
+          <h2 className="text-2xl font-semibold text-blue-800 mb-2 font-[Georgia]">
             Our Managing Director & Principal Consultant
           </h2>
-          <h3 className="text-xl md:text-2xl font-bold text-blue-900 mb-1">
+          <h3 className="text-xl md:text-2xl font-bold text-blue-900 mb-1 font-[Georgia]">
             Dr. Posani Maveza
           </h3>
           <p className="text-blue-700 mb-6 font-medium">
@@ -55,7 +55,7 @@ export default function Leadership() {
             />
           </div>
           <div className="text-center mt-4">
-            <h3 className="text-xl md:text-2xl font-bold text-blue-900">
+            <h3 className="text-xl md:text-2xl font-bold text-blue-900 font-[Georgia]">
               Dr. Posani Maveza
             </h3>
             <p className="text-blue-700 text-sm md:text-base">
@@ -68,11 +68,9 @@ export default function Leadership() {
       {/* Differentiators Section */}
       <section className="mb-16">
         <div className="bg-gradient-to-r from-blue-100 to-blue-50 shadow-lg rounded-2xl p-8 border border-blue-200">
-         <h4 className="text-xl font-semibold text-blue-900 mb-4">
+          <h4 className="text-xl font-semibold text-blue-900 mb-4 font-[Georgia]">
             Dr. Maveza&apos;s leadership exemplifies the Impact Plus differentiators:
-         </h4>
-
-
+          </h4>
 
           <ul className="list-disc pl-6 text-gray-700 space-y-2">
             <li>Strategy embedded in operations</li>
@@ -88,7 +86,7 @@ export default function Leadership() {
       {/* Academic Credentials */}
       <section className="mb-16">
         <div className="bg-gradient-to-r from-white to-blue-50 shadow-md rounded-2xl p-8 border-l-4 border-blue-600">
-          <h4 className="text-xl font-semibold text-blue-900 mb-4">
+          <h4 className="text-xl font-semibold text-blue-900 mb-4 font-[Georgia]">
             Academic Credentials
           </h4>
           <ul className="list-disc pl-6 text-gray-700 space-y-2">
@@ -108,27 +106,26 @@ export default function Leadership() {
       </section>
 
       {/* Director's Quote */}
-<section className="mb-20">
-  <div className="text-center mb-8">
-    <h2 className="text-3xl md:text-4xl font-bold text-blue-900 tracking-tight">
-      Director&apos;s Quote
-    </h2>
-    <div className="w-24 h-1 mx-auto mt-2 bg-blue-700 rounded-full"></div>
-  </div>
+      <section className="mb-20">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 tracking-tight font-[Georgia]">
+            Director&apos;s Quote
+          </h2>
+          <div className="w-24 h-1 mx-auto mt-2 bg-blue-700 rounded-full"></div>
+        </div>
 
-  <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg rounded-2xl p-8 border-l-8 border-blue-700">
-    <blockquote className="italic text-blue-900 text-lg md:text-xl leading-relaxed">
-      “At Impact Plus, we co-design practical, human-centred transformation 
-      that delivers measurable outcomes. Guided by our IMPACT values, we align 
-      governance, leadership, and systems to create lasting change that is ethical, 
-      sustainable, and effective across organisations.”
-    </blockquote>
-    <p className="mt-6 text-right font-semibold text-blue-800">
-      — Dr. Posani Maveza, Managing Director & Principal Consultant
-    </p>
-  </div>
-</section>
-
+        <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg rounded-2xl p-8 border-l-8 border-blue-700">
+          <blockquote className="italic text-blue-900 text-lg md:text-xl leading-relaxed font-[Montserrat]">
+            “At Impact Plus, we co-design practical, human-centred transformation 
+            that delivers measurable outcomes. Guided by our IMPACT values, we align 
+            governance, leadership, and systems to create lasting change that is ethical, 
+            sustainable, and effective across organisations.”
+          </blockquote>
+          <p className="mt-6 text-right font-semibold text-blue-800 font-[Montserrat]">
+            — Dr. Posani Maveza, Managing Director & Principal Consultant
+          </p>
+        </div>
+      </section>
     </main>
   );
 }

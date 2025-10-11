@@ -73,9 +73,16 @@ const Header = () => {
           {link.sub ? (
             <button
               onClick={() => handleMenuClick(link.title)}
-              className={`${
-                modal ? "text-white" : "text-gray-800"
-              } ${pathname === link.href ? "font-semibold text-blue-600" : "hover:text-blue-600"} transform hover:scale-105 transition-transform duration-300`}
+              className={`
+                ${modal ? "text-white" : "text-gray-800"}
+                font-bold
+                ${pathname === link.href ? "text-blue-600" : "hover:text-blue-600"}
+                text-lg md:text-xl px-4 py-2 rounded-lg
+                transition-all duration-300
+                transform hover:scale-105 hover:shadow-lg
+                bg-gradient-to-r ${modal ? "from-blue-600 via-purple-600 to-pink-600" : "from-transparent to-transparent"}
+                hover:bg-gradient-to-r hover:from-blue-500 hover:via-purple-500 hover:to-pink-500
+              `}
             >
               {link.title}
             </button>
@@ -83,22 +90,29 @@ const Header = () => {
             <Link
               href={link.href}
               onClick={modal ? closeModal : undefined}
-              className={`${
-                modal ? "text-white" : "text-gray-800"
-              } ${pathname === link.href ? "font-semibold text-blue-600" : "hover:text-blue-600"} transform hover:scale-105 transition-transform duration-300`}
+              className={`
+                ${modal ? "text-white" : "text-gray-800"}
+                font-bold
+                ${pathname === link.href ? "text-blue-600" : "hover:text-blue-600"}
+                text-lg md:text-xl px-4 py-2 rounded-lg
+                transition-all duration-300
+                transform hover:scale-105 hover:shadow-lg
+                bg-gradient-to-r ${modal ? "from-blue-600 via-purple-600 to-pink-600" : "from-transparent to-transparent"}
+                hover:bg-gradient-to-r hover:from-blue-500 hover:via-purple-500 hover:to-pink-500
+              `}
             >
               {link.title}
             </Link>
           )}
 
           {!modal && link.sub && openMenu === link.title && (
-            <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white shadow-lg rounded-lg py-3 w-72 flex flex-col items-center z-50">
+            <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white shadow-xl rounded-lg py-2 w-72 flex flex-col items-center z-50">
               {link.sub.map((sublink) => (
                 <li key={sublink.title} className="w-full text-center">
                   <Link
                     href={sublink.href}
                     onClick={() => setOpenMenu(null)}
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition"
                   >
                     {sublink.title}
                   </Link>
@@ -122,13 +136,13 @@ const Header = () => {
           <Image src="/Certificates/Logo.jpg" width={150} height={40} alt="Impact Plus Logo" />
         </Link>
 
-        <ul className="hidden md:flex space-x-8">
+        <ul className="hidden md:flex space-x-4 md:space-x-6">
           <NavLinks modal={false} />
         </ul>
 
         <div className="md:hidden">
           <button onClick={openModal} aria-label="Open mobile menu">
-            <List size={28} className="text-blue-600" />
+            <List size={32} className="text-blue-600" />
           </button>
         </div>
       </nav>
@@ -140,9 +154,9 @@ const Header = () => {
           }`}
         >
           <button onClick={closeModal} className="absolute top-5 right-5 text-white">
-            <X size={28} />
+            <X size={32} />
           </button>
-          <ul className="space-y-8 text-center text-2xl text-white">
+          <ul className="space-y-6 text-center text-3xl text-white font-bold">
             <NavLinks modal={true} />
           </ul>
         </div>

@@ -1,9 +1,12 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OurVision from "./vision/vision";
 import Story from "./story/story";
 import Leadership from "./leadership/leadership";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -19,11 +22,11 @@ const About = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Typewriter + subtitle + button animations
   useEffect(() => {
+    // Typewriter + fade animations
     if (titleRef.current) {
       const text = titleRef.current.textContent || "";
-      titleRef.current.textContent = ""; // clear initial
+      titleRef.current.textContent = "";
       const letters = text.split("").map((char) => {
         const span = document.createElement("span");
         span.textContent = char;
@@ -33,14 +36,12 @@ const About = () => {
 
       letters.forEach((span) => titleRef.current?.appendChild(span));
 
-      // Animate letters one by one
       gsap.to(letters, {
         opacity: 1,
         duration: 0.05,
         stagger: 0.05,
         ease: "power2.inOut",
         onComplete: () => {
-          // Fade in subtitle
           if (subtitleRef.current) {
             gsap.to(subtitleRef.current, {
               opacity: 1,
@@ -48,24 +49,43 @@ const About = () => {
               duration: 0.8,
               ease: "power2.out",
               onComplete: () => {
-                // Animate buttons one after another
-                gsap.to(buttonRefs.current, {
-                  opacity: 1,
-                  y: -10,
-                  duration: 0.6,
-                  stagger: 0.2,
-                  ease: "power2.out",
-                });
+                gsap.fromTo(
+                  buttonRefs.current,
+                  { opacity: 0, y: 20 },
+                  {
+                    opacity: 1,
+                    y: -10,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    ease: "power2.out",
+                  }
+                );
               },
             });
           }
         },
       });
     }
+
+    // Section fade-ins
+    const sections = [visionRef.current, storyRef.current, leadershipRef.current];
+    sections.forEach((section) => {
+      if (section) {
+        gsap.from(section, {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+          },
+        });
+      }
+    });
   }, []);
 
   return (
-    <main className="bg-white">
+    <main className="bg-white font-[Montserrat,sans-serif]">
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -77,6 +97,8 @@ const About = () => {
           autoPlay
           loop
           muted
+          playsInline
+          preload="none"
         >
           <source src="/videos/About_us.mp4" type="video/mp4" />
         </video>
@@ -88,13 +110,13 @@ const About = () => {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold mb-4 text-blue-900 drop-shadow-lg"
+            className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg font-[Georgia,serif]"
           >
             About Impact Plus
           </h1>
           <p
             ref={subtitleRef}
-            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0 leading-relaxed"
+            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0 leading-relaxed font-[Montserrat,sans-serif]"
           >
             At Impact Plus, we help organisations achieve sustainable
             transformation by aligning strategy, leadership, technology, and
@@ -129,11 +151,16 @@ const About = () => {
                   if (el) buttonRefs.current[index] = el;
                 }}
                 onClick={() => scrollToSection(item.ref)}
-                className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition opacity-0"
+                className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition opacity-0 font-[Montserrat,sans-serif]"
               >
                 {item.label}
               </button>
             ))}
+          </div>
+
+          {/* Scroll Hint */}
+          <div className="absolute bottom-10 w-full flex justify-center">
+            <div className="animate-bounce text-white text-3xl">↓</div>
           </div>
         </div>
       </section>
@@ -157,7 +184,7 @@ const About = () => {
       <div className="flex justify-center my-12">
         <button
           onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
+          className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition font-[Montserrat,sans-serif]"
         >
           Back to Top
         </button>

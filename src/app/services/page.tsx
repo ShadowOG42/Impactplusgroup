@@ -45,8 +45,7 @@ const Services = () => {
 
   return (
     <main className="bg-white">
-
-      {/* ✅ Hero Section */}
+      {/* Hero Section */}
       <section
         ref={heroRef}
         className="relative w-full h-screen flex items-center justify-center"
@@ -69,10 +68,14 @@ const Services = () => {
           <h1
             ref={titleRef}
             className="text-4xl md:text-6xl font-bold mb-4 text-blue-900 drop-shadow-lg"
+            style={{ fontFamily: "'Voltaire', sans-serif" }}
           >
             Services at Impact Plus
           </h1>
-          <p className="text-lg md:text-xl mb-8 text-white drop-shadow-md">
+          <p
+            className="text-lg md:text-xl mb-8 text-white drop-shadow-md"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
             We empower organisations with tailored consulting, innovative technology, 
             and world-class training — driving measurable growth and lasting impact.
           </p>
@@ -80,21 +83,22 @@ const Services = () => {
             <button
               onClick={() => scrollToSection(consultingRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+              style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               WHAT WE DO
             </button>
             <button
               onClick={() => scrollToSection(technologyRef)}
               className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+              style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               WHY US
             </button>
-            
           </div>
         </div>
       </section>
 
-      {/* ✅ Service Sections */}
+      {/* Service Sections */}
       <div ref={consultingRef}>
         <Consulting />
       </div>
@@ -107,11 +111,12 @@ const Services = () => {
         <Training />
       </div>
 
-      {/* ✅ Back to Top */}
+      {/* Back to Top */}
       <div className="flex justify-center my-12">
         <button
           onClick={() => scrollToSection(heroRef)}
           className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
+          style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           Back to Top
         </button>

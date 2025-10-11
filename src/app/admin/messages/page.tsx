@@ -24,9 +24,9 @@ export default function AdminMessagesPage() {
   const [sentMessage, setSentMessage] = useState<boolean>(false);
   const [deleteMessageId, setDeleteMessageId] = useState<number | null>(null);
   const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
-  const [sendingReply, setSendingReply] = useState<boolean>(false); // ✅ New: show spinner while sending
+  const [sendingReply, setSendingReply] = useState<boolean>(false);
 
-  // 🔐 Protect page: redirect to login if not authenticated
+  // 🔐 Protect page
   useEffect(() => {
     const checkAdmin = async () => {
       const {
@@ -51,7 +51,6 @@ export default function AdminMessagesPage() {
 
     if (error) console.error("Error fetching messages:", error.message);
     else if (data) setMessages(data as ContactMessage[]);
-
     setLoading(false);
   };
 
@@ -59,7 +58,7 @@ export default function AdminMessagesPage() {
     e.preventDefault();
     if (!replyTo) return;
 
-    setSendingReply(true); // ✅ Show spinner
+    setSendingReply(true);
     setSentMessage(false);
 
     try {
@@ -84,7 +83,7 @@ export default function AdminMessagesPage() {
       console.error("Error sending reply:", err);
       alert("Something went wrong while sending your reply.");
     } finally {
-      setSendingReply(false); // ✅ Hide spinner
+      setSendingReply(false);
     }
   };
 
@@ -105,8 +104,8 @@ export default function AdminMessagesPage() {
   };
 
   return (
-    <section className="min-h-screen bg-gray-50 py-16 px-6 md:px-16 lg:px-32 text-gray-900">
-      <h1 className="text-4xl font-bold text-blue-700 mb-8">
+    <section className="min-h-screen bg-gray-50 py-16 px-6 md:px-16 lg:px-32 text-gray-900 font-[Montserrat,sans-serif]">
+      <h1 className="text-4xl font-bold text-blue-700 mb-8 font-[Georgia,serif]">
         Impact Plus Group Messages
       </h1>
 
@@ -123,34 +122,34 @@ export default function AdminMessagesPage() {
             >
               {/* Message info */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-900">
-                <p className="flex items-center">
+                <p className="flex items-center font-[Montserrat,sans-serif]">
                   <User className="w-5 h-5 text-blue-600 mr-2" /> {msg.name}
                 </p>
-                <p className="flex items-center">
+                <p className="flex items-center font-[Montserrat,sans-serif]">
                   <Mail className="w-5 h-5 text-blue-600 mr-2" /> {msg.email}
                 </p>
-                <p className="flex items-center">
+                <p className="flex items-center font-[Montserrat,sans-serif]">
                   <Phone className="w-5 h-5 text-blue-600 mr-2" /> {msg.phone || "N/A"}
                 </p>
-                <p className="flex items-center">
+                <p className="flex items-center font-[Montserrat,sans-serif]">
                   <Globe className="w-5 h-5 text-blue-600 mr-2" /> {msg.country || "N/A"}
                 </p>
               </div>
 
               {/* Message content */}
-              <div className="mt-4 flex items-start text-gray-800">
+              <div className="mt-4 flex items-start text-gray-800 font-[Montserrat,sans-serif]">
                 <MessageSquare className="w-5 h-5 text-blue-600 mr-2 mt-1" />
                 <p>{msg.message}</p>
               </div>
 
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-gray-500 font-[Montserrat,sans-serif]">
                 Received: {new Date(msg.created_at).toLocaleString()}
               </p>
 
               {/* Action buttons */}
               <div className="mt-4 flex gap-2">
                 <button
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition font-[Montserrat,sans-serif]"
                   onClick={() => {
                     setReplyTo(msg);
                     setSentMessage(false);
@@ -160,7 +159,7 @@ export default function AdminMessagesPage() {
                   Reply
                 </button>
                 <button
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition font-[Montserrat,sans-serif]"
                   onClick={() => handleDelete(msg.id)}
                 >
                   Delete
@@ -169,19 +168,16 @@ export default function AdminMessagesPage() {
 
               {/* Delete confirmation */}
               {deleteSuccess && deleteMessageId === msg.id && (
-                <p className="text-red-600 font-semibold mt-2">
+                <p className="text-red-600 font-semibold mt-2 font-[Montserrat,sans-serif]">
                   Message deleted successfully!
                 </p>
               )}
 
               {/* Reply form */}
               {replyTo?.id === msg.id && (
-                <form
-                  className="mt-4 border-t pt-4"
-                  onSubmit={sendReply}
-                >
+                <form className="mt-4 border-t pt-4" onSubmit={sendReply}>
                   <textarea
-                    className="w-full p-3 border-2 border-gray-300 rounded-md mb-3 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none text-gray-900 placeholder-gray-500 transition-all"
+                    className="w-full p-3 border-2 border-gray-300 rounded-md mb-3 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none text-gray-900 placeholder-gray-500 transition-all font-[Montserrat,sans-serif]"
                     rows={4}
                     value={replyMessage}
                     onChange={(e) => setReplyMessage(e.target.value)}
@@ -193,7 +189,7 @@ export default function AdminMessagesPage() {
                   <div className="flex gap-2 items-center">
                     <button
                       type="submit"
-                      className={`flex items-center justify-center gap-2 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition font-medium ${
+                      className={`flex items-center justify-center gap-2 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition font-medium font-[Montserrat,sans-serif] ${
                         sendingReply ? "opacity-75 cursor-not-allowed" : ""
                       }`}
                       disabled={sendingReply}
@@ -205,7 +201,7 @@ export default function AdminMessagesPage() {
                     </button>
                     <button
                       type="button"
-                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 transition"
+                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 transition font-[Montserrat,sans-serif]"
                       onClick={() => {
                         setReplyTo(null);
                         setReplyMessage("");
@@ -217,7 +213,7 @@ export default function AdminMessagesPage() {
                   </div>
 
                   {sentMessage && (
-                    <p className="text-green-600 font-semibold mt-3">
+                    <p className="text-green-600 font-semibold mt-3 font-[Montserrat,sans-serif]">
                       ✅ Email sent successfully!
                     </p>
                   )}

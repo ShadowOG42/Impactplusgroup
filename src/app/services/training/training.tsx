@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { BookOpen, Users, Award, Cpu } from 'lucide-react';
 import { gsap } from 'gsap';
+import { BookOpen, Users, Award, Cpu } from 'lucide-react';
 
 const Training = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,22 +26,26 @@ const Training = () => {
     {
       icon: <BookOpen className="w-10 h-10 text-lightBlue" />,
       title: "Skill Development",
-      description: "Upskilling employees in mining and energy operations to improve efficiency and productivity."
+      description:
+        "Upskilling employees in mining and energy operations to improve efficiency and productivity.",
     },
     {
       icon: <Users className="w-10 h-10 text-darkBlue" />,
       title: "Leadership Training",
-      description: "Equipping managers and supervisors in the energy sector to lead teams safely and effectively."
+      description:
+        "Equipping managers and supervisors in the energy sector to lead teams safely and effectively.",
     },
     {
       icon: <Award className="w-10 h-10 text-silverGrey" />,
       title: "Safety & Compliance",
-      description: "Specialized programs to ensure adherence to industry regulations and safety protocols in mining and energy operations."
+      description:
+        "Specialized programs to ensure adherence to industry regulations and safety protocols in mining and energy operations.",
     },
     {
       icon: <Cpu className="w-10 h-10 text-lightBlue" />,
       title: "Digital Tools & Analytics",
-      description: "Training on advanced software, automation, and analytics tools used in modern mining and energy projects."
+      description:
+        "Training on advanced software, automation, and analytics tools used in modern mining and energy projects.",
     },
   ];
 
@@ -81,7 +85,9 @@ const Training = () => {
             >
               {t.title}
             </h3>
-            <p className="text-gray-700">{t.description}</p>
+            <p className="text-gray-700" style={{ fontFamily: "Georgia, serif" }}>
+              {t.description}
+            </p>
           </div>
         ))}
       </div>

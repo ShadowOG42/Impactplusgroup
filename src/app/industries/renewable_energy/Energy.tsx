@@ -87,7 +87,9 @@ const Energy = () => {
             >
               {e.title}
             </h3>
-            <p className="text-gray-700">{e.description}</p>
+            <p className="text-gray-700" style={{ fontFamily: "Georgia, serif" }}>
+              {e.description}
+            </p>
           </div>
         ))}
       </div>

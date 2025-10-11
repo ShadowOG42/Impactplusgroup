@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import Link from "next/link";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export default function AdminNavbar() {
   const router = useRouter();
   const [adminEmail, setAdminEmail] = useState<string | null>(null);
@@ -15,7 +22,6 @@ export default function AdminNavbar() {
       if (!session) {
         router.replace("/admin/login");
       } else {
-        // Coerce undefined email to null
         setAdminEmail(session.user.email ?? null);
       }
     };
@@ -28,15 +34,20 @@ export default function AdminNavbar() {
   };
 
   return (
-    <nav className="w-full bg-blue-600 text-white p-4 flex justify-between items-center">
-      <div className="text-xl font-bold">
+    <nav
+      className={`w-full bg-blue-600 text-white p-4 flex justify-between items-center ${montserrat.className}`}
+    >
+      {/* Title in Georgia font */}
+      <div className="text-xl font-bold" style={{ fontFamily: "Georgia, serif" }}>
         <Link href="/admin">Impact Plus Admin</Link>
       </div>
+
+      {/* Email and button in Montserrat */}
       <div className="flex items-center gap-4">
-        {adminEmail && <span>👤 {adminEmail}</span>}
+        {adminEmail && <span className="text-sm md:text-base">👤 {adminEmail}</span>}
         <button
           onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded transition"
+          className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded transition font-medium"
         >
           Logout
         </button>

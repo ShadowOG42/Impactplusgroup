@@ -1,7 +1,11 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 interface FormData {
   name: string;
@@ -82,15 +86,15 @@ const Contacts = () => {
   return (
     <section
       id="contacts"
-      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
+      className={`min-h-screen bg-white py-20 px-6 md:px-16 lg:px-32 transform transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"} ${montserrat.className}`}
     >
       {/* Header */}
       <div className="text-center mb-16">
         <ShieldCheck className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-700">Contact Us</h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-700" style={{ fontFamily: "Georgia, serif" }}>
+          Contact Us
+        </h1>
+        <p className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto" style={{ fontFamily: "Montserrat, sans-serif" }}>
           Take the first step in transforming your business safety culture and speak with one of our solutions experts today.
         </p>
       </div>
@@ -100,7 +104,7 @@ const Contacts = () => {
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
           {["name", "email", "phone", "country"].map((field, idx) => (
             <div key={idx}>
-              <label className="block text-gray-800 mb-2 font-semibold">
+              <label className="block text-gray-800 mb-2 font-semibold" style={{ fontFamily: "Georgia, serif" }}>
                 {field.charAt(0).toUpperCase() + field.slice(1)}:*
               </label>
               <input
@@ -116,7 +120,9 @@ const Contacts = () => {
           ))}
 
           <div className="md:col-span-2">
-            <label className="block text-gray-800 mb-2 font-semibold">Message:*</label>
+            <label className="block text-gray-800 mb-2 font-semibold" style={{ fontFamily: "Georgia, serif" }}>
+              Message:*
+            </label>
             <textarea
               name="message"
               rows={4}
@@ -141,25 +147,16 @@ const Contacts = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v8H4z"
-                  ></path>
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                 </svg>
               ) : null}
               {loading ? "Sending..." : "SUBMIT"}
             </button>
             {formStatus && (
-              <p className="mt-4 text-center text-blue-700 font-medium">{formStatus}</p>
+              <p className="mt-4 text-center text-blue-700 font-medium" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                {formStatus}
+              </p>
             )}
           </div>
         </form>
@@ -170,19 +167,19 @@ const Contacts = () => {
         {branches.map((b, i) => (
           <div
             key={i}
-            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
+            className={`bg-white rounded-xl p-8 border border-blue-100 shadow-md hover:shadow-xl transition-all duration-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
             style={{ transitionDelay: `${i * 200}ms` }}
           >
-            <h2 className="text-2xl font-semibold text-blue-800 mb-4">{b.country}</h2>
-            <p className="flex items-center text-gray-700 mb-2">
+            <h2 className="text-2xl font-semibold text-blue-800 mb-4" style={{ fontFamily: "Georgia, serif" }}>
+              {b.country}
+            </h2>
+            <p className="flex items-center text-gray-700 mb-2" style={{ fontFamily: "Montserrat, sans-serif" }}>
               <MapPin className="w-5 h-5 text-blue-600 mr-2" /> {b.address}
             </p>
-            <p className="flex items-center text-gray-700 mb-2">
+            <p className="flex items-center text-gray-700 mb-2" style={{ fontFamily: "Montserrat, sans-serif" }}>
               <Mail className="w-5 h-5 text-blue-600 mr-2" /> {b.email}
             </p>
-            <p className="flex items-center text-gray-700">
+            <p className="flex items-center text-gray-700" style={{ fontFamily: "Montserrat, sans-serif" }}>
               <Phone className="w-5 h-5 text-blue-600 mr-2" /> {b.phone}
             </p>
           </div>
@@ -191,15 +188,12 @@ const Contacts = () => {
 
       {/* Logos Section */}
       <div className="text-center mb-20">
-        <h2 className="text-3xl font-bold text-blue-700 mb-8">Our Identity</h2>
+        <h2 className="text-3xl font-bold text-blue-700 mb-8" style={{ fontFamily: "Georgia, serif" }}>
+          Our Identity
+        </h2>
         <div className="flex flex-wrap justify-center items-center gap-10">
           <div className="relative w-40 h-20">
-            <Image
-              src="/Certificates/Logo.jpg"
-              alt="Impact Plus Logo"
-              fill
-              className="object-contain"
-            />
+            <Image src="/Certificates/Logo.jpg" alt="Impact Plus Logo" fill className="object-contain" />
           </div>
         </div>
       </div>

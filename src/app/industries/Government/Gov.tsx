@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Montserrat } from "next/font/google";
 
- 
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+
 const stages = [
   {
     title: "PROJECT DEVELOPMENT",
@@ -72,13 +74,17 @@ const stages = [
 
 export default function Gov() {
   return (
-    <section className="w-full bg-white py-10 px-6">
+    <section className={`w-full bg-white py-10 px-6 ${montserrat.className}`}>
       <div className="max-w-7xl mx-auto">
         {/* heading */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">MAKING IMPACT</h2>
-            <p className="text-sm md:text-base text-slate-600">AT EVERY STAGE OF THE PROJECT LIFECYCLE</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900" style={{ fontFamily: "Georgia, serif" }}>
+              MAKING IMPACT
+            </h2>
+            <p className="text-sm md:text-base text-slate-600" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              AT EVERY STAGE OF THE PROJECT LIFECYCLE
+            </p>
           </div>
         </div>
 
@@ -101,7 +107,10 @@ export default function Gov() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, delay: i * 0.06 }}
                   >
-                    <div className="text-xs md:text-sm lg:text-base font-semibold text-white text-center px-2">
+                    <div
+                      className="text-xs md:text-sm lg:text-base font-semibold text-white text-center px-2"
+                      style={{ fontFamily: "Georgia, serif" }}
+                    >
                       {s.title}
                     </div>
                   </motion.div>
@@ -115,6 +124,7 @@ export default function Gov() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.15 + i * 0.04 }}
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
                   >
                     {s.points.map((p, j) => (
                       <li key={j}>{p}</li>

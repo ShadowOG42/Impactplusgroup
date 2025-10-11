@@ -9,7 +9,6 @@ import Oil from "./Oil&Gas/Oil&gas";
 import Power_gen from "./Power_generation/Power_gen";
 import Public_infra from "./Public_infrastructure/Public_infra";
 import Gov from "./Government/Gov";
- 
 
 const Industries = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -19,7 +18,6 @@ const Industries = () => {
   const powerGenRef = useRef<HTMLDivElement | null>(null);
   const publicInfraRef = useRef<HTMLDivElement | null>(null);
   const govRef = useRef<HTMLDivElement | null>(null);
-  
 
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -28,7 +26,6 @@ const Industries = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Typewriter + subtitle fade-in animation
   useEffect(() => {
     if (titleRef.current) {
       const text = titleRef.current.textContent || "";
@@ -39,7 +36,6 @@ const Industries = () => {
         span.style.opacity = "0";
         return span;
       });
-
       letters.forEach((span) => titleRef.current?.appendChild(span));
 
       gsap.to(letters, {
@@ -68,7 +64,6 @@ const Industries = () => {
         ref={heroRef}
         className="relative w-full h-screen flex flex-col items-center justify-center"
       >
-        {/* Video Background */}
         <div className="absolute inset-0">
           <video className="w-full h-full object-cover" autoPlay loop muted>
             <source src="/videos/Building.mp4" type="video/mp4" />
@@ -81,12 +76,14 @@ const Industries = () => {
           <h1
             ref={titleRef}
             className="text-4xl md:text-6xl font-bold mb-4 text-blue-900 drop-shadow-lg"
+            style={{ fontFamily: "'Voltaire', sans-serif" }}
           >
             Industry Solutions
           </h1>
           <p
             ref={subtitleRef}
             className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0"
+            style={{ fontFamily: "Georgia, serif" }}
           >
             At Impact Plus, we deliver tailored solutions for key industries —
             helping organisations in renewable energy, oil & gas, mining, power
@@ -94,44 +91,23 @@ const Industries = () => {
             education thrive in a rapidly changing world.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button
-              onClick={() => scrollToSection(govRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Our solutions
-            </button>
-            <button
-              onClick={() => scrollToSection(energyRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Renewable Energy
-            </button>
-            <button
-              onClick={() => scrollToSection(oilRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Oil & Gas
-            </button>
-            <button
-              onClick={() => scrollToSection(miningRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Mining
-            </button>
-            <button
-              onClick={() => scrollToSection(powerGenRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Power Generation
-            </button>
-            <button
-              onClick={() => scrollToSection(publicInfraRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
-            >
-              Public Infrastructure
-            </button>
-             
-            
+            {[
+              { label: "Our solutions", ref: govRef },
+              { label: "Renewable Energy", ref: energyRef },
+              { label: "Oil & Gas", ref: oilRef },
+              { label: "Mining", ref: miningRef },
+              { label: "Power Generation", ref: powerGenRef },
+              { label: "Public Infrastructure", ref: publicInfraRef },
+            ].map((btn, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToSection(btn.ref)}
+                className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                {btn.label}
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -140,36 +116,28 @@ const Industries = () => {
       <div ref={govRef}>
         <Gov />
       </div>
-      
       <div ref={energyRef}>
         <Energy />
       </div>
-
       <div ref={oilRef}>
         <Oil />
       </div>
-
       <div ref={miningRef}>
         <Mining />
       </div>
-
       <div ref={powerGenRef}>
         <Power_gen />
       </div>
-
       <div ref={publicInfraRef}>
         <Public_infra />
       </div>
-
-       
-
-      
 
       {/* Back to Top */}
       <div className="flex justify-center my-12">
         <button
           onClick={() => scrollToSection(heroRef)}
           className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
+          style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           Back to Top
         </button>

@@ -27,7 +27,6 @@ export default function Consulting() {
 
   const points = [
     'Governance, Leadership & People Performance Optimisation',
-    
     'Stakeholder Management',
     'Systems, Processes & ISO Standards',
     'Surveying & Spatial Services',
@@ -35,8 +34,6 @@ export default function Consulting() {
     'Engagement Tools & Product Solutions',
     'AI-Enabled Transformation',
     'Continuous Improvement & Innovation',
-    
-    
   ];
 
   return (
@@ -73,7 +70,10 @@ export default function Consulting() {
               {i + 1}
             </div>
             {/* Label */}
-            <p className="ml-6 md:ml-10 text-gray-800 font-medium text-lg md:text-xl">
+            <p
+              className="ml-6 md:ml-10 text-gray-800 font-medium text-lg md:text-xl"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
               {p}
             </p>
           </div>

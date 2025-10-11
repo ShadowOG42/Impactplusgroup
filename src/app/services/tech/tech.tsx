@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { Globe2, Users, ShieldCheck, Workflow } from 'lucide-react';
 import { gsap } from 'gsap';
+import { Globe2, Users, ShieldCheck, Workflow } from 'lucide-react';
 
 const Tech = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,22 +26,26 @@ const Tech = () => {
     {
       icon: <Globe2 className="w-10 h-10 text-lightBlue" />,
       title: "Globally Benchmarked, Locally Grounded",
-      description: "Our solutions are benchmarked against global best practices but deeply rooted in local realities—ensuring impact that lasts."
+      description:
+        "Our solutions are benchmarked against global best practices but deeply rooted in local realities—ensuring impact that lasts.",
     },
     {
       icon: <Users className="w-10 h-10 text-darkBlue" />,
       title: "Cross-Sector Expertise",
-      description: "We combine insights from multiple industries with deep contextual understanding to craft solutions that work where they matter most."
+      description:
+        "We combine insights from multiple industries with deep contextual understanding to craft solutions that work where they matter most.",
     },
     {
       icon: <ShieldCheck className="w-10 h-10 text-silverGrey" />,
       title: "Trusted Delivery",
-      description: "Built on relationship-driven execution, we deliver with trust, accountability, and long-term partnership focus."
+      description:
+        "Built on relationship-driven execution, we deliver with trust, accountability, and long-term partnership focus.",
     },
     {
       icon: <Workflow className="w-10 h-10 text-lightBlue" />,
       title: "End-to-End Transformation",
-      description: "From strategy to systems to skills, Impact Plus drives complete transformation tailored to your business vision."
+      description:
+        "From strategy to systems to skills, Impact Plus drives complete transformation tailored to your business vision.",
     },
   ];
 
@@ -81,7 +85,9 @@ const Tech = () => {
             >
               {r.title}
             </h3>
-            <p className="text-gray-700">{r.description}</p>
+            <p className="text-gray-700" style={{ fontFamily: "Georgia, serif" }}>
+              {r.description}
+            </p>
           </div>
         ))}
       </div>
