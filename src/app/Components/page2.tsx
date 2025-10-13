@@ -3,17 +3,16 @@
 import React, { useEffect, useRef } from "react";
 import { LinkedinIcon, MailIcon, FacebookIcon, GlobeIcon } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 const Page2 = () => {
   const welcomeRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
+  // const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (welcomeRef.current) {
       const textLines = [
         {
-          // First line: WELCOME TO — Poppins white
+          // Line 1: WELCOME TO
           text: [
             { char: "W", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
             { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
@@ -28,9 +27,8 @@ const Page2 = () => {
           ]
         },
         {
-          // Second line: IMPACT PLUS
+          // Line 2: IMPACT PLUS
           text: [
-            // IMPACT — Bebas Neue, #1e7dba
             { char: "I", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
             { char: "M", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
             { char: "P", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
@@ -38,17 +36,56 @@ const Page2 = () => {
             { char: "C", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
             { char: "T", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
             { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            // PLUS — Georgia, #293c83
             { char: "P", color: "#293c83", font: "Georgia, serif", weight: "700" },
             { char: "L", color: "#293c83", font: "Georgia, serif", weight: "700" },
             { char: "U", color: "#293c83", font: "Georgia, serif", weight: "700" },
             { char: "S", color: "#293c83", font: "Georgia, serif", weight: "700" },
           ]
-        }
+        },
+        // {
+        //   // Line 3: Tagline (optional)
+        //   text: [
+        //     { char: "T", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "r", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "a", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "n", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "s", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "f", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "o", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "r", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "m", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "i", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "n", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "g", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "C", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "o", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "m", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "p", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "l", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "e", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "x", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "i", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "t", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "y", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "i", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "n", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "t", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "o", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
+        //     { char: "C", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //     { char: "l", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //     { char: "a", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //     { char: "r", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //     { char: "i", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //     { char: "t", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //     { char: "y", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
+        //   ]
+        // }
       ];
 
       welcomeRef.current.innerHTML = "";
-
       let lineIndex = 0;
       let charIndex = 0;
 
@@ -77,20 +114,13 @@ const Page2 = () => {
             }, 50);
 
             charIndex++;
-            setTimeout(typeChar, 120);
+            setTimeout(typeChar, 100);
           } else {
-            // move to next line
             const br = document.createElement("br");
             welcomeRef.current!.appendChild(br);
             lineIndex++;
             charIndex = 0;
-            setTimeout(typeChar, 120);
-          }
-        } else {
-          // After all typing done, fade in logo
-          if (logoRef.current) {
-            logoRef.current.style.opacity = "1";
-            logoRef.current.classList.add("animate-fadeIn");
+            setTimeout(typeChar, 100);
           }
         }
       };
@@ -140,43 +170,25 @@ const Page2 = () => {
 
       <div className="absolute inset-0 bg-black/50" />
 
-      <div className="relative z-10 h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-16 lg:px-32 text-white">
-        <div className="space-y-6 max-w-2xl md:w-1/2">
+      <div className="relative z-10 h-screen flex items-start justify-start px-6 md:px-16 lg:px-32 py-24 text-white">
+        <div className="space-y-6 max-w-2xl w-full">
           <div
             ref={welcomeRef}
-            className="text-4xl md:text-7xl font-bold tracking-wide leading-tight"
+            className="text-4xl md:text-7xl font-bold tracking-wide leading-tight text-left"
           ></div>
 
-          <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed">
-            A trusted international consultancy specialising in Workplace Health, 
-            Safety, Environment, Quality (WHSEQ) and Continuous Improvement (CI). 
-            Partnering with clients across renewable energy, oil &amp; gas, mining, 
-            power generation, public infrastructure and  government. 
-            we deliver practical solutions that build safer workplaces, ensure compliance, 
-            and unlock measurable performance improvement.
+          <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed text-left">
+            We are an international consultancy specializing in <span className="text-blue-300 font-semibold">Project Management</span> and <span className="text-blue-500 font-semibold">Organisational Performance</span>. We simplify complex challenges, build resilient strategies, and drive sustainable transformation for businesses worldwide.
           </p>
 
           <Link
             href="/about"
             className="inline-block mt-6 px-8 py-3 text-sm font-semibold bg-blue-600 hover:bg-blue-700 hover:scale-105 rounded-full transition-transform duration-300 shadow-lg"
           >
-            Read More
+            Read More →
           </Link>
 
           <SocialLinks />
-        </div>
-
-        <div
-          ref={logoRef}
-          className="mt-10 md:mt-0 md:w-1/2 flex justify-center items-center opacity-0"
-        >
-          <Image
-            src="/Certificates/logo_transparent.png"
-            alt="Impact Plus Logo"
-            width={600}
-            height={600}
-            className="object-contain w-full max-w-md md:max-w-2xl drop-shadow-2xl transition-transform duration-700 hover:scale-105"
-          />
         </div>
       </div>
     </main>

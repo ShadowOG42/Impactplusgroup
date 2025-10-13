@@ -3,7 +3,6 @@ import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OurVision from "./vision/vision";
-import Story from "./story/story";
 import Leadership from "./leadership/leadership";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,9 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const visionRef = useRef<HTMLDivElement>(null);
-  const storyRef = useRef<HTMLDivElement>(null);
   const leadershipRef = useRef<HTMLDivElement>(null);
-
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
@@ -23,52 +20,31 @@ const About = () => {
   };
 
   useEffect(() => {
-    // Typewriter + fade animations
     if (titleRef.current) {
-      const text = titleRef.current.textContent || "";
-      titleRef.current.textContent = "";
-      const letters = text.split("").map((char) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.style.opacity = "0";
-        return span;
-      });
-
-      letters.forEach((span) => titleRef.current?.appendChild(span));
-
-      gsap.to(letters, {
-        opacity: 1,
-        duration: 0.05,
-        stagger: 0.05,
-        ease: "power2.inOut",
-        onComplete: () => {
-          if (subtitleRef.current) {
-            gsap.to(subtitleRef.current, {
-              opacity: 1,
-              y: -10,
-              duration: 0.8,
-              ease: "power2.out",
-              onComplete: () => {
-                gsap.fromTo(
-                  buttonRefs.current,
-                  { opacity: 0, y: 20 },
-                  {
-                    opacity: 1,
-                    y: -10,
-                    duration: 0.8,
-                    stagger: 0.2,
-                    ease: "power2.out",
-                  }
-                );
-              },
-            });
-          }
-        },
-      });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
     }
 
-    // Section fade-ins
-    const sections = [visionRef.current, storyRef.current, leadershipRef.current];
+    if (subtitleRef.current) {
+      gsap.fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: "power2.out" }
+      );
+    }
+
+    if (buttonRefs.current.length > 0) {
+      gsap.fromTo(
+        buttonRefs.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, delay: 1, stagger: 0.2, ease: "power2.out" }
+      );
+    }
+
+    const sections = [visionRef.current, leadershipRef.current];
     sections.forEach((section) => {
       if (section) {
         gsap.from(section, {
@@ -89,7 +65,7 @@ const About = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative w-full h-screen flex items-center justify-center"
+        className="relative w-full h-[100vh] flex items-center justify-center text-center pt-24 md:pt-32"
       >
         {/* Video Background */}
         <video
@@ -104,46 +80,34 @@ const About = () => {
         </video>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Hero Text */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        {/* Content */}
+        <div className="relative z-10 max-w-5xl px-6 flex flex-col items-center justify-center">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold mb-4 text-darkBlue drop-shadow-lg font-[Georgia,serif]"
+            className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg"
+            style={{ fontFamily: "Georgia, serif", color: "#293c83" }}
           >
             About Impact Plus
           </h1>
+
           <p
             ref={subtitleRef}
-            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0 leading-relaxed font-[Montserrat,sans-serif]"
+            className="text-base md:text-lg text-white leading-relaxed drop-shadow-md mb-6 text-justify font-[Montserrat,sans-serif]"
           >
-            At Impact Plus, we help organisations achieve sustainable
-            transformation by aligning strategy, leadership, technology, and
-            culture. Our integrated approach empowers people, strengthens
-            systems, and delivers lasting value.
-            <br />
-            <br />
-            We drive organisational and people performance by embedding safety,
-            risk management, environmental stewardship, quality excellence,
-            leadership development, and innovation into the way work gets done.
-            <br />
-            <br />
-            From feasibility through to decommissioning, we support every stage
-            of the project lifecycle—bringing clarity, confidence, and
-            sustainable outcomes at each step.
-            <br />
-            <br />
-            At Impact Plus, we turn complexity into clarity and organisational
-            desire into measurable impact.
+            Impact Plus is your trusted international Project Management and Organisational Performance Consultancy dedicated to helping organisations achieve safer, smarter, and more sustainable outcomes. We partner with clients across renewable energy, oil & gas, mining, power generation, infrastructure, and government to deliver practical, evidence-based solutions that strengthen leadership and governance, enhance safety and quality, and unlock measurable performance improvement.
+          </p>
+
+          <p className="text-base md:text-lg text-white leading-relaxed drop-shadow-md text-justify font-[Montserrat,sans-serif]">
+            Our integrated approach aligns strategy, leadership, technology, and culture to empower people, strengthen systems, and deliver lasting value — embedding safety, risk management, environmental stewardship, quality excellence, leadership development, and innovation into everyday operations. From feasibility to decommissioning, we bring clarity, confidence, and consistent performance, enabling organisations to thrive in an increasingly complex and fast-changing world.
           </p>
 
           {/* Scroll Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 mt-10">
             {[
               { label: "Leadership", ref: leadershipRef },
               { label: "Vision & Mission", ref: visionRef },
-              { label: "Differentiators", ref: storyRef },
             ].map((item, index) => (
               <button
                 key={index}
@@ -151,16 +115,11 @@ const About = () => {
                   if (el) buttonRefs.current[index] = el;
                 }}
                 onClick={() => scrollToSection(item.ref)}
-                className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition opacity-0 font-[Montserrat,sans-serif]"
+                className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition font-[Montserrat,sans-serif]"
               >
                 {item.label}
               </button>
             ))}
-          </div>
-
-          {/* Scroll Hint */}
-          <div className="absolute bottom-10 w-full flex justify-center">
-            <div className="animate-bounce text-white text-3xl">↓</div>
           </div>
         </div>
       </section>
@@ -175,16 +134,11 @@ const About = () => {
         <OurVision />
       </div>
 
-      {/* Differentiators Section */}
-      <div ref={storyRef}>
-        <Story />
-      </div>
-
       {/* Back to Top */}
       <div className="flex justify-center my-12">
         <button
           onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition font-[Montserrat,sans-serif]"
+          className="px-6 py-3 bg-[#293c83] text-white font-semibold rounded-full shadow hover:bg-blue-800 transition font-[Montserrat,sans-serif]"
         >
           Back to Top
         </button>

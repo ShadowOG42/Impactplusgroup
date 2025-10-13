@@ -1,16 +1,16 @@
-'use client';
+"use client";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import Consulting from "./consulting/consulting";
 import Technology from "./tech/tech";
-import Training from "./training/training";
+// import Training from "./training/training";
 
 const Services = () => {
   // Refs for smooth scroll
   const heroRef = useRef<HTMLDivElement>(null);
   const consultingRef = useRef<HTMLDivElement>(null);
   const technologyRef = useRef<HTMLDivElement>(null);
-  const trainingRef = useRef<HTMLDivElement>(null);
+  // const trainingRef = useRef<HTMLDivElement>(null);
 
   // Ref for title (typewriter effect)
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -44,13 +44,13 @@ const Services = () => {
   }, []);
 
   return (
-    <main className="bg-white">
+    <main className="bg-white font-[Montserrat,sans-serif]">
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative w-full h-screen flex items-center justify-center"
+        className="relative w-full h-screen flex items-center justify-center text-center pt-24 md:pt-32"
       >
-        {/* Background video */}
+        {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
@@ -60,36 +60,38 @@ const Services = () => {
           <source src="/videos/WOrkculture.mp4" type="video/mp4" />
         </video>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold mb-4 text-blue-900 drop-shadow-lg"
-            style={{ fontFamily: "'Voltaire', sans-serif" }}
+            className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+            style={{ fontFamily: "Georgia, serif", color: "#293c83" }}
           >
             Services at Impact Plus
           </h1>
+
           <p
-            className="text-lg md:text-xl mb-8 text-white drop-shadow-md"
-            style={{ fontFamily: "Georgia, serif" }}
+            className="text-lg md:text-xl mb-8 text-white drop-shadow-md leading-relaxed"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             We empower organisations with tailored consulting, innovative technology, 
             and world-class training — driving measurable growth and lasting impact.
           </p>
+
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => scrollToSection(consultingRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+              className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               WHAT WE DO
             </button>
             <button
               onClick={() => scrollToSection(technologyRef)}
-              className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+              className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               WHY US
@@ -98,24 +100,26 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Service Sections */}
+      {/* Consulting Section */}
       <div ref={consultingRef}>
         <Consulting />
       </div>
 
+      {/* Technology Section */}
       <div ref={technologyRef}>
         <Technology />
       </div>
 
-      <div ref={trainingRef}>
+      {/* Training Section (optional) */}
+      {/* <div ref={trainingRef}>
         <Training />
-      </div>
+      </div> */}
 
       {/* Back to Top */}
       <div className="flex justify-center my-12">
         <button
           onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
+          className="px-6 py-3 bg-[#293c83] text-white font-semibold rounded-full shadow hover:bg-blue-800 transition"
           style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           Back to Top

@@ -3,11 +3,11 @@ import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
 // Industry Components
-import Energy from "./renewable_energy/Energy";
-import Mining from "./Mining/Mining";
-import Oil from "./Oil&Gas/Oil&gas";
-import Power_gen from "./Power_generation/Power_gen";
-import Public_infra from "./Public_infrastructure/Public_infra";
+// import Energy from "./renewable_energy/Energy";
+// import Mining from "./Mining/Mining";
+// import Oil from "./Oil&Gas/Oil&gas";
+// import Power_gen from "./Power_generation/Power_gen";
+// import Public_infra from "./Public_infrastructure/Public_infra";
 import Gov from "./Government/Gov";
 
 const Industries = () => {
@@ -58,41 +58,48 @@ const Industries = () => {
   }, []);
 
   return (
-    <main className="bg-white">
+    <main className="bg-white font-[Montserrat,sans-serif]">
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative w-full h-screen flex flex-col items-center justify-center"
+        className="relative w-full h-screen flex flex-col items-center justify-center text-center pt-24 md:pt-32"
       >
+        {/* Video Background */}
         <div className="absolute inset-0">
-          <video className="w-full h-full object-cover" autoPlay loop muted>
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
             <source src="/videos/Building.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
         {/* Hero Text */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold mb-4 text-blue-900 drop-shadow-lg"
-            style={{ fontFamily: "'Voltaire', sans-serif" }}
+            className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+            style={{ fontFamily: "Georgia, serif", color: "#293c83" }}
           >
             Industry Solutions
           </h1>
           <p
             ref={subtitleRef}
-            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0"
-            style={{ fontFamily: "Georgia, serif" }}
+            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0 leading-relaxed"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             At Impact Plus, we deliver tailored solutions for key industries —
             helping organisations in renewable energy, oil & gas, mining, power
             generation, public infrastructure, health, government, and higher
             education thrive in a rapidly changing world.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
             {[
-              { label: "Our solutions", ref: govRef },
+              { label: "Our Solutions", ref: govRef },
               { label: "Renewable Energy", ref: energyRef },
               { label: "Oil & Gas", ref: oilRef },
               { label: "Mining", ref: miningRef },
@@ -102,7 +109,7 @@ const Industries = () => {
               <button
                 key={i}
                 onClick={() => scrollToSection(btn.ref)}
-                className="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:bg-blue-50 transition"
+                className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 {btn.label}
@@ -116,7 +123,7 @@ const Industries = () => {
       <div ref={govRef}>
         <Gov />
       </div>
-      <div ref={energyRef}>
+      {/* <div ref={energyRef}>
         <Energy />
       </div>
       <div ref={oilRef}>
@@ -130,13 +137,13 @@ const Industries = () => {
       </div>
       <div ref={publicInfraRef}>
         <Public_infra />
-      </div>
+      </div> */}
 
       {/* Back to Top */}
       <div className="flex justify-center my-12">
         <button
           onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-blue-900 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
+          className="px-6 py-3 bg-[#293c83] text-white font-semibold rounded-full shadow hover:bg-blue-800 transition"
           style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           Back to Top
