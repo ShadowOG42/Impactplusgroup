@@ -178,7 +178,7 @@ const Page2 = () => {
           ></div>
 
           <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed text-left">
-            We are an international consultancy specializing in <span className="text-blue-300 font-semibold">Project Management</span> and <span className="text-blue-500 font-semibold">Organisational Performance</span>. We simplify complex challenges, build resilient strategies, and drive sustainable transformation for businesses worldwide.
+            We are an international consultancy specializing in  Project Management  and  Organisational Performance . We simplify complex challenges, build resilient strategies, and drive sustainable transformation for businesses worldwide.
           </p>
 
           <Link
