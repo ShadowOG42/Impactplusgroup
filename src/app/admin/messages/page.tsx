@@ -3,7 +3,7 @@
 import { useEffect, useState, FormEvent } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import { Mail, User, Phone, Globe, MessageSquare, Loader2 } from "lucide-react";
+import { Mail, User, Phone, Globe, MessageSquare, Loader2, X } from "lucide-react";
 
 interface ContactMessage {
   id: number;
@@ -18,30 +18,29 @@ interface ContactMessage {
 export default function AdminMessagesPage() {
   const router = useRouter();
   const [messages, setMessages] = useState<ContactMessage[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [replyTo, setReplyTo] = useState<ContactMessage | null>(null);
-  const [replyMessage, setReplyMessage] = useState<string>("");
-  const [sentMessage, setSentMessage] = useState<boolean>(false);
-  const [deleteMessageId, setDeleteMessageId] = useState<number | null>(null);
-  const [deleteSuccess, setDeleteSuccess] = useState<boolean>(false);
-  const [sendingReply, setSendingReply] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
 
-  // 🔐 Protect page
+  const [replyTo, setReplyTo] = useState<ContactMessage | null>(null);
+  const [replyMessage, setReplyMessage] = useState("");
+  const [sendingReply, setSendingReply] = useState(false);
+  const [sentMessage, setSentMessage] = useState(false);
+
+  const [deleteMessageId, setDeleteMessageId] = useState<number | null>(null);
+  const [deleteFeedback, setDeleteFeedback] = useState<string | null>(null);
+  const [deleteStatus, setDeleteStatus] = useState<"success" | "error" | null>(null);
+
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+
+  // ✅ Protect admin route
   useEffect(() => {
     const checkAdmin = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
+      const { data: { session } } = await supabase.auth.getSession();
       if (!session) router.replace("/admin/login");
     };
     checkAdmin();
   }, [router]);
 
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
+  // ✅ Fetch messages from Supabase
   const fetchMessages = async () => {
     setLoading(true);
     const { data, error } = await supabase
@@ -54,6 +53,11 @@ export default function AdminMessagesPage() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+
+  // ✅ Send reply email
   const sendReply = async (e: FormEvent) => {
     e.preventDefault();
     if (!replyTo) return;
@@ -87,19 +91,37 @@ export default function AdminMessagesPage() {
     }
   };
 
+  // ✅ Delete message permanently
   const handleDelete = async (id: number) => {
-    const res = await fetch("/api/delete", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
+    try {
+      const res = await fetch("/api/delete", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
 
-    const result = await res.json();
-    if (result.success) {
-      setMessages((prev) => prev.filter((msg) => msg.id !== id));
-      setDeleteMessageId(id);
-      setDeleteSuccess(true);
-      setTimeout(() => setDeleteSuccess(false), 3000);
+      const result = await res.json();
+
+      if (result.success) {
+        setMessages((prev) => prev.filter((msg) => msg.id !== id));
+        setDeleteMessageId(id);
+        setDeleteFeedback("🗑️ Message deleted permanently!");
+        setDeleteStatus("success");
+      } else {
+        setDeleteFeedback("⚠️ Failed to delete message. Please try again.");
+        setDeleteStatus("error");
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
+      setDeleteFeedback("⚠️ Error deleting message. Please try again.");
+      setDeleteStatus("error");
+    } finally {
+      setConfirmDeleteId(null);
+      setTimeout(() => {
+        setDeleteMessageId(null);
+        setDeleteFeedback(null);
+        setDeleteStatus(null);
+      }, 3000);
     }
   };
 
@@ -118,38 +140,38 @@ export default function AdminMessagesPage() {
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className="bg-white rounded-xl shadow-md p-6 border border-blue-100 hover:shadow-xl transition-all"
+              className="bg-white rounded-xl shadow-md p-6 border border-blue-100 hover:shadow-xl transition-all relative"
             >
               {/* Message info */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-900">
-                <p className="flex items-center font-[Montserrat,sans-serif]">
+                <p className="flex items-center">
                   <User className="w-5 h-5 text-blue-600 mr-2" /> {msg.name}
                 </p>
-                <p className="flex items-center font-[Montserrat,sans-serif]">
+                <p className="flex items-center">
                   <Mail className="w-5 h-5 text-blue-600 mr-2" /> {msg.email}
                 </p>
-                <p className="flex items-center font-[Montserrat,sans-serif]">
+                <p className="flex items-center">
                   <Phone className="w-5 h-5 text-blue-600 mr-2" /> {msg.phone || "N/A"}
                 </p>
-                <p className="flex items-center font-[Montserrat,sans-serif]">
+                <p className="flex items-center">
                   <Globe className="w-5 h-5 text-blue-600 mr-2" /> {msg.country || "N/A"}
                 </p>
               </div>
 
-              {/* Message content */}
-              <div className="mt-4 flex items-start text-gray-800 font-[Montserrat,sans-serif]">
+              {/* Message body */}
+              <div className="mt-4 flex items-start text-gray-800">
                 <MessageSquare className="w-5 h-5 text-blue-600 mr-2 mt-1" />
                 <p>{msg.message}</p>
               </div>
 
-              <p className="mt-2 text-sm text-gray-500 font-[Montserrat,sans-serif]">
+              <p className="mt-2 text-sm text-gray-500">
                 Received: {new Date(msg.created_at).toLocaleString()}
               </p>
 
-              {/* Action buttons */}
+              {/* Actions */}
               <div className="mt-4 flex gap-2">
                 <button
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition font-[Montserrat,sans-serif]"
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
                   onClick={() => {
                     setReplyTo(msg);
                     setSentMessage(false);
@@ -158,26 +180,55 @@ export default function AdminMessagesPage() {
                 >
                   Reply
                 </button>
+
                 <button
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition font-[Montserrat,sans-serif]"
-                  onClick={() => handleDelete(msg.id)}
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                  onClick={() => setConfirmDeleteId(msg.id)}
                 >
                   Delete
                 </button>
               </div>
 
-              {/* Delete confirmation */}
-              {deleteSuccess && deleteMessageId === msg.id && (
-                <p className="text-red-600 font-semibold mt-2 font-[Montserrat,sans-serif]">
-                  Message deleted successfully!
+              {/* Delete feedback */}
+              {deleteMessageId === msg.id && deleteFeedback && (
+                <p
+                  className={`mt-3 font-semibold transition-all ${
+                    deleteStatus === "success" ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  {deleteFeedback}
                 </p>
+              )}
+
+              {/* Confirm delete modal */}
+              {confirmDeleteId === msg.id && (
+                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+                  <div className="bg-white rounded-lg p-6 w-full max-w-sm text-center shadow-lg">
+                    <h2 className="text-xl font-bold mb-4">Confirm Delete</h2>
+                    <p className="mb-4">Are you sure you want to permanently delete this message?</p>
+                    <div className="flex justify-center gap-4">
+                      <button
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                        onClick={() => handleDelete(msg.id)}
+                      >
+                        Yes, Delete
+                      </button>
+                      <button
+                        className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 transition flex items-center gap-1"
+                        onClick={() => setConfirmDeleteId(null)}
+                      >
+                        Cancel <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               )}
 
               {/* Reply form */}
               {replyTo?.id === msg.id && (
                 <form className="mt-4 border-t pt-4" onSubmit={sendReply}>
                   <textarea
-                    className="w-full p-3 border-2 border-gray-300 rounded-md mb-3 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none text-gray-900 placeholder-gray-500 transition-all font-[Montserrat,sans-serif]"
+                    className="w-full p-3 border-2 border-gray-300 rounded-md mb-3 focus:border-blue-700 focus:ring-2 focus:ring-blue-300 outline-none text-gray-900 placeholder-gray-500 transition-all"
                     rows={4}
                     value={replyMessage}
                     onChange={(e) => setReplyMessage(e.target.value)}
@@ -189,19 +240,18 @@ export default function AdminMessagesPage() {
                   <div className="flex gap-2 items-center">
                     <button
                       type="submit"
-                      className={`flex items-center justify-center gap-2 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition font-medium font-[Montserrat,sans-serif] ${
+                      className={`flex items-center justify-center gap-2 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition font-medium ${
                         sendingReply ? "opacity-75 cursor-not-allowed" : ""
                       }`}
                       disabled={sendingReply}
                     >
-                      {sendingReply && (
-                        <Loader2 className="h-5 w-5 animate-spin text-white" />
-                      )}
+                      {sendingReply && <Loader2 className="h-5 w-5 animate-spin text-white" />}
                       {sendingReply ? "Sending..." : "Send Reply"}
                     </button>
+
                     <button
                       type="button"
-                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 transition font-[Montserrat,sans-serif]"
+                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 transition"
                       onClick={() => {
                         setReplyTo(null);
                         setReplyMessage("");
@@ -213,7 +263,7 @@ export default function AdminMessagesPage() {
                   </div>
 
                   {sentMessage && (
-                    <p className="text-green-600 font-semibold mt-3 font-[Montserrat,sans-serif]">
+                    <p className="text-green-600 font-semibold mt-3">
                       ✅ Email sent successfully!
                     </p>
                   )}
