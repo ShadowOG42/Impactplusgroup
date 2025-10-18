@@ -146,6 +146,7 @@ const Contacts = () => {
       {/* Contact Form */}
       <div className="bg-white p-8 rounded-2xl shadow-lg mb-20 border border-gray-100">
         <form
+          autoComplete="off"
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           onSubmit={handleSubmit}
         >
@@ -158,6 +159,7 @@ const Contacts = () => {
                 {field.charAt(0).toUpperCase() + field.slice(1)}:*
               </label>
               <input
+              autoComplete="off"
                 type={field === "email" ? "email" : "text"}
                 name={field}
                 value={formData[field as keyof FormData]}
@@ -177,6 +179,7 @@ const Contacts = () => {
               Message:*
             </label>
             <textarea
+            autoComplete="off"
               name="message"
               rows={4}
               value={formData.message}
