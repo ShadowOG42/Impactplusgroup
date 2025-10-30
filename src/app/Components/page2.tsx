@@ -18,7 +18,7 @@ const Page2 = () => {
         {
           text: [
             ...'WELCOME TO'.split('').map(c => ({
-              char: c, color: '#ffffff', font: '"Poppins", sans-serif', weight: '700'
+              char: c, color: '#ffffff', font: 'Georgia, serif', weight: '700'
             }))
           ],
         },
