@@ -82,14 +82,14 @@ const Services = () => {
 
           <div className="flex flex-wrap justify-center gap-4">
             <button
-              onClick={() => scrollToSection(consultingRef)}
+              onClick={() => scrollToSection(technologyRef)}
               className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               Our Integrated Approach
             </button>
             <button
-              onClick={() => scrollToSection(technologyRef)}
+              onClick={() => scrollToSection(consultingRef)}
               className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
@@ -98,16 +98,16 @@ const Services = () => {
           </div>
         </div>
       </section>
-
+       {/* Technology Section */}
+      <div ref={technologyRef}>
+        <Technology />
+      </div>
       {/* Consulting Section */}
       <div ref={consultingRef}>
         <Consulting />
       </div>
 
-      {/* Technology Section */}
-      <div ref={technologyRef}>
-        <Technology />
-      </div>
+      
 
       {/* Training Section (optional) */}
       {/* <div ref={trainingRef}>

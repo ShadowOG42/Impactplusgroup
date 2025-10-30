@@ -358,7 +358,7 @@ At Impact Plus, sustainability isn’t a product line — it’s a performance s
       {/* Footer Quote */}
       <div className="mt-20 text-center">
         <p style={{ fontFamily: 'Georgia, serif', color: '#4b5563' }} className="italic text-md">
-          “Strategy flows seamlessly into execution with measurable impact.”
+          “End-to-end transformation—from strategy to systemsto skills”
         </p>
       </div>
     </section>

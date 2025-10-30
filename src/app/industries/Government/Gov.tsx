@@ -461,41 +461,9 @@ import React from "react";
 const Tech = () => {
   return (
     <section className="bg-white py-20 px-6 md:px-16 lg:px-32">
-      {/* Title */}
-      <div className="text-center mb-16">
-        <h1
-          className="text-4xl md:text-5xl font-bold mb-6"
-          style={{ fontFamily: "Georgia, serif", color: "#293c83" }}
-        >
-          Industries We Partner With
-        </h1>
-        <p
-          className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto"
-          style={{ fontFamily: "Montserrat, sans-serif" }}
-        >
-          Empowering the sectors that shape a safer, smarter, and more sustainable world.
-        </p>
-      </div>
+      
 
-      {/* Intro Paragraph */}
-      <p
-        className="text-lg leading-relaxed text-gray-800 max-w-5xl mx-auto mb-14"
-        style={{ fontFamily: "Montserrat, sans-serif" }}
-      >
-        At Impact Plus, we partner with organisations and government bodies across the industries that 
-        power modern economies and enable sustainable growth. Our collaborations span renewable energy, 
-        oil & gas, mining, power generation, infrastructure and building construction, and the public sector — 
-        industries where safety, efficiency, and sustainability are essential to long-term performance. 
-        We combine strategic consulting, leadership and workforce capability, and sustainable product 
-        innovation to help these sectors achieve measurable outcomes — improving safety, quality, 
-        governance, and environmental performance. Our integrated approach connects people, systems, 
-        and products, enabling every client to operate with greater clarity, confidence, and resilience 
-        in an increasingly complex world.
-        <br /><br />
-        Our partnerships extend across the full project lifecycle — from feasibility and concept design 
-        through execution, commissioning, and optimisation, to decommissioning or repurposing of assets 
-        and infrastructure.
-      </p>
+       
 
       {/* Exact Image (Responsive) */}
       <div className="w-full flex justify-center mb-14">
