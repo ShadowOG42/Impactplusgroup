@@ -6,326 +6,305 @@ export default function Consulting() {
 
   const topics = [
     {
-      title: 'Governance, Leadership & People Performance Optimisation',
+      title: '1.	Project Management & Delivery Support  ',
       content: (
         <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <h3
+            className="text-2xl font-bold mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+           Strategic input into planning, scheduling, coordination, and governance across all project phases.
+          </h3>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             The Challenge
           </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            In an increasingly complex and highly regulated world, organisations face relentless pressure to innovate, maintain safety, and deliver sustainable performance. Achieving this requires more than technical capability — it demands visionary leadership, strong governance, and a high-performing workforce united by the right culture, systems, and strategy to thrive.
-          </p>
 
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <p className="mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            Large-scale projects often face fragmented coordination, unclear governance, and inconsistent delivery standards. Complex interfaces between contractors, clients, and regulators can lead to inefficiencies, cost overruns, and schedule delays. To achieve predictable success, organisations need structured project governance, transparent communication, and system-aligned execution that connects strategy to delivery.  </p>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             The Impact Plus Solution
           </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we help organisations turn strategy into real-world execution by aligning governance, leadership, and culture to drive measurable performance outcomes.
-            Our approach is evidence-based, human-centred, and system-smart — integrating culture diagnostics, change management frameworks, leadership development, and performance analytics to create enduring capability.
+
+          <p className="mb-4" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            At Impact Plus, we provide strategic project management and delivery support that embeds governance,
+            risk, and assurance into every phase of execution. Our team brings deep experience in planning, scheduling,
+            and performance control—ensuring alignment between design intent, field delivery, and organisational objectives.
+            We integrate project management frameworks with continuous improvement tools and quality systems to enhance
+            efficiency, accountability, and traceability.
           </p>
 
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
+          <p className="font-semibold mb-2" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            We help organisations to:
+          </p>
+
+          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            <li>Strengthen project governance and decision-making.</li>
+            <li>Improve coordination and communication across multi-contractor environments.</li>
+            <li>Embed risk, quality, and HSE assurance within delivery systems.</li>
+            <li>Drive predictable outcomes through planning, analytics, and reporting discipline.</li>
+          </ul>
+
+          <h3
+            className="text-2xl mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            Our Differentiator — Strategy into Execution
+          </h3>
+
+          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            We bridge the gap between project vision and field execution through an integrated PMO approach that
+            unites governance, systems, and leadership. Our focus on alignment and traceability ensures performance
+            isn’t just monitored — it’s managed with precision and confidence.
+          </p>
+        </>
+      ),
+    },
+    {
+      title: '2.	Workplace Health, Safety, Environment, Quality & Continuous Improvement Systems',
+      content: (
+        <>
+          <h3
+            className="text-2xl font-bold mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+           Design, auditing, and optimisation of ISO-aligned management systems (ISO 9001, ISO 14001, ISO 45001) to strengthen operational excellence.
+          </h3>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            The Challenge
+          </h3>
+
+          <p className="mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+           In a rapidly changing regulatory and operational landscape, many organisations struggle to maintain compliance, integrate management systems, and sustain performance excellence. Disconnected processes and reactive improvement efforts can undermine efficiency, accountability, and trust. </p>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            The Impact Plus Solution
+          </h3>
+
+          <p className="mb-4" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+          We design, audit, and optimise ISO-aligned management systems that connect safety, environment, quality, and governance into one cohesive framework. Our experts deliver end-to-end system integration covering ISO 9001 (Quality), ISO 14001 (Environment), and ISO 45001 (Health & Safety) — ensuring consistent standards, traceability, and continuous improvement.
+          We help organisations embed a culture of proactive risk management, operational discipline, and measurable performance.
+
+          </p>
+
+          <p className="font-semibold mb-2" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            We partner with clients to:
+          </p>
+
+          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            <li>Develop and integrate ISO-certified management systems.</li>
+            <li>Streamline compliance and documentation.</li>
+            <li>Build internal audit and continual improvement capability.</li>
+            <li>Enhance data visibility for smarter decision-making.</li>
+          </ul>
+
+          <h3
+            className="text-2xl mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            Our Differentiator — Integrated by Design
+          </h3>
+
+          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            Our systems are not built for certification alone — they are designed for connection. By uniting quality, safety, and environmental performance, we help organisations turn compliance into competitive advantage and continuous improvement into a cultural norm.
+          </p>
+        </>
+      ),
+    },
+    {
+      title: '3. Leadership, Workforce & Organisational Performance Optimisation',
+      content: (
+        <>
+          <h3
+            className="text-2xl font-bold mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+           Targeted capability programs that build adaptive leadership, strengthen safety and quality culture, and embed resilience, learning, and continuous improvement across the organisation.
+          </h3>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            The Challenge
+          </h3>
+
+          <p className="mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            Even the best systems falter without strong leadership and an engaged, resilient workforce. Many organisations face cultural fragmentation, low accountability, and reactive performance driven by compliance rather than curiosity and learning. In today’s dynamic environment, sustained success requires leaders who can connect vision to behaviour, foster psychological safety, and enable teams to adapt, recover, and grow through complexity and change.
+          </p>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            The Impact Plus Solution
+          </h3>
+
+          <p className="mb-4" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            At Impact Plus, we strengthen leadership capability and workforce performance through human-centred, system-smart, and resilience-focused strategies.
+Our approach draws on Human and Organisational Performance (HOP) principles, Learning Teams methodologies, and insights from resilience and hardiness science to build capacity, adaptability, and sustained excellence across all levels of the organisation.
+Through diagnostics, leadership programs, mentoring, and applied workshops, we help organisations move from reactive problem-solving to proactive learning, embedding systems thinking, collaboration, and curiosity into daily operations.
+
+          </p>
+
+          <p className="font-semibold mb-2" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
             We partner with organisations to:
           </p>
+
           <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Strengthen leadership and governance capability at all levels.</li>
-            <li>Enhance engagement, collaboration, and team effectiveness.</li>
-            <li>Embed systems thinking and continuous improvement into daily operations.</li>
-            <li>Build resilient, future-ready cultures that support innovation and accountability.</li>
-            <li>Align ESG principles and ISO systems with leadership and operational practices.</li>
+            <li>	Strengthen leadership, governance, and decision-making capability.</li>
+            <li>	Embed HOP principles that focus on learning over blame and system improvement over error avoidance.</li>
+            <li>  Facilitate Learning Teams that harness workforce insights to drive innovation, accountability, and shared ownership.</li>
+            <li>	Build resilience and hardiness across individuals and teams to sustain performance under pressure and uncertainty.</li>
           </ul>
 
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            Through diagnostic workshops such as learning teams, tailored development programs, mentoring, and workforce analytics, we address complex organisational challenges with precision and impact. By driving behaviour change, fostering alignment, and building leadership capability, we enable sustainable transformation and performance excellence.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — Human-Centred, System-Smart
+          <h3
+            className="text-2xl mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            Our Differentiator — Human-Centred, System-Smart, and Resilience-Driven
           </h3>
+
           <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We combine deep expertise in leadership development, systems thinking, Human and Organisational Performance (HOP), and change enablement to help people and systems thrive together. Whether shaping culture, simplifying governance, or aligning ESG with leadership, we focus on what drives clarity, capability, and real-world execution — empowering leaders to embed sustainable change that endures beyond our engagement.
+            We go beyond traditional leadership training — fostering capability that endures.
+            By integrating behavioural science, systems thinking, and adaptive leadership, we enable people and systems to thrive together.
+            Our programs cultivate resilient leaders and teams who can anticipate change, recover from challenges, and perform with confidence and clarity in a complex world.
+
           </p>
         </>
       ),
     },
-
     {
-      title: 'Stakeholder Management',
+      title: '4. Surveying & Spatial Services',
       content: (
         <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <h3
+            className="text-2xl font-bold mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+           Delivering precision data acquisition, mapping, and site verification that support construction, engineering, mining, and asset integrity with accuracy and confidence.
+          </h3>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             The Challenge
           </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            In today’s complex and interconnected world, organisations operate under growing scrutiny and heightened expectations for transparency, collaboration, and social responsibility. Ineffective stakeholder engagement can lead to delays, reputational harm, and project setbacks, while internal misalignment or resistance to change can erode trust and productivity. Building meaningful connections and maintaining alignment across diverse stakeholder groups has become critical to achieving sustainable success.
+
+          <p className="mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+           Accurate spatial data is fundamental to safe, efficient, and compliant project delivery. However, outdated surveying methods, inconsistent data, and disconnected information systems often create costly errors and inefficiencies across the project lifecycle.
           </p>
 
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             The Impact Plus Solution
           </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we enable organisations to build trust, reduce risk, and accelerate delivery through strategic, inclusive, and evidence-based stakeholder engagement. Our approach integrates stakeholder mapping, communication strategy, hybrid engagement methods, and feedback analytics to align both internal and external stakeholders around a shared vision.
+
+          <p className="mb-4" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            We deliver high-precision surveying and spatial services that support planning, engineering, and asset integrity across construction, mining, and infrastructure sectors.
+            Our team combines advanced geospatial technology, digital mapping, and data analytics to provide actionable insights that enhance decision-making, verification, and compliance.
+
           </p>
 
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
-            We work with our clients to:
-          </p>
-          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Identify, analyse, and prioritise key stakeholders across all levels.</li>
-            <li>Design and implement engagement frameworks that promote transparency and collaboration.</li>
-            <li>Strengthen communication pathways to reduce conflict and foster shared ownership.</li>
-            <li>Integrate stakeholder engagement into governance, ESG, and change management processes.</li>
-            <li>Create feedback loops that inform decision-making and drive continuous improvement.</li>
-          </ul>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — Co-Design, Not Command
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We work with stakeholders, not around them. Through collaborative frameworks, transparent communication, and cultural insight, we co-create engagement strategies that build ownership and trust. Our approach transforms consultation into collaboration — ensuring every stakeholder feels seen, heard, and connected to the organisation’s purpose.
-          </p>
-        </>
-      ),
-    },
-
-    {
-      title: 'Systems, Processes & ISO Standards',
-      content: (
-        <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Challenge
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            In a fast-moving and regulated business environment, disconnected systems, outdated workflows, and complex compliance requirements can undermine efficiency, quality, and confidence. To remain competitive, organisations must integrate streamlined processes, ISO-aligned systems, and continuous improvement frameworks that enhance visibility, consistency, and resilience across all operations.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Impact Plus Solution
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we design and implement integrated management systems that align governance, quality, safety, environment, and information security with operational excellence. Our experts specialise in developing, auditing, and optimising systems certified to ISO 9001 (Quality), ISO 14001 (Environment), ISO 45001 (Health & Safety), and ISO 27001 (Information Security).
-          </p>
-
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
+          <p className="font-semibold mb-2" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
             We partner with clients to:
           </p>
+
           <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Design and embed end-to-end management systems that streamline operations and reduce risk.</li>
-            <li>Simplify compliance and documentation through smart process design and digital integration.</li>
-            <li>Support certification readiness and continual improvement across the ISO suite.</li>
-            <li>Integrate quality, safety, environment, and governance into unified, efficient frameworks.</li>
-            <li>Enhance traceability, accountability, and data-driven decision-making.</li>
+            <li>	Deliver mining, engineering, and construction surveying with millimetre precision.</li>
+            <li>	Produce spatial models and digital mapping for project planning and assurance.</li>
+            <li>	Integrate survey data with GIS, BIM, and project systems for seamless data flow.</li>
+            <li>	Strengthen quality assurance and governance through accurate spatial validation.</li>
           </ul>
 
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — Integrated by Design
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            Our systems are built for connection, not compliance. We design integrated frameworks that unite ISO standards, risk, quality, safety, and environment under one cohesive structure. Whether digitising workflows, embedding ESG principles, or simplifying documentation, we ensure every process drives efficiency, traceability, and scalable performance.
-          </p>
-        </>
-      ),
-    },
-
-    {
-      title: 'Surveying & Spatial Services',
-      content: (
-        <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Challenge
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            In today’s data-driven world, accurate spatial information underpins effective decision-making, risk management, and project delivery. Yet, many organisations still struggle with inconsistent data, fragmented workflows, and outdated surveying methods, leading to costly errors, delays, and compliance challenges. Achieving precision, efficiency, and integration across the asset and project lifecycle requires a trusted partner capable of combining technical accuracy with strategic insight.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Impact Plus Solution
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we deliver high-precision surveying and spatial solutions that enhance planning, execution, and assurance across every project phase — from feasibility and design to construction, commissioning, and decommissioning. Our team combines advanced geospatial technologies, digital mapping, and data analytics to provide real-time insights that drive smarter decisions and stronger governance.
-          </p>
-
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
-            We partner with clients to:
-          </p>
-          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Provide mining, engineering and construction surveying with millimetre precision.</li>
-            <li>Deliver digital terrain models, spatial mapping, and asset visualisation for project planning and monitoring.</li>
-            <li>Integrate survey data with GIS, BIM, and project control systems to ensure seamless information flow.</li>
-            <li>Support compliance, verification, and quality assurance through robust spatial data management.</li>
-            <li>Enable data-driven decision-making that improves safety, accuracy, and performance outcomes.</li>
-          </ul>
-
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            Through our integrated approach, we transform spatial data into actionable intelligence — supporting clients to deliver projects on time, within scope, and with confidence.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <h3
+            className="text-2xl mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             Our Differentiator — Spatial Precision, Strategic Impact
           </h3>
+
           <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We merge precision surveying, digital innovation, and systems integration to deliver spatial intelligence that drives better decisions. From risk reduction and compliance verification to digital twin enablement, our spatial solutions provide the data accuracy and insight needed for safe, efficient, and confident project execution.
+            We merge precision surveying with digital innovation and systems integration, transforming data into intelligence. Our spatial solutions empower clients to plan, build, and verify with confidence and clarity.
           </p>
         </>
       ),
     },
-
     {
-      title: 'ESG & Sustainability Alignment',
+      title: '5.	Sustainable Products',
       content: (
         <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <h3
+            className="text-2xl font-bold mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+           Where performance meets purpose — designing and supplying high-performance industrial materials that protect people, assets, and the planet
+          </h3>
+
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             The Challenge
           </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            The global shift toward sustainability is redefining how organisations measure success. Stakeholders now expect demonstrable progress across environmental, social, and governance (ESG) dimensions — not just compliance. However, many organisations face challenges in embedding ESG principles into core operations, translating commitments into measurable outcomes, and aligning sustainability goals with business strategy and performance systems.
+
+          <p className="mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            Industries across energy, mining, construction, and manufacturing face mounting pressure to reduce environmental impact, improve resource efficiency, and maintain a reliable supply of compliant, high-performance materials. Traditional supply chains often prioritise cost over sustainability, leading to product inconsistency, safety risks, and increased operational emissions. To remain competitive and responsible, organisations must embed sustainability and innovation into product design, sourcing, and lifecycle management.
           </p>
 
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
+          <h3
+            className="text-2xl  mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
             The Impact Plus Solution
           </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we help organisations translate ESG ambition into real-world execution through practical, data-driven, and system-aligned strategies. Our approach integrates ESG frameworks, sustainability reporting, risk management, and leadership engagement into the everyday fabric of organisational performance.
+
+          <p className="mb-4" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+          At Impact Plus, sustainability is engineered — not added on.
+We design, develop, and supply environmentally responsible industrial materials and consumables that power modern industry while minimising ecological impact. Our Industrial Products Division extends Impact Plus’s consulting expertise into the material sciences — combining chemistry, engineering, and innovation to deliver products that perform better, last longer, and leave a smaller footprint. Led by our in-house Development Chemists, we pioneer greener pigment and surfactant technologies, polymer dispersions, and performance coatings that enhance safety, reliability, and efficiency across multiple sectors. Beyond organisational excellence, we help clients translate sustainability ambition into tangible innovation — applying scientific insight, first-principle thinking, and industry experience to accelerate product development, ensure compliance, and bring sustainable technologies to market.
           </p>
 
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
-            We partner with clients to:
+          <p className="font-semibold mb-2" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+            We partner with organisations to:
           </p>
+
           <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Assess ESG maturity and establish clear baselines for performance improvement.</li>
-            <li>Develop and implement ESG strategies aligned with organisational values, ISO standards, and global sustainability frameworks (e.g., UN SDGs, GRI, TCFD).</li>
-            <li>Integrate ESG metrics into governance, project management, and decision-making processes.</li>
-            <li>Strengthen stakeholder trust through transparent reporting, impact measurement, and communication.</li>
-            <li>Embed environmental stewardship, social responsibility, and ethical leadership into culture and operations.</li>
+            <li>	Design and develop greener, cost-efficient pigments, dispersions, polymers, and coatings through advanced chemistry.</li>
+            <li>	Source and supply sustainable, high-performance industrial products including PPE, coatings, paints, welding consumables, and specialty materials.</li>
+            <li>	Optimise procurement, logistics, and product lifecycle management for traceability and efficiency.</li>
+            <li>	Support compliance with environmental, quality, and safety standards across ISO and ESG frameworks.</li>
+            <li>	Collaborate on innovation projects that align product design with sustainability goals and operational performance.</li>
           </ul>
 
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            By linking ESG objectives with operational systems and leadership accountability, we help organisations achieve compliance, credibility, and competitive advantage — while creating long-term shared value for people, planet, and performance.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — Sustainability at the Core
+          <h3
+            className="text-2xl mb-3"
+            style={{ color: '#293c83', fontFamily: 'Georgia, serif' }}
+          >
+            Our Differentiator — Science. Sustainability. Performance.
           </h3>
+
           <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We embed ESG and sustainability principles into governance, leadership, and operational systems — transforming compliance into competitive advantage. By linking environmental stewardship, social responsibility, and ethical governance, we help organisations deliver impact, integrity, and long-term value.
-          </p>
-        </>
-      ),
-    },
+            We merge scientific rigour with sustainable design to create materials and products that protect people, assets, and the planet.
+Our dual capability — consulting and chemistry — bridges the gap between strategy and substance, helping industries build smarter, perform better, and impact less.
+At Impact Plus, sustainability isn’t a product line — it’s a performance standard.
 
-    {
-      title: 'Connecting people, systems, and products for real-world performance',
-      content: (
-        <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Challenge
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            In complex, fast-paced project environments, effective engagement and access to reliable products are critical for safety, compliance, and performance. Organisations often face challenges such as fragmented communication systems, inconsistent procurement processes, and unreliable product supply chains, which can compromise operational continuity, safety outcomes, and stakeholder confidence. To deliver consistent excellence, businesses need integrated tools, systems, and products that connect people, enhance visibility, and ensure readiness at every stage of execution.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Impact Plus Solution
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we combine digital engagement solutions with fit-for-purpose product supply to support safer, smarter, and more efficient operations. Our dual capability ensures that clients can manage information and resources seamlessly — from communication platforms and analytics tools to physical products essential for frontline performance.
-          </p>
-
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
-            We partner with clients to:
-          </p>
-          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Design and implement digital engagement tools, dashboards, and communication platforms that improve collaboration and decision-making.</li>
-            <li>Supply high-quality, safety-critical and operational products including PPE, paints, coatings, welding consumables, and related industrial materials.</li>
-            <li>Streamline procurement and logistics processes to ensure cost-effective, compliant, and timely delivery.</li>
-            <li>Integrate product usage data and digital systems for inventory tracking, risk control, and continuous improvement.</li>
-            <li>Support field teams with training and onboarding tools that enhance safe and consistent product use.</li>
-          </ul>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — Integrated by Design
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We bridge the digital and the physical — delivering both engagement platforms and essential products such as PPE, coatings, and welding consumables. Our unique integration of technology, tools, and tangible solutions keeps people safe, systems aligned, and projects moving with consistency and confidence.
-          </p>
-        </>
-      ),
-    },
-
-    {
-      title: 'AI-Enabled Transformation',
-      content: (
-        <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Challenge
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            Organisations today operate in an environment defined by complexity, data overload, and rapid technological change. Despite the promise of artificial intelligence, many struggle to translate AI potential into practical outcomes — facing challenges such as data silos, low digital maturity, and resistance to change. Without a clear strategy, AI initiatives can remain isolated, failing to deliver measurable value or cultural adoption.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Impact Plus Solution
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we help organisations harness the power of AI, automation, and advanced analytics to transform decision-making, optimise systems, and elevate performance.
-            Our approach integrates data intelligence, systems thinking, and human-centred design to ensure that technology aligns with strategy, governance, and culture — not the other way around.
-          </p>
-
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
-            We partner with clients to:
-          </p>
-          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Develop and implement AI-driven solutions for risk management, quality assurance, and operational optimisation.</li>
-            <li>Embed predictive analytics and machine learning into safety, maintenance, and performance monitoring systems.</li>
-            <li>Design digital twins and decision-support models that improve foresight and reduce uncertainty.</li>
-            <li>Automate repetitive or high-risk processes to enhance efficiency, accuracy, and worker safety.</li>
-            <li>Build AI capability and literacy across leadership and frontline teams to support cultural adoption and ethical use.</li>
-          </ul>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — AI Done Right
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We help organisations move from exploration to execution — integrating AI strategy, governance, and human-machine collaboration to drive real, measurable outcomes. Our AI approach is ethical, scalable, and system-smart, ensuring technology enhances people and performance — not the other way around.
-          </p>
-        </>
-      ),
-    },
-
-    {
-      title: 'Continuous Improvement & Innovation',
-      content: (
-        <>
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Challenge
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-6">
-            In a world of constant change, organisations that fail to learn, adapt, and innovate quickly fall behind. Many businesses struggle with siloed improvement efforts, reactive problem-solving, and limited feedback loops, resulting in inefficiency, risk exposure, and missed opportunities. Sustained success requires more than incremental improvement — it demands a structured, data-driven approach to innovation that embeds learning and agility into the organisation’s DNA.
-          </p>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            The Impact Plus Solution
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="mb-4">
-            At Impact Plus, we help organisations build continuous improvement systems that drive measurable performance and unlock innovation across all levels. Our approach integrates Lean thinking, Six Sigma methodologies, systems optimisation, and human performance principles to enhance operational excellence and strategic resilience.
-          </p>
-
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }} className="font-semibold mb-2">
-            We partner with clients to:
-          </p>
-          <ul className="list-disc pl-6 mb-6" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            <li>Design and implement fit-for-purpose improvement frameworks that align with business goals and governance systems.</li>
-            <li>Identify inefficiencies and streamline processes through data analytics, workflow mapping, and stakeholder collaboration.</li>
-            <li>Develop innovation pipelines that connect employee ideas with strategic priorities and measurable outcomes.</li>
-            <li>Embed Plan–Do–Check–Act (PDCA) and Kaizen principles to foster learning, accountability, and adaptability.</li>
-            <li>Support leadership and teams with the skills, tools, and mindset to sustain continuous improvement long after project completion.</li>
-          </ul>
-
-          <h3 style={{ color: '#293c83', fontFamily: 'Georgia, serif' }} className="text-2xl font-bold mb-3">
-            Our Differentiator — Continuous by Culture, Innovative by Design
-          </h3>
-          <p style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
-            We embed Lean, Six Sigma, and systems improvement principles into culture, not just process. By combining behavioural insight, data analytics, and innovation frameworks, we help organisations evolve continuously — building a culture of learning, agility, and measurable progress.
           </p>
         </>
       ),
@@ -337,10 +316,17 @@ export default function Consulting() {
       {/* Hero Title */}
       <div className="text-center mb-20">
         <h1 style={{ fontFamily: 'Georgia, serif', color: '#293c83' }} className="text-4xl md:text-5xl font-bold mb-4">
-          Translating Strategy into Real World Execution
+          Our Integrated Consulting and Product Solutions
         </h1>
+        <h2 style={{ fontFamily: 'Georgia, serif', color: '#293c83' }} className="text-2xl md:text-3xl font-semibold mb-6">
+          Connecting Strategy, Systems, and Sustainability — From Insight to Impact.
+        </h2>
         <p style={{ fontFamily: 'Montserrat, sans-serif', color: '#4b5563' }} className="max-w-3xl mx-auto text-lg md:text-xl">
-          Impact Plus develops custom solutions integrating governance, systems thinking, ESG, leadership, innovation, and AI. Our solutions include:
+          At Impact Plus, we move organisations from plans to performance. Through an integrated blend of consulting,
+          leadership, innovation, and sustainable product solutions, we translate complexity into clarity — turning strategic
+          intent into operational excellence. By combining governance, systems thinking, human performance, and sustainable design,
+          we help organisations achieve safer operations, stronger governance, and smarter growth. Explore how our integrated solutions
+          drive clarity, performance, and sustainable success.
         </p>
       </div>
 
@@ -352,6 +338,7 @@ export default function Consulting() {
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
+              aria-pressed={activeIndex === i}
               className={`p-4 text-left rounded-lg border font-semibold transition-colors ${
                 activeIndex === i ? 'bg-[#293c83] text-white' : 'bg-white text-[#293c83] hover:bg-[#f1f5ff]'
               }`}

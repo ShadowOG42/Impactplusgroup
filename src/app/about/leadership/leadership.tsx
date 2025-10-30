@@ -14,10 +14,22 @@ export default function Leadership() {
 
       {/* Managing Director Section */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-        {/* Left: Content */}
+        {/* Left: Image */}
+        <div className="flex justify-center lg:justify-start">
+          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-blue-300">
+            <Image
+              src="/Certificates/Mr_Maveza.png"
+              alt="Dr. Posani Maveza"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Right: Updated Content */}
         <div>
           <h2 className="text-2xl font-semibold text-blue-800 mb-2 font-[Georgia]">
-            Our Managing Director & Principal Consultant
+            Managing Director & Principal Consultant
           </h2>
           <h3 className="text-xl md:text-2xl font-bold text-blue-900 mb-1 font-[Georgia]">
             Dr. Posani Maveza
@@ -27,81 +39,25 @@ export default function Leadership() {
           </p>
 
           <p className="text-gray-700 mb-4 leading-relaxed">
-            Dr. Posani Maveza is the founder and strategic force behind Impact
-            Plus, a consulting firm known for delivering integrated,
-            future-focused transformation across sectors. A highly accomplished
-            organisational performance specialist and systems thinker, Dr.
-            Maveza combines 20+ years of experience across energy,
-            infrastructure, mining, health, government, and higher education.
+            Dr Posani Maveza is the founder and strategic lead of Impact Plus,
+            guiding transformative consulting, systems excellence, and sustainable
+            product innovation across industries. With over 20 years’ experience
+            in energy, mining, infrastructure, health, government, and higher
+            education, he integrates governance, systems thinking, quality
+            management, and digital transformation to deliver measurable impact.
           </p>
           <p className="text-gray-700 mb-4 leading-relaxed">
-            He leads with deep expertise in governance, systems integration, ESG
-            alignment, stakeholder management, continuous improvement, and
-            AI-enabled transformation. His doctoral research led to the
-            development of the Quality Excellence Framework (QEF)—an applied
-            model that now informs best practice consulting across the firm’s
-            eight integrated capabilities.
+            His academic and professional grounding — including a PhD in
+            Governance, Quality Systems & Continuous Improvement and multiple
+            master’s degrees across Health, Safety & Environment, Engineering
+            Management, and Mining Engineering — underpins Impact Plus’s
+            evidence-based consulting approach.
           </p>
-        </div>
-
-        {/* Right: Image + Name */}
-        <div className="flex flex-col items-center">
-          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-blue-300">
-            <Image
-              src="/Certificates/Mr_Maveza.png"
-              alt="Dr. Posani Maveza"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="text-center mt-4">
-            <h3 className="text-xl md:text-2xl font-bold text-blue-900 font-[Georgia]">
-              Dr. Posani Maveza
-            </h3>
-            <p className="text-blue-700 text-sm md:text-base">
-              PhD, MHS&amp;E, MEMgt, MMinEng, BSc (Hons) Surveying
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Differentiators Section */}
-      <section className="mb-16">
-        <div className="bg-gradient-to-r from-blue-100 to-blue-50 shadow-lg rounded-2xl p-8 border border-blue-200">
-          <h4 className="text-xl font-semibold text-blue-900 mb-4 font-[Georgia]">
-            Dr. Maveza&apos;s leadership exemplifies the Impact Plus differentiators:
-          </h4>
-
-          <ul className="list-disc pl-6 text-gray-700 space-y-2">
-            <li>Strategy embedded in operations</li>
-            <li>Measurable transformation</li>
-            <li>Human-centred, system-smart solutions</li>
-            <li>Practical, ethical use of innovation and AI</li>
-            <li>ESG and sustainability integration</li>
-            <li>Collaborative, co-designed change</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Academic Credentials */}
-      <section className="mb-16">
-        <div className="bg-gradient-to-r from-white to-blue-50 shadow-md rounded-2xl p-8 border-l-4 border-blue-600">
-          <h4 className="text-xl font-semibold text-blue-900 mb-4 font-[Georgia]">
-            Academic Credentials
-          </h4>
-          <ul className="list-disc pl-6 text-gray-700 space-y-2">
-            <li>
-              PhD (Governance, Quality Systems & Continuous Improvement) – QUT
-            </li>
-            <li>Master of Health, Safety & Environment – QUT</li>
-            <li>Master of Engineering Management – UTS</li>
-            <li>Master of Mining Engineering – UNSW</li>
-            <li>Bachelor of Science (Surveying) – MSU</li>
-            <li>
-              Certified across multiple quality, safety, and leadership
-              disciplines
-            </li>
-          </ul>
+          <p className="text-gray-700 leading-relaxed">
+            Certified across multiple quality, safety, and leadership disciplines,
+            Dr Maveza continues to shape how organisations align people, systems,
+            and products for sustainable performance.
+          </p>
         </div>
       </section>
 

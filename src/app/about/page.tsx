@@ -1,22 +1,23 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OurVision from "./vision/vision";
 import Leadership from "./leadership/leadership";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const About = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const visionRef = useRef<HTMLDivElement>(null);
   const leadershipRef = useRef<HTMLDivElement>(null);
+  const visionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
 
+  // Scroll with navbar offset
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    if (!ref.current) return;
+    const yOffset = -80; // adjust for navbar height
+    const y = ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -43,21 +44,6 @@ const About = () => {
         { opacity: 1, y: 0, duration: 0.8, delay: 1, stagger: 0.2, ease: "power2.out" }
       );
     }
-
-    const sections = [visionRef.current, leadershipRef.current];
-    sections.forEach((section) => {
-      if (section) {
-        gsap.from(section, {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-          },
-        });
-      }
-    });
   }, []);
 
   return (
@@ -67,7 +53,6 @@ const About = () => {
         ref={heroRef}
         className="relative w-full h-[100vh] flex items-center justify-center text-center pt-24 md:pt-32"
       >
-        {/* Video Background */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
@@ -79,10 +64,8 @@ const About = () => {
           <source src="/videos/About_us.mp4" type="video/mp4" />
         </video>
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Content */}
         <div className="relative z-10 max-w-5xl px-6 flex flex-col items-center justify-center">
           <h1
             ref={titleRef}
@@ -134,13 +117,13 @@ const About = () => {
         <OurVision />
       </div>
 
-      {/* Back to Top */}
-      <div className="flex justify-center my-12">
+      {/* Industries Button at End */}
+      <div className="flex justify-center my-16">
         <button
-          onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-[#293c83] text-white font-semibold rounded-full shadow hover:bg-blue-800 transition font-[Montserrat,sans-serif]"
+          onClick={() => (window.location.href = "/industries")}
+          className="px-8 py-3 text-sm font-semibold bg-[#293c83] text-white rounded-full shadow hover:scale-105 transition-transform duration-300"
         >
-          Back to Top
+          Explore the Industries We Partner With
         </button>
       </div>
     </main>

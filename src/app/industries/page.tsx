@@ -1,24 +1,11 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-
-// Industry Components
-// import Energy from "./renewable_energy/Energy";
-// import Mining from "./Mining/Mining";
-// import Oil from "./Oil&Gas/Oil&gas";
-// import Power_gen from "./Power_generation/Power_gen";
-// import Public_infra from "./Public_infrastructure/Public_infra";
 import Gov from "./Government/Gov";
 
 const Industries = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const energyRef = useRef<HTMLDivElement | null>(null);
-  const miningRef = useRef<HTMLDivElement | null>(null);
-  const oilRef = useRef<HTMLDivElement | null>(null);
-  const powerGenRef = useRef<HTMLDivElement | null>(null);
-  const publicInfraRef = useRef<HTMLDivElement | null>(null);
   const govRef = useRef<HTMLDivElement | null>(null);
-
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
 
@@ -40,15 +27,15 @@ const Industries = () => {
 
       gsap.to(letters, {
         opacity: 1,
-        duration: 0.05,
-        stagger: 0.05,
+        duration: 0.04,
+        stagger: 0.04,
         ease: "power2.inOut",
         onComplete: () => {
           if (subtitleRef.current) {
             gsap.to(subtitleRef.current, {
               opacity: 1,
               y: -10,
-              duration: 0.8,
+              duration: 1,
               ease: "power2.out",
             });
           }
@@ -62,7 +49,7 @@ const Industries = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative w-full h-screen flex flex-col items-center justify-center text-center pt-24 md:pt-32"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center text-center overflow-hidden"
       >
         {/* Video Background */}
         <div className="absolute inset-0">
@@ -79,74 +66,61 @@ const Industries = () => {
         </div>
 
         {/* Hero Text */}
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
+        <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
           <h1
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-white drop-shadow-xl leading-tight"
             style={{ fontFamily: "Georgia, serif", color: "#293c83" }}
           >
-            Industry Solutions
+            Industries We Partner With
           </h1>
-          <p
-            ref={subtitleRef}
-            className="text-lg md:text-xl mb-8 text-white drop-shadow-md opacity-0 leading-relaxed"
+
+          <h2
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-8 text-gray-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            At Impact Plus, we deliver tailored solutions for key industries —
-            helping organisations in renewable energy, oil & gas, mining, power
-            generation, public infrastructure, health, government, and higher
-            education thrive in a rapidly changing world.
+            Empowering the sectors that shape a safer, smarter, and more
+            sustainable world.
+          </h2>
+
+          <p
+            ref={subtitleRef}
+            className="text-base sm:text-lg md:text-xl text-gray-200 opacity-0 leading-relaxed max-w-5xl mx-auto mb-10"
+          >
+            At Impact Plus, we partner with organisations and government bodies
+            across the industries that power modern economies and enable
+            sustainable growth. Our collaborations span renewable energy, oil &
+            gas, mining, power generation, infrastructure and building
+            construction, and the public sector — industries where safety,
+            efficiency, and sustainability are essential to long-term
+            performance. Our integrated approach connects people, systems, and
+            products, enabling every client to operate with greater clarity,
+            confidence, and resilience in an increasingly complex world.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-4">
-            {[
-              { label: "Our Solutions", ref: govRef },
-              { label: "Renewable Energy", ref: energyRef },
-              { label: "Oil & Gas", ref: oilRef },
-              { label: "Mining", ref: miningRef },
-              { label: "Power Generation", ref: powerGenRef },
-              { label: "Public Infrastructure", ref: publicInfraRef },
-            ].map((btn, i) => (
-              <button
-                key={i}
-                onClick={() => scrollToSection(btn.ref)}
-                className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
-                style={{ fontFamily: "Montserrat, sans-serif" }}
-              >
-                {btn.label}
-              </button>
-            ))}
+
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <button
+              onClick={() => scrollToSection(govRef)}
+              className="px-8 py-3 border-2 border-white text-white bg-transparent font-semibold rounded-full shadow-md hover:bg-white hover:text-[#293c83] transition-all duration-300"
+            >
+              Our Solutions
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Industry Sections */}
+      {/* Government Section */}
       <div ref={govRef}>
         <Gov />
       </div>
-      {/* <div ref={energyRef}>
-        <Energy />
-      </div>
-      <div ref={oilRef}>
-        <Oil />
-      </div>
-      <div ref={miningRef}>
-        <Mining />
-      </div>
-      <div ref={powerGenRef}>
-        <Power_gen />
-      </div>
-      <div ref={publicInfraRef}>
-        <Public_infra />
-      </div> */}
 
-      {/* Back to Top */}
-      <div className="flex justify-center my-12">
+      {/* Bottom Button */}
+      <div className="flex justify-center py-20 bg-[#f9fafc]">
         <button
-          onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-[#293c83] text-white font-semibold rounded-full shadow hover:bg-blue-800 transition"
-          style={{ fontFamily: "Montserrat, sans-serif" }}
+          onClick={() => (window.location.href = "/services")}
+          className="px-10 py-4 text-base md:text-lg font-semibold bg-[#293c83] text-white rounded-full shadow-lg hover:scale-105 hover:bg-[#1e2f6e] transition-transform duration-300"
         >
-          Back to Top
+          Explore Our Integrated Consulting and Product Solutions
         </button>
       </div>
     </main>

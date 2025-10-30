@@ -1,194 +1,133 @@
 'use client';
 
 import React, { useEffect, useRef } from "react";
-import { LinkedinIcon, MailIcon, FacebookIcon, GlobeIcon } from "lucide-react";
+import { LinkedinIcon, MailIcon, PhoneIcon, GlobeIcon } from "lucide-react";
 import Link from "next/link";
 
 const Page2 = () => {
-  const welcomeRef = useRef<HTMLDivElement>(null);
-  // const logoRef = useRef<HTMLDivElement>(null);
+  const welcomeRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (welcomeRef.current) {
+    let isMounted = true;
+    const timers: number[] = [];
+
+    const startTyping = () => {
+      if (!welcomeRef.current || !isMounted) return;
+
       const textLines = [
         {
-          // Line 1: WELCOME TO
           text: [
-            { char: "W", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "L", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "C", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "O", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "M", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "E", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "T", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "O", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-          ]
+            ...'WELCOME TO'.split('').map(c => ({
+              char: c, color: '#ffffff', font: '"Poppins", sans-serif', weight: '700'
+            }))
+          ],
         },
         {
-          // Line 2: IMPACT PLUS
           text: [
-            { char: "I", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: "M", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: "P", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: "A", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: "C", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: "T", color: "#1e7dba", font: '"Bebas Neue", sans-serif', weight: "700" },
-            { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "700" },
-            { char: "P", color: "#293c83", font: "Georgia, serif", weight: "700" },
-            { char: "L", color: "#293c83", font: "Georgia, serif", weight: "700" },
-            { char: "U", color: "#293c83", font: "Georgia, serif", weight: "700" },
-            { char: "S", color: "#293c83", font: "Georgia, serif", weight: "700" },
-          ]
+            ...'IMPACT '.split('').map(c => ({
+              char: c, color: '#1e7dba', font: '"Voltaire Frangela", serif', weight: '800'
+            })),
+            ...'PLUS'.split('').map(c => ({
+              char: c, color: '#293c83', font: 'Georgia, serif', weight: '700'
+            }))
+          ],
         },
-        // {
-        //   // Line 3: Tagline (optional)
-        //   text: [
-        //     { char: "T", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "r", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "a", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "n", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "s", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "f", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "o", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "r", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "m", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "i", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "n", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "g", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "C", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "o", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "m", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "p", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "l", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "e", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "x", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "i", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "t", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "y", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "i", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "n", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "t", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "o", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: " ", color: "#ffffff", font: '"Poppins", sans-serif', weight: "500" },
-        //     { char: "C", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //     { char: "l", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //     { char: "a", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //     { char: "r", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //     { char: "i", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //     { char: "t", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //     { char: "y", color: "#1e7dba", font: '"Poppins", sans-serif', weight: "600" },
-        //   ]
-        // }
       ];
 
-      welcomeRef.current.innerHTML = "";
-      let lineIndex = 0;
-      let charIndex = 0;
+      welcomeRef.current.innerHTML = '';
+      let lineIndex = 0, charIndex = 0;
 
       const typeChar = () => {
+        if (!welcomeRef.current || !isMounted) return;
+
         if (lineIndex < textLines.length) {
           const line = textLines[lineIndex];
           if (charIndex < line.text.length) {
-            const span = document.createElement("span");
+            const span = document.createElement('span');
             const charData = line.text[charIndex];
-
-            span.textContent = charData.char === " " ? "\u00A0" : charData.char;
+            span.textContent = charData.char === ' ' ? '\u00A0' : charData.char;
             span.style.fontFamily = charData.font;
-            span.style.fontWeight = charData.weight ?? "400";
+            span.style.fontWeight = charData.weight;
             span.style.color = charData.color;
-            span.style.display = "inline-block";
-            span.style.transition = "all 0.3s ease";
-            span.style.transform = "translateY(10px)";
-            span.style.opacity = "0";
-
-            if (!welcomeRef.current) return;
+            span.style.display = 'inline-block';
+            span.style.transform = 'translateY(10px)';
+            span.style.opacity = '0';
+            span.style.transition = 'all 0.3s ease';
             welcomeRef.current.appendChild(span);
 
-            setTimeout(() => {
-              span.style.transform = "translateY(0)";
-              span.style.opacity = "1";
+            const t1 = window.setTimeout(() => {
+              span.style.transform = 'translateY(0)';
+              span.style.opacity = '1';
             }, 50);
+            timers.push(t1);
 
             charIndex++;
-            setTimeout(typeChar, 100);
+            const t2 = window.setTimeout(typeChar, 100);
+            timers.push(t2);
           } else {
-            const br = document.createElement("br");
-            welcomeRef.current!.appendChild(br);
+            const br = document.createElement('br');
+            welcomeRef.current.appendChild(br);
             lineIndex++;
             charIndex = 0;
-            setTimeout(typeChar, 100);
+            const t3 = window.setTimeout(typeChar, 150);
+            timers.push(t3);
           }
         }
       };
-
       typeChar();
-    }
+    };
+
+    const timer = window.setTimeout(startTyping, 300);
+    timers.push(timer);
+    return () => {
+      isMounted = false;
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
-  const SocialLinks = () => (
-    <div className="flex flex-wrap gap-4 items-center pt-6">
-      <a
-        href="https://www.linkedin.com/company/impact-plus-pty-ltd/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-3 border border-blue-800 rounded-full bg-white/10 hover:bg-blue-800/30 hover:scale-110 transition-all duration-300"
-      >
-        <LinkedinIcon className="w-6 h-6 text-blue-300" />
-      </a>
-      <a
-        href="mailto:info@impactplusgroup.com"
-        className="p-3 border border-blue-800 rounded-full bg-white/10 hover:bg-blue-800/30 hover:scale-110 transition-all duration-300"
-      >
-        <MailIcon className="w-6 h-6 text-gray-200" />
-      </a>
-      <a
-        href="tel:+61419775400"
-        className="p-3 border border-blue-800 rounded-full bg-white/10 hover:bg-blue-800/30 hover:scale-110 transition-all duration-300"
-      >
-        <FacebookIcon className="w-6 h-6 text-green-300" />
-      </a>
-      <a
-        href="https://impactplusgroup.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-3 border border-blue-800 rounded-full bg-white/10 hover:bg-blue-800/30 hover:scale-110 transition-all duration-300"
-      >
-        <GlobeIcon className="w-6 h-6 text-purple-300" />
-      </a>
-    </div>
-  );
-
   return (
-    <main className="relative h-screen w-full overflow-hidden">
+    <main className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-24 pb-24">
       <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
         <source src="/videos/159678-819389843.mp4" type="video/mp4" />
       </video>
+      <div className="absolute inset-0 bg-black/60" />
 
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="relative z-10 text-center text-white px-6 md:px-16 max-w-4xl space-y-6">
+        <div
+           ref={welcomeRef}
+           className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-white drop-shadow-xl leading-tight tracking-wide text-center"
+        />
 
-      <div className="relative z-10 h-screen flex items-start justify-start px-6 md:px-16 lg:px-32 py-24 text-white">
-        <div className="space-y-6 max-w-2xl w-full">
-          <div
-            ref={welcomeRef}
-            className="text-4xl md:text-7xl font-bold tracking-wide leading-tight text-left"
-          ></div>
 
-          <p className="text-lg md:text-xl text-gray-200 max-w-lg leading-relaxed text-left">
-            We are an international consultancy specializing in  Project Management  and  Organisational Performance . We simplify complex challenges, build resilient strategies, and drive sustainable transformation for businesses worldwide.
-          </p>
+        <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+          Strategic Performance Consulting. Purpose-Driven Innovation. Smarter Products.
+        </p>
+        <p className="text-md md:text-lg text-gray-300">
+          At Impact Plus, we help organisations worldwide achieve safer, smarter, and more sustainable outcomes.
+          We design and deliver integrated systems and products that drive continuous improvement,
+          strengthen compliance, and accelerate success.
+        </p>
 
-          <Link
-            href="/about"
-            className="inline-block mt-6 px-8 py-3 text-sm font-semibold bg-blue-600 hover:bg-blue-700 hover:scale-105 rounded-full transition-transform duration-300 shadow-lg"
-          >
-            Read More →
-          </Link>
+        <Link
+          href="/about"
+          className="inline-block mt-6 px-8 py-3 text-sm font-semibold bg-blue-600 hover:bg-blue-700 rounded-full transition-transform duration-300 hover:scale-105 shadow-lg"
+        >
+          → Learn More About Us
+        </Link>
 
-          <SocialLinks />
+        <div className="flex justify-center gap-5 pt-6">
+          <a href="https://www.linkedin.com/company/impact-plus-pty-ltd/" target="_blank" rel="noopener noreferrer" className="p-3 border border-blue-700 rounded-full bg-white/10 hover:bg-blue-700/40 hover:scale-110 transition-all">
+            <LinkedinIcon className="w-6 h-6 text-blue-300" />
+          </a>
+          <a href="mailto:info@impactplusgroup.com" className="p-3 border border-blue-700 rounded-full bg-white/10 hover:bg-blue-700/40 hover:scale-110 transition-all">
+            <MailIcon className="w-6 h-6 text-gray-200" />
+          </a>
+          <a href="tel:+61419775400" className="p-3 border border-blue-700 rounded-full bg-white/10 hover:bg-blue-700/40 hover:scale-110 transition-all">
+            <PhoneIcon className="w-6 h-6 text-green-300" />
+          </a>
+          <a href="https://impactplusgroup.com" target="_blank" rel="noopener noreferrer" className="p-3 border border-blue-700 rounded-full bg-white/10 hover:bg-blue-700/40 hover:scale-110 transition-all">
+            <GlobeIcon className="w-6 h-6 text-purple-300" />
+          </a>
         </div>
       </div>
     </main>

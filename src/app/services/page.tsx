@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import Consulting from "./consulting/consulting";
-import Technology from "./tech/tech";
+import {Technology} from "./tech/tech";
 // import Training from "./training/training";
 
 const Services = () => {
@@ -70,15 +70,14 @@ const Services = () => {
             className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
             style={{ fontFamily: "Georgia, serif", color: "#293c83" }}
           >
-            Services at Impact Plus
+            Services and Products at Impact Plus
           </h1>
 
           <p
             className="text-lg md:text-xl mb-8 text-white drop-shadow-md leading-relaxed"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            We empower organisations with tailored consulting, innovative technology, 
-            and world-class training — driving measurable growth and lasting impact.
+            At Impact Plus, we deliver integrated consulting and sustainable product solutions that help organisations achieve safer, smarter, and more sustainable performance. Our approach combines systems thinking, innovation, and technical excellence to align people, processes, and products — driving measurable improvement, strengthening compliance, and creating long-term value across industries.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -87,14 +86,14 @@ const Services = () => {
               className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              WHAT WE DO
+              Our Integrated Approach
             </button>
             <button
               onClick={() => scrollToSection(technologyRef)}
               className="px-6 py-3 border-2 border-[#293c83] text-[#293c83] bg-white font-semibold rounded-full shadow hover:bg-[#293c83] hover:text-white transition"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              WHY US
+              The Impact Plus Difference
             </button>
           </div>
         </div>
@@ -115,14 +114,13 @@ const Services = () => {
         <Training />
       </div> */}
 
-      {/* Back to Top */}
-      <div className="flex justify-center my-12">
+      {/* Industries Button at End */}
+      <div className="flex justify-center my-16">
         <button
-          onClick={() => scrollToSection(heroRef)}
-          className="px-6 py-3 bg-[#293c83] text-white font-semibold rounded-full shadow hover:bg-blue-800 transition"
-          style={{ fontFamily: "Montserrat, sans-serif" }}
+          onClick={() => (window.location.href = "/insights")}
+          className="px-8 py-3 text-sm font-semibold bg-[#293c83] text-white rounded-full shadow hover:scale-105 transition-transform duration-300"
         >
-          Back to Top
+          Check our Clients Testimonials
         </button>
       </div>
     </main>

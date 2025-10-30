@@ -1,62 +1,75 @@
 'use client';
-import React, { useState, useEffect, useCallback } from 'react';
+
+import React, { useEffect, useState, useCallback } from "react";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
+import ReactCountryFlag from "react-country-flag";
 
 const Footer = () => {
   const [showFooter, setShowFooter] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const controlFooter = useCallback(() => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY > lastScrollY && window.scrollY > 50) {
-        setShowFooter(false);
-      } else {
-        setShowFooter(true);
-      }
-      setLastScrollY(window.scrollY);
-    }
+    if (window.scrollY > lastScrollY && window.scrollY > 50) setShowFooter(false);
+    else setShowFooter(true);
+    setLastScrollY(window.scrollY);
   }, [lastScrollY]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", controlFooter);
-    }
-    return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("scroll", controlFooter);
-      }
-    };
+    window.addEventListener("scroll", controlFooter);
+    return () => window.removeEventListener("scroll", controlFooter);
   }, [controlFooter]);
 
   return (
     <footer
-      className={`bg-blue-900 text-white text-sm py-6 px-5 fixed bottom-0 left-0 w-full z-50
-        transition-transform duration-500
-        ${showFooter ? 'translate-y-0' : 'translate-y-full'}`}
+      className={`bg-[#293c83] text-white text-sm py-5 px-6 fixed bottom-0 left-0 w-full z-50 transition-transform duration-500 ${
+        showFooter ? "translate-y-0" : "translate-y-full"
+      }`}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        {/* Left Section */}
-        <p className="text-center md:text-left">
-          © {new Date().getFullYear()} Impact Plus Group — Transformative Consulting. Real Results.
-        </p>
-
-        {/* Middle Section */}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-center">
-        <span>🇦🇺 Australia: +61 41 977 5400</span>
-          <span>🇿🇦 South Africa: +27 719092687</span>
-          <span>🇿🇼 Zimbabwe: +263 772 264 3055</span>
-        </div>
-
-        {/* Right Section */}
-        <div className="text-center md:text-right">
-          <a href="mailto:info@impactplusgroup.com" className="hover:underline">
-            info@impactplusgroup.com
-          </a>
-          <p>
-            <a href="https://impactplusgroup.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
-              www.impactplusgroup.com
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-3">
+        
+        {/* Contact Info */}
+        <div className="flex flex-wrap justify-center gap-6 text-base font-medium">
+          <span className="flex items-center gap-2">
+            <ReactCountryFlag countryCode="AU" svg style={{ width: "1.4em", height: "1.4em" }} />
+            <Phone size={16} /> +61 419 775 400
+          </span>
+          <span className="flex items-center gap-2">
+            <ReactCountryFlag countryCode="ZA" svg style={{ width: "1.4em", height: "1.4em" }} />
+            <Phone size={16} /> +27 71 909 2687
+          </span>
+          <span className="flex items-center gap-2">
+            <ReactCountryFlag countryCode="ZW" svg style={{ width: "1.4em", height: "1.4em" }} />
+            <Phone size={16} /> +263 772 643 055
+          </span>
+          <span className="flex items-center gap-2">
+            <Mail size={16} />
+            <a href="mailto:info@impactplusgroup.com" className="hover:underline">
+              info@impactplusgroup.com
             </a>
-          </p>
+          </span>
+          <span className="flex items-center gap-2">
+            <Globe size={16} />
+            <a
+              href="https://impactplusgroup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              impactplusgroup.com
+            </a>
+          </span>
         </div>
+
+        {/* Location */}
+        <div className="flex items-center gap-2 text-gray-200 text-sm">
+          <MapPin size={15} />
+          <span>Global Headquarters | Australia • South Africa • Zimbabwe</span>
+        </div>
+
+        {/* Copyright */}
+        <p className="text-xs text-gray-300 mt-2 font-light tracking-wide">
+          © {new Date().getFullYear()} <span className="font-semibold" style={{ fontFamily: "Voltaire Frangela, sans-serif" }}>Impact Plus Group</span> — Empowering Sustainable Growth.
+        </p>
       </div>
     </footer>
   );

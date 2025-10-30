@@ -70,10 +70,7 @@ const Vision = () => {
             Our Mission
           </h2>
           <p className="text-gray-700 font-[Montserrat]">
-            To empower organisations worldwide achieve measurable, sustainable
-            growth by aligning governance, leadership, systems, and culture.
-            Through WHSEQ, innovation, AI enablement, and ESG-aligned
-            transformation, we co-design change that sticks.
+           To empower organisations worldwide to achieve measurable and sustainable growth by aligning governance, leadership, systems, products, and culture. Through Workplace Health, Safety, Environment, and Quality  (WHSEQ), excellence, innovation, Artificial Intelligence (AI) enablement, and Environmental, Social, and Governance (ESG) aligned transformation, we co-design smarter systems and deliver sustainable products that create lasting performance and real-world impact.
           </p>
         </div>
 
@@ -82,9 +79,7 @@ const Vision = () => {
             Our Vision
           </h2>
           <p className="text-gray-700 font-[Montserrat]">
-            To be the global leader in transformative consulting, empowering
-            organisations and individuals to achieve excellence and sustainable
-            growth through innovation and resilience.
+          To be the global leader in transformative consulting, systems excellence, and sustainable products — shaping a safer, smarter, and more sustainable world through innovation and collaboration.
           </p>
         </div>
       </div>
